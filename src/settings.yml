@@ -1,0 +1,26 @@
+---
+name: Embalses
+strategy: polling
+polling_verb: get
+# Point this at the JSON the GitHub Action publishes for your own fork.
+polling_url: https://raw.githubusercontent.com/jmorrisseyd/trmnl-embalses/main/docs/trmnl.json
+# Minutes. embalses.net publishes new figures once a week (Tuesdays), so there
+# is nothing to gain from polling often.
+refresh_interval: 720
+dark_mode: false
+no_screen_padding: false
+custom_fields:
+  - keyname: heading
+    name: Título
+    field_type: string
+    description: Texto de la barra inferior.
+    default: Embalses
+  - keyname: footer
+    name: Pie (con varios embalses)
+    field_type: select
+    description: Qué resumen mostrar bajo la lista.
+    options:
+      - España
+      - Conjunto
+      - Ninguno
+    default: España

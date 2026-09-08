@@ -1,0 +1,40 @@
+name: Update reservoir data
+
+on:
+  schedule:
+    # embalses.net publishes weekly (Tuesdays), but the exact hour moves, so
+    # check once a day and commit only when the figures actually change.
+    - cron: "20 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scrape embalses.net
+        run: python3 scripts/embalses.py build
+
+      - name: Commit the new payload
+        run: |
+          if git diff --quiet -- docs/trmnl.json; then
+            echo "No change since the last run."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/trmnl.json
+          git commit -m "Update reservoir data ($(date -u +%Y-%m-%d))"
+          git push

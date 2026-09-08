@@ -1,0 +1,5 @@
+.cache/
+preview.html
+preview-*.html
+venv/
+__pycache__/

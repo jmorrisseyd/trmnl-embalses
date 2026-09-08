@@ -1,0 +1,8 @@
+---
+# Config for `trmnlp serve` (https://github.com/usetrmnl/trmnlp), the official
+# local preview server. Values here only affect the preview, never the device.
+watch:
+  - src
+custom_fields:
+  heading: Embalses
+  footer: España

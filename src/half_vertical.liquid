@@ -1,0 +1,82 @@
+{% assign heading = trmnl.plugin_settings.custom_fields_values.heading | default: title | default: "Embalses" %}
+{% assign list = reservoirs %}
+{% assign shown = list.size | default: 0 %}
+
+<style>
+  .emb-mark { position: absolute; top: 0; height: 100%; width: 3px; margin-left: -1px;
+              background: #fff; box-shadow: 0 0 0 1px #000; }
+  /* The framework centres what sits in a layout; these views are left aligned,
+     so every block takes the full width and lines up on the left edge. */
+  .layout > * { width: 100%; }
+</style>
+
+<div class="view view--half_vertical">
+{% if shown == 0 %}
+  <div class="layout layout--col layout--center" style="text-align: center;">
+    <span class="title title--small">Sin datos de embalses</span>
+  </div>
+
+{% elsif shown == 1 %}
+  {% assign r = list[0] %}
+  <div class="layout layout--col gap--space-between">
+    <div class="flex flex--col flex--left gap--none">
+      <span class="title title--large">{{ r.name }}</span>
+      <span class="description">{{ r.basin }}{% if r.province %} &middot; {{ r.province }}{% endif %}</span>
+    </div>
+
+    <div class="flex flex--col flex--left gap--none">
+      <span class="value value--xlarge value--tnums">{{ r.percent_text }}%</span>
+      <span class="label label--small">{{ r.volume_text }} de {{ r.capacity_text }} hm&sup3;</span>
+    </div>
+
+    <div class="progress-bar progress-bar--large">
+      <div class="track">
+        <div class="fill" style="width: {{ r.bar_percent }}%"></div>
+        {% if r.avg10_bar_percent %}<div class="emb-mark" style="left: {{ r.avg10_bar_percent }}%"></div>{% endif %}
+      </div>
+    </div>
+
+    <div class="grid grid--cols-2">
+      <div class="col flex flex--col flex--left gap--none">
+        <span class="label label--small">Semana</span>
+        <span class="value value--xsmall value--tnums">{{ r.trend_glyph }} {{ r.change_text }} hm&sup3;</span>
+      </div>
+      <div class="col flex flex--col flex--left gap--none">
+        <span class="label label--small">{{ r.last_year_label | default: "Año pasado" }}</span>
+        <span class="value value--xsmall value--tnums">{{ r.last_year_text }}%</span>
+      </div>
+      <div class="col flex flex--col flex--left gap--none">
+        <span class="label label--small">Media 10 años</span>
+        <span class="value value--xsmall value--tnums">{{ r.avg10_text }}%</span>
+      </div>
+      <div class="col flex flex--col flex--left gap--none">
+        <span class="label label--small">España</span>
+        <span class="value value--xsmall value--tnums">{{ national.percent_text }}%</span>
+      </div>
+    </div>
+  </div>
+
+{% else %}
+  {% if shown <= 4 %}{% assign bar_size = "progress-bar--base" %}{% else %}{% assign bar_size = "progress-bar--small" %}{% endif %}
+  <div class="layout layout--col gap--space-between">
+    {% for r in list limit: 6 %}
+      <div class="progress-bar {{ bar_size }}">
+        <div class="content">
+          <span class="title title--small">{{ r.name }}</span>
+          <span class="value value--xxsmall value--tnums">{{ r.percent_text }}%</span>
+        </div>
+        <div class="track">
+          <div class="fill" style="width: {{ r.bar_percent }}%"></div>
+          {% if r.avg10_bar_percent %}<div class="emb-mark" style="left: {{ r.avg10_bar_percent }}%"></div>{% endif %}
+        </div>
+      </div>
+    {% endfor %}
+    <span class="label label--small">España {{ national.percent_text }}% &middot; {{ national.trend_glyph }} {{ national.change_text }} hm&sup3;</span>
+  </div>
+{% endif %}
+
+  <div class="title_bar">
+    <span class="title">{{ heading }}</span>
+    <span class="instance">{{ as_of_label }}</span>
+  </div>
+</div>
