@@ -419,11 +419,28 @@ def command_build(args):
         "national": national,
     }
 
+    # embalses.net moves once a week, so most runs produce the same figures with
+    # a fresh timestamp. Keep the old timestamp in that case, and the daily
+    # Action has nothing to commit instead of committing noise.
+    previous = None
+    if os.path.exists(args.out):
+        try:
+            with open(args.out, encoding="utf-8") as fh:
+                previous = json.load(fh)
+        except (OSError, ValueError):
+            previous = None
+    if previous:
+        before = {k: v for k, v in previous.items() if k != "generated_at"}
+        after = {k: v for k, v in payload.items() if k != "generated_at"}
+        if before == after:
+            payload["generated_at"] = previous.get("generated_at", payload["generated_at"])
+
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as fh:
         json.dump(payload, fh, ensure_ascii=False, indent=2)
         fh.write("\n")
-    print(f"Wrote {args.out}: {len(reservoirs)} reservoir(s), data of {as_of_label}")
+    state = "unchanged" if previous and before == after else "updated"
+    print(f"Wrote {args.out} ({state}): {len(reservoirs)} reservoir(s), data of {as_of_label}")
     return 0
 
 
