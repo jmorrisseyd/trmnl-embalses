@@ -19,13 +19,16 @@ custom_fields:
     help_text: Ejemplo:&nbsp; 871,795,830
     default: "795,830,816,799"
   - keyname: chart
-    name: Gráfico anual
+    name: Gráfico
     field_type: select
-    description: Muestra el gráfico del año de embalses.net cuando hay un solo embalse seleccionado. Gráfico de Embalses.net, CC BY 4.0.
+    description: Qué gráfico de embalses.net mostrar cuando hay un solo embalse seleccionado. Anual compara con los dos años anteriores y la media de 10 años; Histórico son medias mensuales desde 1960; Entradas son los caudales de entrada por mes. Gráficos de Embalses.net, CC BY 4.0.
+    help_text: Entradas no existe para todos los embalses.
     options:
-      - "No"
-      - "Sí"
-    default: "no"
+      - Ninguno
+      - Anual
+      - "Histórico"
+      - Entradas
+    default: ninguno
   - keyname: heading
     name: Título
     field_type: string

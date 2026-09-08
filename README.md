@@ -120,25 +120,37 @@ TRMNL puts the response at the root, so the markup reads `{{ reservoirs }}` and
 Finally add the plugin to a playlist and set its refresh rate. Twelve hours is
 plenty — the source data only changes weekly.
 
-## The annual chart
+## The charts
 
-Turn the **Gráfico anual** field on and, when a single reservoir is selected,
-the full view swaps its stat tiles for embalses.net's own annual chart — this
-year against the last two and the ten-year average, which is what those tiles
-were saying anyway.
+The **Gráfico** field picks one of embalses.net's own charts to show when a
+single reservoir is selected. All three come from the same id as everything
+else, so nothing has to be mirrored:
 
-The chart lives at `/cache/pantano-<id>.png`, so the template builds its URL
-from the same id as everything else and nothing has to be mirrored. It is drawn
-in colour, and a plain greyscale turns its pale min/max band into heavy
-dithered hatching, so the template dims the image before boosting contrast:
-that drops the band and the gridlines to white while all four series stay
-black. A brighter setting looks cleaner still but silently loses the green 2024
-line, which is why the values are what they are. The image is left at its own
+| Choice | Source | What it shows |
+|--------|--------|---------------|
+| Anual | `/cache/pantano-<id>.png` | This year against the last two and the ten-year average, weekly |
+| Histórico | `/cache/pantano-<id>-historico.png` | Monthly means back to 1960 |
+| Entradas | `/graficos-entradas/embalse-<id>-entradas.png` | Water entering per month: median, quartiles, record maximum |
+
+Anual and Histórico are 560x250 and sit under the reservoir's name and
+percentage. Entradas is 1120x810 and carries its own title and credit, so it
+takes the whole screen, scaled to width with the statistics table clipped off
+the bottom — the month labels survive, the table would be too small to read.
+
+**Entradas does not exist for every reservoir** — roughly four in five have it,
+and the URL redirects rather than 404s when it is missing, so the view will
+simply come up blank. Rules (871) is one without it.
+
+The charts are drawn in colour, and a plain greyscale turns their pale bands
+into heavy dithered hatching, so the template dims each image before boosting
+contrast: that drops bands and gridlines to white while the series stay black.
+A brighter setting looks cleaner but silently loses the green 2024 line, which
+is why the values are what they are. Anual and Histórico are left at their own
 560x250 rather than stretched, so the 1px lines and small labels land on whole
 pixels.
 
 The graphs are published by Embalses.net under CC BY 4.0 — free to use and
-adapt with credit — and the view carries the attribution.
+adapt with credit — and the views carry the attribution.
 
 ## Previewing without trmnlp
 

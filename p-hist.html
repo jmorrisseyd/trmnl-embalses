@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>trmnl-embalses preview</title>
+  <style>
+    body { margin: 0; padding: 0; background: #4b5563; font-family: sans-serif; }
+    .preview { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+    .preview__case { color: #fff; font: 12px/1.4 ui-monospace, monospace; }
+    iframe { border: 0; display: block; background: #fff; }
+  </style>
+</head>
+<body>
+  <div class="preview">
+    <div class="preview__case">
+      <div>full — 1 reservoir(s): 1170 | footer=españa</div>
+      <iframe width="800" height="480" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html class=&quot;trmnl&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://trmnl.com/css/latest/plugins.css&quot; /&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot; /&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin /&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@300;350;375;400;450;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot; /&gt;
+  &lt;style&gt;body { margin: 0; }&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;environment trmnl&quot;&gt;
+  &lt;div class=&quot;screen screen--og screen--1bit&quot;&gt;&lt;div class=&quot;view view--full&quot;&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;style&gt;
+  /* The one thing the framework has no component for: a marker on the track
+     showing where this week sits in the ten-year average. White with a black
+     outline so it stays visible over the fill and over the empty track. */
+  .emb-mark { position: absolute; top: 0; height: 100%; width: 3px; margin-left: -1px;
+              background: #fff; box-shadow: 0 0 0 1px #000; }
+  /* The framework centres what sits in a layout; these views are left aligned,
+     so every block takes the full width and lines up on the left edge. */
+  .layout &gt; *:not(img):not(.emb-crop) { width: 100%; }
+
+  /* embalses.net draws its chart in colour, and a straight greyscale leaves the
+     pale min/max band as heavy dithered hatching. Dimming before a contrast
+     boost drops that band and the gridlines to white while all four series stay
+     black — including the green 2024 line, which a brighter setting loses
+     entirely. Left at its own 560x250 so the 1px lines and small labels land on
+     whole pixels rather than being resampled. */
+  /* One or two reservoirs: a taller track, so the rows fill the screen instead
+     of floating in it. */
+  .emb-tall .track { height: 58px; }
+
+  /* The inflow chart is 1120x810: scaled to 760 wide it is 550 tall, and 407 of
+     those are the plot and its month labels — the rest is a statistics table
+     too small to read here, so the wrapper clips it. */
+  .emb-crop { flex: none; width: 760px; height: 407px; overflow: hidden; }
+  .emb-crop__img { display: block; width: 760px; height: 550px;
+                   filter: grayscale(1) brightness(0.8) contrast(4); }
+
+  .emb-chart { display: block; margin: 0 auto; flex: none; width: 560px; height: 250px;
+               filter: grayscale(1) brightness(0.8) contrast(4); }
+&lt;/style&gt;
+
+
+  
+  &lt;div class=&quot;layout layout--col gap--distribute&quot;&gt;
+    &lt;div class=&quot;flex flex--row flex--between flex--bottom&quot;&gt;
+      &lt;div class=&quot;flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;title title--large&quot;&gt;Yesa&lt;/span&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;Ebro &amp;middot; Navarra &amp;middot; 121 / 447 hm&amp;sup3;&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;span class=&quot;value value--large value--tnums&quot;&gt;27,1%&lt;/span&gt;
+    &lt;/div&gt;
+
+    
+    
+    &lt;img class=&quot;emb-chart&quot; src=&quot;https://www.embalses.net/cache/pantano-1170-historico.png&quot;
+         alt=&quot;Gráfico del embalse Yesa&quot; /&gt;
+
+    &lt;div class=&quot;flex flex--row flex--between flex--bottom&quot; style=&quot;border-top: 2px solid black; padding-top: 6px;&quot;&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;Semana ▼ -19 hm&amp;sup3; &amp;middot; España 62,6%&lt;/span&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;gráfico: embalses.net CC BY 4.0&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+
+
+&lt;div class=&quot;title_bar&quot;&gt;
+  &lt;span class=&quot;title&quot;&gt;Embalses&lt;/span&gt;
+  &lt;span class=&quot;instance&quot;&gt;07/09/2026&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+    </div>
+
+    <div class="preview__case">
+      <div>half_horizontal — 1 reservoir(s): 1170 | footer=españa</div>
+      <iframe width="800" height="480" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html class=&quot;trmnl&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://trmnl.com/css/latest/plugins.css&quot; /&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot; /&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin /&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@300;350;375;400;450;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot; /&gt;
+  &lt;style&gt;body { margin: 0; }&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;environment trmnl&quot;&gt;
+  &lt;div class=&quot;screen screen--og screen--1bit&quot;&gt;&lt;div class=&quot;mashup mashup--1Tx1B&quot;&gt;&lt;div class=&quot;view view--half_horizontal&quot;&gt;
+
+
+
+
+
+
+
+&lt;style&gt;
+  .emb-mark { position: absolute; top: 0; height: 100%; width: 3px; margin-left: -1px;
+              background: #fff; box-shadow: 0 0 0 1px #000; }
+  /* The framework centres what sits in a layout; these views are left aligned,
+     so every block takes the full width and lines up on the left edge. */
+  .layout &gt; * { width: 100%; }
+&lt;/style&gt;
+
+
+  
+  &lt;div class=&quot;layout layout--col gap--distribute&quot;&gt;
+    &lt;div class=&quot;flex flex--row flex--between flex--bottom&quot;&gt;
+      &lt;div class=&quot;flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;title&quot;&gt;Yesa&lt;/span&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;121 / 447 hm&amp;sup3; &amp;middot; Ebro&lt;/span&gt;
+    &lt;/div&gt;
+      &lt;span class=&quot;value value--large value--tnums&quot;&gt;27,1%&lt;/span&gt;
+  &lt;/div&gt;
+
+    &lt;div class=&quot;progress-bar progress-bar--base&quot;&gt;
+      &lt;div class=&quot;track&quot;&gt;
+        &lt;div class=&quot;fill&quot; style=&quot;width: 27.1%&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;emb-mark&quot; style=&quot;left: 33.9%&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+    &lt;div class=&quot;flex flex--row flex--between&quot;&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;Semana ▼ -19 hm&amp;sup3;&lt;/span&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;2025 30,6%&lt;/span&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;Media 10 años 33,9%&lt;/span&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;España 62,6%&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;div class=&quot;title_bar title_bar--small&quot;&gt;
+  &lt;span class=&quot;title&quot;&gt;Embalses&lt;/span&gt;
+  &lt;span class=&quot;instance&quot;&gt;07/09/2026&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+    </div>
+
+    <div class="preview__case">
+      <div>half_vertical — 1 reservoir(s): 1170 | footer=españa</div>
+      <iframe width="800" height="480" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html class=&quot;trmnl&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://trmnl.com/css/latest/plugins.css&quot; /&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot; /&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin /&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@300;350;375;400;450;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot; /&gt;
+  &lt;style&gt;body { margin: 0; }&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;environment trmnl&quot;&gt;
+  &lt;div class=&quot;screen screen--og screen--1bit&quot;&gt;&lt;div class=&quot;mashup mashup--1Lx1R&quot;&gt;&lt;div class=&quot;view view--half_vertical&quot;&gt;
+
+
+
+
+
+
+
+&lt;style&gt;
+  .emb-mark { position: absolute; top: 0; height: 100%; width: 3px; margin-left: -1px;
+              background: #fff; box-shadow: 0 0 0 1px #000; }
+  /* The framework centres what sits in a layout; these views are left aligned,
+     so every block takes the full width and lines up on the left edge. */
+  .layout &gt; * { width: 100%; }
+&lt;/style&gt;
+
+
+  
+  &lt;div class=&quot;layout layout--col gap--distribute&quot;&gt;
+    &lt;div class=&quot;flex flex--col flex--left gap--none&quot;&gt;
+      &lt;span class=&quot;title title--large&quot;&gt;Yesa&lt;/span&gt;
+      &lt;span class=&quot;description&quot;&gt;Ebro &amp;middot; Navarra&lt;/span&gt;
+  &lt;/div&gt;
+
+    &lt;div class=&quot;flex flex--col flex--left gap--none&quot;&gt;
+      &lt;span class=&quot;value value--xlarge value--tnums&quot;&gt;27,1%&lt;/span&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;121 de 447 hm&amp;sup3;&lt;/span&gt;
+  &lt;/div&gt;
+
+    &lt;div class=&quot;progress-bar progress-bar--large&quot;&gt;
+      &lt;div class=&quot;track&quot;&gt;
+        &lt;div class=&quot;fill&quot; style=&quot;width: 27.1%&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;emb-mark&quot; style=&quot;left: 33.9%&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+    &lt;div class=&quot;grid grid--cols-2&quot;&gt;
+      &lt;div class=&quot;col flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;Semana&lt;/span&gt;
+        &lt;span class=&quot;value value--xsmall value--tnums&quot;&gt;▼ -19 hm&amp;sup3;&lt;/span&gt;
+    &lt;/div&gt;
+      &lt;div class=&quot;col flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;2025&lt;/span&gt;
+        &lt;span class=&quot;value value--xsmall value--tnums&quot;&gt;30,6%&lt;/span&gt;
+    &lt;/div&gt;
+      &lt;div class=&quot;col flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;Media 10 años&lt;/span&gt;
+        &lt;span class=&quot;value value--xsmall value--tnums&quot;&gt;33,9%&lt;/span&gt;
+    &lt;/div&gt;
+      &lt;div class=&quot;col flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;España&lt;/span&gt;
+        &lt;span class=&quot;value value--xsmall value--tnums&quot;&gt;62,6%&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;div class=&quot;title_bar&quot;&gt;
+  &lt;span class=&quot;title&quot;&gt;Embalses&lt;/span&gt;
+  &lt;span class=&quot;instance&quot;&gt;07/09/2026&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+    </div>
+
+    <div class="preview__case">
+      <div>quadrant — 1 reservoir(s): 1170 | footer=españa</div>
+      <iframe width="800" height="480" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html class=&quot;trmnl&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://trmnl.com/css/latest/plugins.css&quot; /&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot; /&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin /&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@300;350;375;400;450;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot; /&gt;
+  &lt;style&gt;body { margin: 0; }&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;environment trmnl&quot;&gt;
+  &lt;div class=&quot;screen screen--og screen--1bit&quot;&gt;&lt;div class=&quot;mashup mashup--2x2&quot;&gt;&lt;div class=&quot;view view--quadrant&quot;&gt;
+
+
+
+
+
+
+
+&lt;style&gt;
+  .emb-mark { position: absolute; top: 0; height: 100%; width: 3px; margin-left: -1px;
+              background: #fff; box-shadow: 0 0 0 1px #000; }
+  /* The framework centres what sits in a layout; these views are left aligned,
+     so every block takes the full width and lines up on the left edge. */
+  .layout &gt; * { width: 100%; }
+&lt;/style&gt;
+
+
+  
+  &lt;div class=&quot;layout layout--col gap--distribute&quot;&gt;
+    &lt;span class=&quot;title title--small&quot;&gt;Yesa&lt;/span&gt;
+    &lt;div class=&quot;flex flex--row flex--left flex--bottom gap--small&quot;&gt;
+      &lt;span class=&quot;value value--large value--tnums&quot;&gt;27,1%&lt;/span&gt;
+      &lt;span class=&quot;label label--small&quot; style=&quot;padding-bottom: 8px;&quot;&gt;▼ -19 hm&amp;sup3;&lt;/span&gt;
+  &lt;/div&gt;
+    &lt;div class=&quot;progress-bar progress-bar--small&quot;&gt;
+      &lt;div class=&quot;track&quot;&gt;
+        &lt;div class=&quot;fill&quot; style=&quot;width: 27.1%&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;emb-mark&quot; style=&quot;left: 33.9%&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+    &lt;span class=&quot;label label--small&quot;&gt;121 / 447 hm&amp;sup3;&lt;/span&gt;
+&lt;/div&gt;
+
+
+
+&lt;div class=&quot;title_bar title_bar--small&quot;&gt;
+  &lt;span class=&quot;title&quot;&gt;Embalses&lt;/span&gt;
+  &lt;span class=&quot;instance&quot;&gt;07/09/2026&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+    </div>
+</div>
+</body>
+</html>
