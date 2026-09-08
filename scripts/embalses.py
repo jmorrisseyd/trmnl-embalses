@@ -379,17 +379,15 @@ def command_search(args):
     return 0
 
 
-# Fields that reach the published payload. Every reservoir in Spain travels in
-# it so the plugin's form field can name any of them, so the entries are kept to
-# what the templates actually read.
-PAYLOAD_FIELDS = (
-    "id", "id_text", "name", "basin", "province", "river",
-    "volume_hm3", "capacity_hm3", "change_hm3", "percent", "bar_percent", "avg10_bar_percent",
-    "percent_text", "volume_text", "capacity_text", "change_text",
-    "change_percent_text", "last_year_label", "last_year_text", "avg10_text",
-    "vs_last_year_text", "vs_avg10_text", "trend_glyph",
-)
-
+# TRMNL caps a polling payload at 100 kB, and every reservoir in Spain travels
+# in this one so the plugin's form field can name any of them. Repeating long
+# key names 374 times cost more than all the values put together, so entries are
+# short keys holding plain numbers, and the templates do the formatting:
+#
+#   id  page id      n   name        b  basin     pv province   r  river
+#   v   hm3 stored   c   hm3 total   d  hm3 change this week
+#   p   % full       ly  % same week last year     a  % ten-year average
+#
 # The figures that only a reservoir's own page carries, cached between runs.
 DETAIL_FIELDS = (
     "change_percent", "last_year_hm3", "last_year_percent", "last_year_label",
@@ -398,8 +396,11 @@ DETAIL_FIELDS = (
 DETAIL_DELAY = 0.7
 
 
-def slim(record):
-    return {key: record[key] for key in PAYLOAD_FIELDS if record.get(key) is not None}
+def number(value):
+    """Trim a float to an int where it is whole, to keep the payload small."""
+    if value is None:
+        return None
+    return int(value) if float(value).is_integer() else round(float(value), 1)
 
 
 def load_detail_cache(path):
@@ -481,17 +482,25 @@ def command_build(args):
 
     reservoirs = []
     for entry in index:
+        detail = cache["reservoirs"].get(str(entry["id"]), {})
+        capacity = entry["capacity_hm3"] or 0
+        volume = entry["volume_hm3"] or 0
         record = {
-            "id": entry["id"],
-            "id_text": str(entry["id"]),
-            "name": entry["name"],
-            "basin": entry["basin"],
-            "volume_hm3": entry["volume_hm3"],
-            "capacity_hm3": entry["capacity_hm3"],
-            "change_hm3": entry["change_hm3"],
+            "id": str(entry["id"]),
+            "n": entry["name"],
+            "b": detail.get("basin") or entry["basin"],
+            "v": number(volume),
+            "c": number(capacity),
+            "d": number(entry["change_hm3"] or 0),
+            "p": round(100.0 * volume / capacity, 1) if capacity else 0,
         }
-        record.update(cache["reservoirs"].get(str(entry["id"]), {}))
-        reservoirs.append(slim(decorate(record, locale)))
+        for key, source in (("pv", "province"), ("r", "river")):
+            if detail.get(source):
+                record[key] = detail[source]
+        for key, source in (("ly", "last_year_percent"), ("a", "avg10_percent")):
+            if detail.get(source) is not None:
+                record[key] = round(detail[source], 1)
+        reservoirs.append(record)
 
     default_ids = [str(value) for value in (config.get("reservoirs") or [])]
     payload = {
@@ -502,8 +511,13 @@ def command_build(args):
         "source": BASE,
         "count": len(reservoirs),
         "default_ids": ",".join(default_ids),
+        "last_year_label": national.get("last_year_label"),
         "reservoirs": reservoirs,
-        "national": slim(national),
+        # One object, so this one keeps its formatted strings: it is where the
+        # thousands separators actually matter (35.073 hm3).
+        "national": {key: national[key] for key in (
+            "percent_text", "volume_text", "capacity_text", "change_text", "trend_glyph",
+        ) if national.get(key) is not None},
     }
 
     # embalses.net moves once a week, so most runs produce the same figures with

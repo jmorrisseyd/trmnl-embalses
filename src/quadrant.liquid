@@ -1,12 +1,15 @@
 {% assign heading = trmnl.plugin_settings.custom_fields_values.heading | default: title | default: "Embalses" %}
-{% comment %} The payload carries every reservoir embalses.net reports weekly.
-   The reservoir_ids form field picks which of them to show, in the order given;
-   an id is the number in the page URL, so /pantano-871-rules.html is 871. With
-   the field left empty we fall back to the ids baked into the payload. {% endcomment %}
+{% comment %} The payload carries every reservoir embalses.net reports weekly, as
+   short keys holding plain numbers, because TRMNL caps a polling payload at
+   100 kB: n name, b basin, pv province, r river, v hm3 stored, c hm3 total,
+   d hm3 change this week, p % full, ly % same week last year, a % ten-year
+   average. The reservoir_ids form field picks which to show, in the order
+   given; an id is the number in the page URL, so /pantano-871-rules.html is
+   871. With the field empty we fall back to the ids in the payload. {% endcomment %}
 {% assign selection = trmnl.plugin_settings.custom_fields_values.reservoir_ids | default: default_ids %}
 {% assign wanted = selection | split: "," %}
 {% assign list = "" | split: "," %}
-{% for token in wanted %}{% assign key = token | strip %}{% assign found = reservoirs | where: "id_text", key %}{% assign list = list | concat: found %}{% endfor %}
+{% for token in wanted %}{% assign key = token | strip %}{% assign found = reservoirs | where: "id", key %}{% assign list = list | concat: found %}{% endfor %}
 {% assign shown = list.size | default: 0 %}
 
 <style>
@@ -25,18 +28,18 @@
 {% elsif shown == 1 %}
   {% assign r = list[0] %}
   <div class="layout layout--col gap--space-between">
-    <span class="title title--small">{{ r.name }}</span>
+    <span class="title title--small">{{ r.n }}</span>
     <div class="flex flex--row flex--left flex--bottom gap--small">
-      <span class="value value--large value--tnums">{{ r.percent_text }}%</span>
-      <span class="label label--small" style="padding-bottom: 8px;">{{ r.trend_glyph }} {{ r.change_text }} hm&sup3;</span>
+      <span class="value value--large value--tnums">{{ r.p | round: 1 | replace: ".", "," }}%</span>
+      <span class="label label--small" style="padding-bottom: 8px;">{% if r.d > 0 %}▲ +{% elsif r.d < 0 %}▼ {% else %}▬ {% endif %}{{ r.d }} hm&sup3;</span>
   </div>
     <div class="progress-bar progress-bar--small">
       <div class="track">
-        <div class="fill" style="width: {{ r.bar_percent }}%"></div>
-        {% if r.avg10_bar_percent %}<div class="emb-mark" style="left: {{ r.avg10_bar_percent }}%"></div>{% endif %}
+        <div class="fill" style="width: {{ r.p }}%"></div>
+        {% if r.a %}<div class="emb-mark" style="left: {{ r.a }}%"></div>{% endif %}
     </div>
   </div>
-    <span class="label label--small">{{ r.volume_text }} / {{ r.capacity_text }} hm&sup3;</span>
+    <span class="label label--small">{{ r.v }} / {{ r.c }} hm&sup3;</span>
 </div>
 
 {% else %}
@@ -44,12 +47,12 @@
     {% for r in list limit: 3 %}
       <div class="progress-bar progress-bar--xsmall">
         <div class="content">
-          <span class="title title--small">{{ r.name }}</span>
-          <span class="value value--xxsmall value--tnums">{{ r.percent_text }}%</span>
+          <span class="title title--small">{{ r.n }}</span>
+          <span class="value value--xxsmall value--tnums">{{ r.p | round: 1 | replace: ".", "," }}%</span>
       </div>
         <div class="track">
-          <div class="fill" style="width: {{ r.bar_percent }}%"></div>
-          {% if r.avg10_bar_percent %}<div class="emb-mark" style="left: {{ r.avg10_bar_percent }}%"></div>{% endif %}
+          <div class="fill" style="width: {{ r.p }}%"></div>
+          {% if r.a %}<div class="emb-mark" style="left: {{ r.a }}%"></div>{% endif %}
       </div>
     </div>
     {% endfor %}

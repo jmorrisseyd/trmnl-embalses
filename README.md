@@ -133,39 +133,37 @@ open preview.html
 
 ## What the payload looks like
 
-`reservoirs` lists every reservoir the site reports, and the templates pick out
-the ids from the form field (falling back to `default_ids`).
+TRMNL rejects a polling payload over 100 kB, and this one carries every
+reservoir so the form field can name any of them. Repeating long key names 374
+times cost more than all the values put together, so entries are short keys
+holding plain numbers and the templates do the formatting. That is 45 kB:
 
 ```json
 {
-  "as_of": "2026-09-07",
   "as_of_label": "07/09/2026",
+  "last_year_label": "2025",
   "default_ids": "795,830,816,799",
   "reservoirs": [
-    {
-      "id": 795,
-      "id_text": "795",
-      "name": "El Cenajo",
-      "basin": "Segura",
-      "province": "Albacete",
-      "volume_hm3": 278.0,
-      "capacity_hm3": 437.0,
-      "percent": 63.62,
-      "change_hm3": 0.0,
-      "last_year_percent": 17.85,
-      "avg10_percent": 28.05,
-      "percent_text": "63,6",
-      "bar_percent": 63.6,
-      "trend_glyph": "▬"
-    }
+    {"id": "871", "n": "Rules", "b": "Med. Andaluza", "pv": "Granada",
+     "r": "Guadalfeo", "v": 96, "c": 111, "d": -2, "p": 86.5, "ly": 72.1, "a": 68.5}
   ],
-  "national": { "...": "all of Spain" }
+  "national": { "...": "formatted strings for all of Spain" }
 }
 ```
 
-Numbers come in two forms: the raw value for arithmetic (`percent`) and a
-pre-formatted string for display (`percent_text`), so the templates never have
-to do Spanish number formatting in Liquid.
+| key | meaning | key | meaning |
+|-----|---------|-----|---------|
+| `id` | the number in the page URL | `v` | hm³ stored |
+| `n` | name | `c` | hm³ capacity |
+| `b` | basin | `d` | hm³ change this week |
+| `pv` | province | `p` | % full |
+| `r` | river | `ly` | % the same week last year |
+| | | `a` | % ten-year average for this week |
+
+`national` is a single object, so it keeps its pre-formatted strings — it is
+where the thousands separators actually matter (35.073 hm³). Per-reservoir
+figures are formatted in Liquid instead, which means no thousands separator on
+the nine reservoirs holding over 1.000 hm³.
 
 ## Data source and courtesy
 

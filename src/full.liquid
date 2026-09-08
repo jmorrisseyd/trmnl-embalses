@@ -1,15 +1,18 @@
- {% assign heading = trmnl.plugin_settings.custom_fields_values.heading | default: title | default: "Embalses" %}
+{% assign heading = trmnl.plugin_settings.custom_fields_values.heading | default: title | default: "Embalses" %}
 {% comment %} TRMNL stores a select's value parameterised ("España" -> "espana"),
    so match loosely on a downcased value rather than on the exact label. {% endcomment %}
 {% assign footer_mode = trmnl.plugin_settings.custom_fields_values.footer | default: "espana" | downcase %}
-{% comment %} The payload carries every reservoir embalses.net reports weekly.
-   The reservoir_ids form field picks which of them to show, in the order given;
-   an id is the number in the page URL, so /pantano-871-rules.html is 871. With
-   the field left empty we fall back to the ids baked into the payload. {% endcomment %}
+{% comment %} The payload carries every reservoir embalses.net reports weekly, as
+   short keys holding plain numbers, because TRMNL caps a polling payload at
+   100 kB: n name, b basin, pv province, r river, v hm3 stored, c hm3 total,
+   d hm3 change this week, p % full, ly % same week last year, a % ten-year
+   average. The reservoir_ids form field picks which to show, in the order
+   given; an id is the number in the page URL, so /pantano-871-rules.html is
+   871. With the field empty we fall back to the ids in the payload. {% endcomment %}
 {% assign selection = trmnl.plugin_settings.custom_fields_values.reservoir_ids | default: default_ids %}
 {% assign wanted = selection | split: "," %}
 {% assign list = "" | split: "," %}
-{% for token in wanted %}{% assign key = token | strip %}{% assign found = reservoirs | where: "id_text", key %}{% assign list = list | concat: found %}{% endfor %}
+{% for token in wanted %}{% assign key = token | strip %}{% assign found = reservoirs | where: "id", key %}{% assign list = list | concat: found %}{% endfor %}
 {% assign shown = list.size | default: 0 %}
 
 <style>
@@ -27,60 +30,60 @@
   <div class="layout layout--col layout--center" style="text-align: center;">
     <div class="title">Ningún embalse seleccionado</div>
     <div class="description">Pon los ids de embalses.net en el campo "Embalses" del plugin, separados por comas</div>
-</div>
+  </div>
 
 {% elsif shown == 1 %}
   {% assign r = list[0] %}
   <div class="layout layout--col gap--space-between">
     <div class="flex flex--col flex--left gap--none">
-      <span class="title title--xlarge">{{ r.name }}</span>
+      <span class="title title--xlarge">{{ r.n }}</span>
       <span class="description">
-        {{ r.basin }}{% if r.province %} &middot; {{ r.province }}{% endif %}{% if r.river %} &middot; Río {{ r.river }}{% endif %}
+        {{ r.b }}{% if r.pv %} &middot; {{ r.pv }}{% endif %}{% if r.r %} &middot; Río {{ r.r }}{% endif %}
       </span>
-  </div>
+    </div>
 
     <div class="flex flex--row flex--left flex--bottom gap--large">
-      <span class="value value--xxlarge value--tnums">{{ r.percent_text }}%</span>
+      <span class="value value--xxlarge value--tnums">{{ r.p | round: 1 | replace: ".", "," }}%</span>
       <div class="flex flex--col flex--left gap--none" style="padding-bottom: 12px;">
-        <span class="value value--xsmall value--tnums">{{ r.volume_text }} hm&sup3;</span>
-        <span class="label label--small">de {{ r.capacity_text }} hm&sup3;</span>
+        <span class="value value--xsmall value--tnums">{{ r.v }} hm&sup3;</span>
+        <span class="label label--small">de {{ r.c }} hm&sup3;</span>
+      </div>
     </div>
-  </div>
 
     <div class="progress-bar progress-bar--large">
       <div class="content">
         <span class="label label--small">Llenado</span>
-        <span class="label label--small">línea = media de 10 años ({{ r.avg10_text }}%)</span>
-    </div>
+        {% if r.a %}<span class="label label--small">línea = media de 10 años ({{ r.a | round: 1 | replace: ".", "," }}%)</span>{% endif %}
+      </div>
       <div class="track">
-        <div class="fill" style="width: {{ r.bar_percent }}%"></div>
-        {% if r.avg10_bar_percent %}<div class="emb-mark" style="left: {{ r.avg10_bar_percent }}%"></div>{% endif %}
+        <div class="fill" style="width: {{ r.p }}%"></div>
+        {% if r.a %}<div class="emb-mark" style="left: {{ r.a }}%"></div>{% endif %}
+      </div>
     </div>
-  </div>
 
     <div class="grid grid--cols-4">
       <div class="col flex flex--col flex--left gap--none">
         <span class="label label--small">Semana</span>
-        <span class="value value--small value--tnums">{{ r.trend_glyph }} {{ r.change_text }}</span>
-        <span class="label label--small">hm&sup3;{% unless r.change_percent_text == "—" %} ({{ r.change_percent_text }}%){% endunless %}</span>
-    </div>
+        <span class="value value--small value--tnums">{% if r.d > 0 %}▲ +{% elsif r.d < 0 %}▼ {% else %}▬ {% endif %}{{ r.d }}</span>
+        <span class="label label--small">hm&sup3;</span>
+      </div>
       <div class="col flex flex--col flex--left gap--none">
-        <span class="label label--small">{{ r.last_year_label | default: "Año pasado" }}</span>
-        <span class="value value--small value--tnums">{{ r.last_year_text }}%</span>
-        <span class="label label--small">{{ r.vs_last_year_text }} puntos</span>
-    </div>
+        <span class="label label--small">{{ last_year_label | default: "Año pasado" }}</span>
+        <span class="value value--small value--tnums">{% if r.ly %}{{ r.ly | round: 1 | replace: ".", "," }}%{% else %}—{% endif %}</span>
+        {% if r.ly %}{% assign delta = r.p | minus: r.ly | round: 1 %}<span class="label label--small">{% if delta > 0 %}+{% endif %}{{ delta | replace: ".", "," }} puntos</span>{% endif %}
+      </div>
       <div class="col flex flex--col flex--left gap--none">
         <span class="label label--small">Media 10 años</span>
-        <span class="value value--small value--tnums">{{ r.avg10_text }}%</span>
-        <span class="label label--small">{{ r.vs_avg10_text }} puntos</span>
-    </div>
+        <span class="value value--small value--tnums">{% if r.a %}{{ r.a | round: 1 | replace: ".", "," }}%{% else %}—{% endif %}</span>
+        {% if r.a %}{% assign delta = r.p | minus: r.a | round: 1 %}<span class="label label--small">{% if delta > 0 %}+{% endif %}{{ delta | replace: ".", "," }} puntos</span>{% endif %}
+      </div>
       <div class="col flex flex--col flex--left gap--none">
         <span class="label label--small">España</span>
         <span class="value value--small value--tnums">{{ national.percent_text }}%</span>
         <span class="label label--small">{{ national.trend_glyph }} {{ national.change_text }} hm&sup3;</span>
+      </div>
     </div>
   </div>
-</div>
 
 {% else %}
   {% if shown <= 3 %}{% assign bar_size = "progress-bar--large" %}{% assign name_size = "title" %}{% assign pct_size = "value value--small" %}
@@ -91,15 +94,15 @@
     {% for r in list limit: 7 %}
       <div class="progress-bar {{ bar_size }}">
         <div class="content">
-          <span class="{{ name_size }}">{{ r.name }}</span>
-          <span class="label label--small">{{ r.volume_text }} / {{ r.capacity_text }} hm&sup3; &middot; {{ r.trend_glyph }} {{ r.change_text }} sem.</span>
-          <span class="{{ pct_size }} value--tnums">{{ r.percent_text }}%</span>
-      </div>
+          <span class="{{ name_size }}">{{ r.n }}</span>
+          <span class="label label--small">{{ r.v }} / {{ r.c }} hm&sup3; &middot; {% if r.d > 0 %}▲ +{% elsif r.d < 0 %}▼ {% else %}▬ {% endif %}{{ r.d }} sem.</span>
+          <span class="{{ pct_size }} value--tnums">{{ r.p | round: 1 | replace: ".", "," }}%</span>
+        </div>
         <div class="track">
-          <div class="fill" style="width: {{ r.bar_percent }}%"></div>
-          {% if r.avg10_bar_percent %}<div class="emb-mark" style="left: {{ r.avg10_bar_percent }}%"></div>{% endif %}
+          <div class="fill" style="width: {{ r.p }}%"></div>
+          {% if r.a %}<div class="emb-mark" style="left: {{ r.a }}%"></div>{% endif %}
+        </div>
       </div>
-    </div>
     {% endfor %}
 
     {% unless footer_mode contains "ningun" %}
@@ -108,15 +111,15 @@
         {% comment %} What "the total" covers depends on which ids were chosen, so
            it is added up here rather than in the payload. {% endcomment %}
         {% assign sum_volume = 0 %}{% assign sum_capacity = 0 %}{% assign sum_change = 0 %}
-        {% for r in list %}{% assign sum_volume = sum_volume | plus: r.volume_hm3 %}{% assign sum_capacity = sum_capacity | plus: r.capacity_hm3 %}{% assign sum_change = sum_change | plus: r.change_hm3 %}{% endfor %}
-        <span class="label label--small">Conjunto{% if sum_capacity > 0 %} {{ sum_volume | times: 100.0 | divided_by: sum_capacity | round: 1 | replace: ".", "," }}%{% endif %} &middot; {{ sum_volume | round: 0 }} / {{ sum_capacity | round: 0 }} hm&sup3; &middot; {% if sum_change > 0 %}+{% endif %}{{ sum_change | round: 0 }} hm&sup3; en la semana</span>
+        {% for r in list %}{% assign sum_volume = sum_volume | plus: r.v %}{% assign sum_capacity = sum_capacity | plus: r.c %}{% assign sum_change = sum_change | plus: r.d %}{% endfor %}
+        <span class="label label--small">Conjunto{% if sum_capacity > 0 %} {{ sum_volume | times: 100.0 | divided_by: sum_capacity | round: 1 | replace: ".", "," }}%{% endif %} &middot; {{ sum_volume }} / {{ sum_capacity }} hm&sup3; &middot; {% if sum_change > 0 %}+{% endif %}{{ sum_change }} hm&sup3; en la semana</span>
       {% else %}
         <span class="label label--small">España {{ national.percent_text }}% &middot; {{ national.volume_text }} / {{ national.capacity_text }} hm&sup3; &middot; {{ national.trend_glyph }} {{ national.change_text }} hm&sup3; en la semana</span>
       {% endif %}
         <span class="label label--small">línea = media 10 años</span>
     </div>
     {% endunless %}
-</div>
+  </div>
 {% endif %}
 
 <div class="title_bar">
