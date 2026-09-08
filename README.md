@@ -79,23 +79,33 @@ https://<user>.github.io/<repo>/trmnl.json
 
 ### 3. Create the TRMNL plugin
 
-In TRMNL: Plugins → Private Plugin → Create.
+Private plugins need the Developer add-on (or a BYOD licence) on your TRMNL
+account. In TRMNL: **Plugins → search "Private Plugin" → Add**.
 
+Fill in the settings form:
+
+- **Name**: Embalses (for your eyes only)
 - **Strategy**: Polling
-- **URL**: the polling URL from above
-- **Refresh rate**: 12 hours is plenty; the source data changes weekly
-- **Markup**: paste each file from [`src/`](src) into the matching layout tab —
-  `full.liquid`, `half_horizontal.liquid`, `half_vertical.liquid`,
-  `quadrant.liquid`
+- **Polling URL**: your `raw.githubusercontent.com` URL from step 2
+- **Polling verb**: GET
+- **Form Fields** (optional): paste the two field definitions from
+  [`src/settings.yml`](src/settings.yml) — everything under `custom_fields:`,
+  starting at `- keyname: heading`, dedented so each `-` is at the left margin
+- Leave the polling headers and body empty, and leave "remove bleed margin" off
 
-Two optional custom fields are defined in [`src/settings.yml`](src/settings.yml):
-`heading` (the text in the bottom bar) and `footer` (whether the summary line
-under a list of reservoirs shows Spain, the total of your own reservoirs, or
-nothing). Both have sensible defaults if you skip them.
+Save. Then click **Edit Markup** and paste each file from [`src/`](src) into the
+tab of the same name: `full`, `half_horizontal`, `half_vertical`, `quadrant`.
+The templates deliberately have no `<div class="view">` wrapper — the editor
+supplies it, and TRMNL's docs say those classes are for standalone pages only.
 
-If you use [`trmnlp`](https://github.com/usetrmnl/trmnlp), the `src/` directory
-is already in its expected shape — `trmnlp serve` picks up `settings.yml` and
-the four templates, and `.trmnlp.yml` sets the custom fields for the preview.
+Back on the plugin settings page, click **Force Refresh** to pull the JSON
+straight away rather than waiting for the next poll. With a single polling URL
+TRMNL puts the response at the root, so the markup reads `{{ reservoirs }}` and
+`{{ national.percent_text }}` directly; you can see the whole payload under
+"Your Variables" in the markup editor.
+
+Finally add the plugin to a playlist and set its refresh rate. Twelve hours is
+plenty — the source data only changes weekly.
 
 ## Previewing without trmnlp
 

@@ -23,4 +23,5 @@ custom_fields:
       - España
       - Conjunto
       - Ninguno
-    default: España
+    # TRMNL wants the parameterised form of the option here.
+    default: espana

@@ -28,12 +28,19 @@ VIEWS = [
     ("quadrant", "mashup--2x2"),
 ]
 
+# The templates themselves carry no view wrapper: TRMNL's editor supplies it,
+# and its docs say the view classes are for standalone pages only. So the
+# preview, being a standalone page, has to add it back.
+
 PAGE = """<!DOCTYPE html>
 <html class="trmnl">
 <head>
   <meta charset="utf-8" />
   <title>trmnl-embalses preview</title>
   <link rel="stylesheet" href="https://trmnl.com/css/latest/plugins.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;350;375;400;450;600;700&display=swap" rel="stylesheet" />
   <script src="https://trmnl.com/js/latest/plugins.js"></script>
   <style>
     body {{ margin: 0; padding: 0; background: #4b5563; font-family: sans-serif; }}
@@ -51,7 +58,7 @@ PAGE = """<!DOCTYPE html>
 CASE = """
     <div class="preview__case">
       <div>{name}</div>
-      <div class="screen screen--og screen--1bit">{open}{body}{close}</div>
+      <div class="screen screen--og screen--1bit">{open}<div class="view view--{view}">{body}</div>{close}</div>
     </div>
 """
 
@@ -76,6 +83,7 @@ def main():
             template = env.from_string(fh.read())
         cases.append(CASE.format(
             name=f"{view} — {len(data['reservoirs'])} reservoir(s)",
+            view=view,
             open=f'<div class="mashup {mashup}">' if mashup else "",
             close="</div>" if mashup else "",
             body=template.render(**data),

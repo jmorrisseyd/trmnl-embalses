@@ -1,5 +1,7 @@
 {% assign heading = trmnl.plugin_settings.custom_fields_values.heading | default: title | default: "Embalses" %}
-{% assign footer_mode = trmnl.plugin_settings.custom_fields_values.footer | default: "España" %}
+{% comment %} TRMNL stores a select's value parameterised ("España" -> "espana"),
+   so match loosely on a downcased value rather than on the exact label. {% endcomment %}
+{% assign footer_mode = trmnl.plugin_settings.custom_fields_values.footer | default: "espana" | downcase %}
 {% assign list = reservoirs %}
 {% assign shown = list.size | default: 0 %}
 
@@ -14,12 +16,11 @@
   .layout > * { width: 100%; }
 </style>
 
-<div class="view view--full">
 {% if shown == 0 %}
   <div class="layout layout--col layout--center" style="text-align: center;">
     <div class="title">Sin datos de embalses</div>
     <div class="description">Revisa la URL del plugin o el registro de la acción</div>
-  </div>
+</div>
 
 {% elsif shown == 1 %}
   {% assign r = list[0] %}
@@ -29,50 +30,50 @@
       <span class="description">
         {{ r.basin }}{% if r.province %} &middot; {{ r.province }}{% endif %}{% if r.river %} &middot; Río {{ r.river }}{% endif %}
       </span>
-    </div>
+  </div>
 
     <div class="flex flex--row flex--left flex--bottom gap--large">
       <span class="value value--xxlarge value--tnums">{{ r.percent_text }}%</span>
       <div class="flex flex--col flex--left gap--none" style="padding-bottom: 12px;">
         <span class="value value--xsmall value--tnums">{{ r.volume_text }} hm&sup3;</span>
         <span class="label label--small">de {{ r.capacity_text }} hm&sup3;</span>
-      </div>
     </div>
+  </div>
 
     <div class="progress-bar progress-bar--large">
       <div class="content">
         <span class="label label--small">Llenado</span>
         <span class="label label--small">línea = media de 10 años ({{ r.avg10_text }}%)</span>
-      </div>
+    </div>
       <div class="track">
         <div class="fill" style="width: {{ r.bar_percent }}%"></div>
         {% if r.avg10_bar_percent %}<div class="emb-mark" style="left: {{ r.avg10_bar_percent }}%"></div>{% endif %}
-      </div>
     </div>
+  </div>
 
     <div class="grid grid--cols-4">
       <div class="col flex flex--col flex--left gap--none">
         <span class="label label--small">Semana</span>
         <span class="value value--small value--tnums">{{ r.trend_glyph }} {{ r.change_text }}</span>
         <span class="label label--small">hm&sup3; ({{ r.change_percent_text }}%)</span>
-      </div>
+    </div>
       <div class="col flex flex--col flex--left gap--none">
         <span class="label label--small">{{ r.last_year_label | default: "Año pasado" }}</span>
         <span class="value value--small value--tnums">{{ r.last_year_text }}%</span>
         <span class="label label--small">{{ r.vs_last_year_text }} puntos</span>
-      </div>
+    </div>
       <div class="col flex flex--col flex--left gap--none">
         <span class="label label--small">Media 10 años</span>
         <span class="value value--small value--tnums">{{ r.avg10_text }}%</span>
         <span class="label label--small">{{ r.vs_avg10_text }} puntos</span>
-      </div>
+    </div>
       <div class="col flex flex--col flex--left gap--none">
         <span class="label label--small">España</span>
         <span class="value value--small value--tnums">{{ national.percent_text }}%</span>
         <span class="label label--small">{{ national.trend_glyph }} {{ national.change_text }} hm&sup3;</span>
-      </div>
     </div>
   </div>
+</div>
 
 {% else %}
   {% if shown <= 3 %}{% assign bar_size = "progress-bar--large" %}{% assign name_size = "title" %}{% assign pct_size = "value value--small" %}
@@ -86,27 +87,26 @@
           <span class="{{ name_size }}">{{ r.name }}</span>
           <span class="label label--small">{{ r.volume_text }} / {{ r.capacity_text }} hm&sup3; &middot; {{ r.trend_glyph }} {{ r.change_text }} sem.</span>
           <span class="{{ pct_size }} value--tnums">{{ r.percent_text }}%</span>
-        </div>
+      </div>
         <div class="track">
           <div class="fill" style="width: {{ r.bar_percent }}%"></div>
           {% if r.avg10_bar_percent %}<div class="emb-mark" style="left: {{ r.avg10_bar_percent }}%"></div>{% endif %}
-        </div>
       </div>
+    </div>
     {% endfor %}
 
-    {% if footer_mode != "Ninguno" %}
-      {% if footer_mode == "Conjunto" %}{% assign foot = total %}{% assign foot_name = "Conjunto" %}
+    {% unless footer_mode contains "ningun" %}
+      {% if footer_mode contains "conjunto" %}{% assign foot = total %}{% assign foot_name = "Conjunto" %}
       {% else %}{% assign foot = national %}{% assign foot_name = "España" %}{% endif %}
       <div class="flex flex--row flex--between flex--bottom" style="border-top: 2px solid black; padding-top: 6px;">
         <span class="label label--small">{{ foot_name }} {{ foot.percent_text }}% &middot; {{ foot.volume_text }} / {{ foot.capacity_text }} hm&sup3; &middot; {{ foot.trend_glyph }} {{ foot.change_text }} hm&sup3; en la semana</span>
         <span class="label label--small">línea = media 10 años</span>
-      </div>
-    {% endif %}
-  </div>
+    </div>
+    {% endunless %}
+</div>
 {% endif %}
 
-  <div class="title_bar">
-    <span class="title">{{ heading }}</span>
-    <span class="instance">{{ as_of_label }}</span>
-  </div>
+<div class="title_bar">
+  <span class="title">{{ heading }}</span>
+  <span class="instance">{{ as_of_label }}</span>
 </div>

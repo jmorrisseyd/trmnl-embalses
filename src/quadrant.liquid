@@ -10,11 +10,10 @@
   .layout > * { width: 100%; }
 </style>
 
-<div class="view view--quadrant">
 {% if shown == 0 %}
   <div class="layout layout--col layout--center" style="text-align: center;">
     <span class="title title--small">Sin datos</span>
-  </div>
+</div>
 
 {% elsif shown == 1 %}
   {% assign r = list[0] %}
@@ -23,15 +22,15 @@
     <div class="flex flex--row flex--left flex--bottom gap--small">
       <span class="value value--large value--tnums">{{ r.percent_text }}%</span>
       <span class="label label--small" style="padding-bottom: 8px;">{{ r.trend_glyph }} {{ r.change_text }} hm&sup3;</span>
-    </div>
+  </div>
     <div class="progress-bar progress-bar--small">
       <div class="track">
         <div class="fill" style="width: {{ r.bar_percent }}%"></div>
         {% if r.avg10_bar_percent %}<div class="emb-mark" style="left: {{ r.avg10_bar_percent }}%"></div>{% endif %}
-      </div>
     </div>
-    <span class="label label--small">{{ r.volume_text }} / {{ r.capacity_text }} hm&sup3;</span>
   </div>
+    <span class="label label--small">{{ r.volume_text }} / {{ r.capacity_text }} hm&sup3;</span>
+</div>
 
 {% else %}
   <div class="layout layout--col gap--space-between">
@@ -40,19 +39,18 @@
         <div class="content">
           <span class="title title--small">{{ r.name }}</span>
           <span class="value value--xxsmall value--tnums">{{ r.percent_text }}%</span>
-        </div>
+      </div>
         <div class="track">
           <div class="fill" style="width: {{ r.bar_percent }}%"></div>
           {% if r.avg10_bar_percent %}<div class="emb-mark" style="left: {{ r.avg10_bar_percent }}%"></div>{% endif %}
-        </div>
       </div>
+    </div>
     {% endfor %}
     {% if shown > 3 %}<span class="label label--small">y {{ shown | minus: 3 }} más</span>{% endif %}
-  </div>
+</div>
 {% endif %}
 
-  <div class="title_bar title_bar--small">
-    <span class="title">{{ heading }}</span>
-    <span class="instance">{{ as_of_label }}</span>
-  </div>
+<div class="title_bar title_bar--small">
+  <span class="title">{{ heading }}</span>
+  <span class="instance">{{ as_of_label }}</span>
 </div>
