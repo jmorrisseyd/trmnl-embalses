@@ -97,10 +97,11 @@ Fill in the settings form:
 - **Strategy**: Polling
 - **Polling URL**: your `raw.githubusercontent.com` URL from step 2
 - **Polling verb**: GET
-- **Form Fields**: paste the field definitions from
-  [`src/settings.yml`](src/settings.yml) — everything under `custom_fields:`,
-  starting at `- keyname: reservoir_ids`, dedented so each `-` is at the left
-  margin. This is what gives you the **Embalses** box to type ids into
+- **Form Fields**: paste the whole of [`src/form_fields.yml`](src/form_fields.yml),
+  exactly as it is. That box wants a bare YAML array, so do not include a
+  `custom_fields:` line above it — with one, TRMNL reads a dictionary and
+  answers "Custom Fields should be a valid YAML array". This is what gives you
+  the **Embalses** box to type ids into
 - Leave the polling headers and body empty, and leave "remove bleed margin" off
 
 Save. Then click **Edit Markup** and paste each file from [`src/`](src) into the

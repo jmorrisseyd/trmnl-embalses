@@ -9,14 +9,14 @@ polling_url: https://raw.githubusercontent.com/jmorrisseyd/trmnl-embalses/main/d
 refresh_interval: 720
 dark_mode: false
 no_screen_padding: false
+# The fields below are a copy of form_fields.yml, which is the file you paste
+# into the plugin's "Form Fields" box in TRMNL. trmnlp reads them from here.
 custom_fields:
   - keyname: reservoir_ids
     name: Embalses
     field_type: multi_string
-    description: >-
-      Ids de embalses.net separados por comas, en el orden que quieras verlos.
-      El id es el número de la URL: embalses.net/pantano-<b>871</b>-rules.html.
-    help_text: Ejemplo:&nbsp;871,795,830
+    description: Ids de embalses.net separados por comas, en el orden que quieras verlos. El id es el número de la URL, así que embalses.net/pantano-871-rules.html es 871.
+    help_text: Ejemplo:&nbsp; 871,795,830
     default: "795,830,816,799"
   - keyname: heading
     name: Título
@@ -31,5 +31,4 @@ custom_fields:
       - España
       - Conjunto
       - Ninguno
-    # TRMNL wants the parameterised form of the option here.
     default: espana
