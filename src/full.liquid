@@ -34,6 +34,10 @@
      black — including the green 2024 line, which a brighter setting loses
      entirely. Left at its own 560x250 so the 1px lines and small labels land on
      whole pixels rather than being resampled. */
+  /* One or two reservoirs: a taller track, so the rows fill the screen instead
+     of floating in it. */
+  .emb-tall .track { height: 58px; }
+
   .emb-chart { display: block; margin: 0 auto; flex: none; width: 560px; height: 250px;
                filter: grayscale(1) brightness(0.8) contrast(4); }
 </style>
@@ -46,7 +50,7 @@
 
 {% elsif shown == 1 and show_chart %}
   {% assign r = list[0] %}
-  <div class="layout layout--col gap--space-between">
+  <div class="layout layout--col gap--distribute">
     <div class="flex flex--row flex--between flex--bottom">
       <div class="flex flex--col flex--left gap--none">
         <span class="title title--large">{{ r.n }}</span>
@@ -69,7 +73,7 @@
 
 {% elsif shown == 1 %}
   {% assign r = list[0] %}
-  <div class="layout layout--col gap--space-between">
+  <div class="layout layout--col gap--distribute">
     <div class="flex flex--col flex--left gap--none">
       <span class="title title--xlarge">{{ r.n }}</span>
       <span class="description">
@@ -121,11 +125,16 @@
   </div>
 
 {% else %}
-  {% if shown <= 3 %}{% assign bar_size = "progress-bar--large" %}{% assign name_size = "title" %}{% assign pct_size = "value value--small" %}
+  {% comment %} Free space has to go somewhere, and on a 480px screen two rows
+     leave a lot of it. Rather than distribute it as gaps, the rows themselves
+     grow: fewer reservoirs means a taller track and bigger type, which reads
+     from further away. {% endcomment %}
+  {% if shown <= 2 %}{% assign bar_size = "progress-bar--large emb-tall" %}{% assign name_size = "title title--large" %}{% assign pct_size = "value value--large" %}
+  {% elsif shown <= 3 %}{% assign bar_size = "progress-bar--large" %}{% assign name_size = "title" %}{% assign pct_size = "value value--small" %}
   {% elsif shown <= 5 %}{% assign bar_size = "progress-bar--base" %}{% assign name_size = "title title--small" %}{% assign pct_size = "value value--xsmall" %}
   {% else %}{% assign bar_size = "progress-bar--small" %}{% assign name_size = "title title--small" %}{% assign pct_size = "value value--xxsmall" %}{% endif %}
 
-  <div class="layout layout--col gap--space-between">
+  <div class="layout layout--col gap--distribute">
     {% for r in list limit: 7 %}
       <div class="progress-bar {{ bar_size }}">
         <div class="content">

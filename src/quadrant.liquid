@@ -27,7 +27,7 @@
 
 {% elsif shown == 1 %}
   {% assign r = list[0] %}
-  <div class="layout layout--col gap--space-between">
+  <div class="layout layout--col gap--distribute">
     <span class="title title--small">{{ r.n }}</span>
     <div class="flex flex--row flex--left flex--bottom gap--small">
       <span class="value value--large value--tnums">{{ r.p | round: 1 | replace: ".", "," }}%</span>
@@ -43,7 +43,7 @@
 </div>
 
 {% else %}
-  <div class="layout layout--col gap--space-between">
+  <div class="layout layout--col gap--distribute">
     {% for r in list limit: 3 %}
       <div class="progress-bar progress-bar--xsmall">
         <div class="content">
