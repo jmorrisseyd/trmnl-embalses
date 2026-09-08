@@ -4,6 +4,14 @@
   description: Ids de embalses.net separados por comas, en el orden que quieras verlos. El id es el número de la URL, así que embalses.net/pantano-871-rules.html es 871.
   help_text: Ejemplo:&nbsp; 871,795,830
   default: "795,830,816,799"
+- keyname: chart
+  name: Gráfico anual
+  field_type: select
+  description: Muestra el gráfico del año de embalses.net cuando hay un solo embalse seleccionado. Gráfico de Embalses.net, CC BY 4.0.
+  options:
+    - No
+    - Sí
+  default: "no"
 - keyname: heading
   name: Título
   field_type: string

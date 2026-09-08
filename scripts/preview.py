@@ -9,6 +9,7 @@ by the GitHub Action, and TRMNL itself never runs it.
 """
 
 import argparse
+import html
 import json
 import os
 import sys
@@ -32,25 +33,40 @@ VIEWS = [
 # and its docs say the view classes are for standalone pages only. So the
 # preview, being a standalone page, has to add it back.
 
+# Each view gets its own document in an iframe. They share class names —
+# .layout, and whatever custom CSS a template defines — so rendering them all in
+# one page lets one template's rules reach another's markup, which is not what
+# the device does and quietly misleads.
 PAGE = """<!DOCTYPE html>
-<html class="trmnl">
+<html>
 <head>
   <meta charset="utf-8" />
   <title>trmnl-embalses preview</title>
-  <link rel="stylesheet" href="https://trmnl.com/css/latest/plugins.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;350;375;400;450;600;700&display=swap" rel="stylesheet" />
-  <script src="https://trmnl.com/js/latest/plugins.js"></script>
   <style>
     body {{ margin: 0; padding: 0; background: #4b5563; font-family: sans-serif; }}
     .preview {{ display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }}
     .preview__case {{ color: #fff; font: 12px/1.4 ui-monospace, monospace; }}
-    .screen {{ background: #fff; }}
+    iframe {{ border: 0; display: block; background: #fff; }}
   </style>
 </head>
-<body class="environment trmnl">
+<body>
   <div class="preview">{cases}</div>
+</body>
+</html>
+"""
+
+FRAME = """<!DOCTYPE html>
+<html class="trmnl">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://trmnl.com/css/latest/plugins.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;350;375;400;450;600;700&display=swap" rel="stylesheet" />
+  <style>body {{ margin: 0; }}</style>
+</head>
+<body class="environment trmnl">
+  <div class="screen screen--og screen--1bit">{open}<div class="view view--{view}">{body}</div>{close}</div>
 </body>
 </html>
 """
@@ -58,7 +74,7 @@ PAGE = """<!DOCTYPE html>
 CASE = """
     <div class="preview__case">
       <div>{name}</div>
-      <div class="screen screen--og screen--1bit">{open}<div class="view view--{view}">{body}</div>{close}</div>
+      <iframe width="800" height="480" srcdoc="{frame}"></iframe>
     </div>
 """
 
@@ -71,6 +87,7 @@ def main():
     parser.add_argument("--limit", type=int, help="only render the first N of the selection")
     parser.add_argument("--footer", default="españa", help="footer field: españa, conjunto or ninguno")
     parser.add_argument("--heading", default="Embalses", help="heading field")
+    parser.add_argument("--chart", default="no", help="chart field: si or no")
     args = parser.parse_args()
 
     with open(args.data, encoding="utf-8") as fh:
@@ -85,6 +102,7 @@ def main():
         "reservoir_ids": ",".join(selection),
         "heading": args.heading,
         "footer": args.footer,
+        "chart": args.chart,
     }}}
 
     env = Environment()
@@ -92,12 +110,15 @@ def main():
     for view, mashup in VIEWS:
         with open(os.path.join(ROOT, "src", f"{view}.liquid"), encoding="utf-8") as fh:
             template = env.from_string(fh.read())
-        cases.append(CASE.format(
-            name=f"{view} — {len(selection)} reservoir(s): {','.join(selection)} | footer={args.footer}",
+        frame = FRAME.format(
             view=view,
             open=f'<div class="mashup {mashup}">' if mashup else "",
             close="</div>" if mashup else "",
             body=template.render(**data),
+        )
+        cases.append(CASE.format(
+            name=f"{view} — {len(selection)} reservoir(s): {','.join(selection)} | footer={args.footer}",
+            frame=html.escape(frame, quote=True),
         ))
 
     with open(args.out, "w", encoding="utf-8") as fh:

@@ -118,6 +118,26 @@ TRMNL puts the response at the root, so the markup reads `{{ reservoirs }}` and
 Finally add the plugin to a playlist and set its refresh rate. Twelve hours is
 plenty — the source data only changes weekly.
 
+## The annual chart
+
+Turn the **Gráfico anual** field on and, when a single reservoir is selected,
+the full view swaps its stat tiles for embalses.net's own annual chart — this
+year against the last two and the ten-year average, which is what those tiles
+were saying anyway.
+
+The chart lives at `/cache/pantano-<id>.png`, so the template builds its URL
+from the same id as everything else and nothing has to be mirrored. It is drawn
+in colour, and a plain greyscale turns its pale min/max band into heavy
+dithered hatching, so the template dims the image before boosting contrast:
+that drops the band and the gridlines to white while all four series stay
+black. A brighter setting looks cleaner still but silently loses the green 2024
+line, which is why the values are what they are. The image is left at its own
+560x250 rather than stretched, so the 1px lines and small labels land on whole
+pixels.
+
+The graphs are published by Embalses.net under CC BY 4.0 — free to use and
+adapt with credit — and the view carries the attribution.
+
 ## Previewing without trmnlp
 
 `trmnlp` needs Ruby 3. If you would rather not install it, there is a small

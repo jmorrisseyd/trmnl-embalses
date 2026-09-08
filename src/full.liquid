@@ -9,6 +9,9 @@
    average. The reservoir_ids form field picks which to show, in the order
    given; an id is the number in the page URL, so /pantano-871-rules.html is
    871. With the field empty we fall back to the ids in the payload. {% endcomment %}
+{% assign chart_field = trmnl.plugin_settings.custom_fields_values.chart | default: "no" | downcase %}
+{% assign show_chart = false %}
+{% if chart_field == "si" or chart_field == "sí" or chart_field == "yes" or chart_field == "true" or chart_field == "1" %}{% assign show_chart = true %}{% endif %}
 {% assign selection = trmnl.plugin_settings.custom_fields_values.reservoir_ids | default: default_ids %}
 {% assign wanted = selection | split: "," %}
 {% assign list = "" | split: "," %}
@@ -23,13 +26,45 @@
               background: #fff; box-shadow: 0 0 0 1px #000; }
   /* The framework centres what sits in a layout; these views are left aligned,
      so every block takes the full width and lines up on the left edge. */
-  .layout > * { width: 100%; }
+  .layout > *:not(img) { width: 100%; }
+
+  /* embalses.net draws its chart in colour, and a straight greyscale leaves the
+     pale min/max band as heavy dithered hatching. Dimming before a contrast
+     boost drops that band and the gridlines to white while all four series stay
+     black — including the green 2024 line, which a brighter setting loses
+     entirely. Left at its own 560x250 so the 1px lines and small labels land on
+     whole pixels rather than being resampled. */
+  .emb-chart { display: block; margin: 0 auto; flex: none; width: 560px; height: 250px;
+               filter: grayscale(1) brightness(0.8) contrast(4); }
 </style>
 
 {% if shown == 0 %}
   <div class="layout layout--col layout--center" style="text-align: center;">
     <div class="title">Ningún embalse seleccionado</div>
     <div class="description">Pon los ids de embalses.net en el campo "Embalses" del plugin, separados por comas</div>
+  </div>
+
+{% elsif shown == 1 and show_chart %}
+  {% assign r = list[0] %}
+  <div class="layout layout--col gap--space-between">
+    <div class="flex flex--row flex--between flex--bottom">
+      <div class="flex flex--col flex--left gap--none">
+        <span class="title title--large">{{ r.n }}</span>
+        <span class="label label--small">{{ r.b }}{% if r.pv %} &middot; {{ r.pv }}{% endif %} &middot; {{ r.v }} / {{ r.c }} hm&sup3;</span>
+      </div>
+      <span class="value value--large value--tnums">{{ r.p | round: 1 | replace: ".", "," }}%</span>
+    </div>
+
+    {% comment %} The chart shows this year against the last two and the ten-year
+       average, which is what the stat tiles say in the plain view, so those go.
+       Graph by Embalses.net, CC BY 4.0. {% endcomment %}
+    <img class="emb-chart" src="https://www.embalses.net/cache/pantano-{{ r.id }}.png"
+         alt="Gráfico anual del embalse {{ r.n }}" />
+
+    <div class="flex flex--row flex--between flex--bottom" style="border-top: 2px solid black; padding-top: 6px;">
+      <span class="label label--small">Semana {% if r.d > 0 %}▲ +{% elsif r.d < 0 %}▼ {% else %}▬ {% endif %}{{ r.d }} hm&sup3; &middot; España {{ national.percent_text }}%</span>
+      <span class="label label--small">gráfico: embalses.net CC BY 4.0</span>
+    </div>
   </div>
 
 {% elsif shown == 1 %}
