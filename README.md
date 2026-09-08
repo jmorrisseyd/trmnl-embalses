@@ -19,18 +19,22 @@ something has to sit in between:
 
 ```
 embalses.net  ->  scripts/embalses.py (GitHub Action, daily)  ->  docs/trmnl.json  ->  TRMNL polls it
+                        \-> data/detail.json (per-reservoir figures, refreshed weekly)
 ```
 
 The Action commits the JSON back to this repository, so there is no server to
-run and nothing to pay for. The scraper only ever asks for the pages of the
-reservoirs you configured, plus the home page for the national total.
+run and nothing to pay for. The payload carries **every reservoir embalses.net
+reports weekly figures for** (about 374 of them), and you choose which to show
+from the plugin's own settings in TRMNL — no repo edit needed to change the
+screen.
 
 ## Setup
 
-### 1. Choose your reservoirs
+### 1. Find the ids you want
 
-Search by name to get the ids (this reads the sixteen basin pages, not all four
-hundred reservoir pages):
+A reservoir's id is the number in its embalses.net URL — `Rules` at
+`embalses.net/pantano-871-rules.html` is `871`. You can read them straight off
+the site, or search by name here:
 
 ```bash
 python3 scripts/embalses.py search cenajo
@@ -41,8 +45,12 @@ python3 scripts/embalses.py search cenajo
   795  El Cenajo                        Segura                      437      278   63.6%
 ```
 
-Put the ids in [`config.json`](config.json), most important first — the views
-show the first few and the narrow layouts only have room for three:
+You type those ids into the plugin's **Embalses** field in TRMNL (step 3), most
+important first — the views show the first few and the narrow layouts only have
+room for three.
+
+[`config.json`](config.json) holds the fallback used when that field is left
+empty, plus the number format — `es` (1.234,5) or `en` (1,234.5):
 
 ```json
 {
@@ -52,8 +60,9 @@ show the first few and the narrow layouts only have room for three:
 }
 ```
 
-`number_format` is `es` (1.234,5) or `en` (1,234.5). Run the build once to check
-it works and to see the data you will get:
+Run the build once to check it works and to see the data you will get. The
+first run reads every reservoir's own page to fill `data/detail.json`, which
+takes a few minutes; later runs only top it up:
 
 ```bash
 python3 scripts/embalses.py build
@@ -88,9 +97,10 @@ Fill in the settings form:
 - **Strategy**: Polling
 - **Polling URL**: your `raw.githubusercontent.com` URL from step 2
 - **Polling verb**: GET
-- **Form Fields** (optional): paste the two field definitions from
+- **Form Fields**: paste the field definitions from
   [`src/settings.yml`](src/settings.yml) — everything under `custom_fields:`,
-  starting at `- keyname: heading`, dedented so each `-` is at the left margin
+  starting at `- keyname: reservoir_ids`, dedented so each `-` is at the left
+  margin. This is what gives you the **Embalses** box to type ids into
 - Leave the polling headers and body empty, and leave "remove bleed margin" off
 
 Save. Then click **Edit Markup** and paste each file from [`src/`](src) into the
@@ -122,13 +132,18 @@ open preview.html
 
 ## What the payload looks like
 
+`reservoirs` lists every reservoir the site reports, and the templates pick out
+the ids from the form field (falling back to `default_ids`).
+
 ```json
 {
   "as_of": "2026-09-07",
   "as_of_label": "07/09/2026",
+  "default_ids": "795,830,816,799",
   "reservoirs": [
     {
       "id": 795,
+      "id_text": "795",
       "name": "El Cenajo",
       "basin": "Segura",
       "province": "Albacete",
@@ -143,7 +158,6 @@ open preview.html
       "trend_glyph": "▬"
     }
   ],
-  "total": { "...": "your reservoirs combined" },
   "national": { "...": "all of Spain" }
 }
 ```
@@ -159,10 +173,12 @@ them from the Ministerio para la Transición Ecológica, AEMET, the SAIH network
 of the river authorities, CEDEX and SIAR. Keep the attribution on screen or in
 your plugin description if you share this.
 
-The scraper identifies itself, pauses between requests, obeys `robots.txt`, and
-fetches at most one page per reservoir per day. Please leave it that way — if
-you want dozens of reservoirs, consider that each one is another daily request
-to someone else's site.
+The scraper identifies itself, pauses between requests and obeys `robots.txt`.
+A daily run costs sixteen requests — the basin pages, which carry the current
+figures for everyone. The reservoirs' own pages are the only source for last
+year and the ten-year average, so those are fetched once per reservoir per week,
+when the site's data date changes, and cached in `data/detail.json` in between.
+Please leave that shape alone; it is someone else's site.
 
 ## Licence
 

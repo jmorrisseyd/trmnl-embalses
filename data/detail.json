@@ -1,0 +1,3739 @@
+{
+  "as_of": "2026-09-07",
+  "reservoirs": {
+    "100": {
+      "avg10_hm3": 62.0,
+      "avg10_percent": 94.24,
+      "basin": "Duero",
+      "last_year_hm3": 62.0,
+      "last_year_label": "2025",
+      "last_year_percent": 93.94,
+      "province": "Zamora",
+      "river": "Duero"
+    },
+    "1001": {
+      "avg10_hm3": 35.0,
+      "avg10_percent": 60.85,
+      "basin": "Tajo",
+      "last_year_hm3": 35.0,
+      "last_year_label": "2025",
+      "last_year_percent": 59.32,
+      "province": "Cáceres",
+      "river": "Jerte"
+    },
+    "1003": {
+      "avg10_hm3": 2100.0,
+      "avg10_percent": 66.46,
+      "basin": "Tajo",
+      "last_year_hm3": 2769.0,
+      "last_year_label": "2025",
+      "last_year_percent": 87.63,
+      "province": "Cáceres",
+      "river": "Tajo"
+    },
+    "101": {
+      "avg10_hm3": 5.0,
+      "avg10_percent": 30.0,
+      "basin": "Duero",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 21.05,
+      "province": "León",
+      "river": "Tuerto-Valle (Tuerto)"
+    },
+    "1013": {
+      "avg10_hm3": 58.0,
+      "avg10_percent": 64.07,
+      "basin": "Tajo",
+      "last_year_hm3": 69.0,
+      "last_year_label": "2025",
+      "last_year_percent": 75.82,
+      "province": "Madrid",
+      "river": "Manzanares"
+    },
+    "1022": {
+      "avg10_hm3": 5.0,
+      "avg10_percent": 93.33,
+      "basin": "Tajo",
+      "last_year_hm3": 6.0,
+      "last_year_label": "2025",
+      "last_year_percent": 100.0,
+      "province": "Cuenca",
+      "river": "Guadiela"
+    },
+    "1026": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 42.73,
+      "basin": "Tajo",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 45.45,
+      "province": "Madrid",
+      "river": "Navacerrada-Samburiel"
+    },
+    "1028": {
+      "avg10_hm3": 25.0,
+      "avg10_percent": 73.82,
+      "basin": "Tajo",
+      "last_year_hm3": 27.0,
+      "last_year_label": "2025",
+      "last_year_percent": 79.41,
+      "province": "Toledo",
+      "river": "Guadyerbas"
+    },
+    "1043": {
+      "avg10_hm3": 15.0,
+      "avg10_percent": 50.97,
+      "basin": "Tajo",
+      "last_year_hm3": 18.0,
+      "last_year_label": "2025",
+      "last_year_percent": 58.06,
+      "province": "Guadalajara",
+      "river": "Cañamares"
+    },
+    "1045": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 24.65,
+      "basin": "Tajo",
+      "last_year_hm3": 13.0,
+      "last_year_label": "2025",
+      "last_year_percent": 30.23,
+      "province": "Madrid",
+      "river": "Manzanares"
+    },
+    "1046": {
+      "avg10_hm3": 29.0,
+      "avg10_percent": 71.46,
+      "basin": "Tajo",
+      "last_year_hm3": 35.0,
+      "last_year_label": "2025",
+      "last_year_percent": 85.37,
+      "province": "Madrid",
+      "river": "Guadalix"
+    },
+    "1054": {
+      "avg10_hm3": 14.0,
+      "avg10_percent": 94.0,
+      "basin": "Tajo",
+      "last_year_hm3": 14.0,
+      "last_year_label": "2025",
+      "last_year_percent": 93.33,
+      "province": "Madrid",
+      "river": "Alberche"
+    },
+    "1057": {
+      "avg10_hm3": 22.0,
+      "avg10_percent": 60.0,
+      "basin": "Tajo",
+      "last_year_hm3": 28.0,
+      "last_year_label": "2025",
+      "last_year_percent": 73.68,
+      "province": "Madrid",
+      "river": "Lozoya"
+    },
+    "1062": {
+      "avg10_hm3": 13.0,
+      "avg10_percent": 58.26,
+      "basin": "Tajo",
+      "last_year_hm3": 17.0,
+      "last_year_label": "2025",
+      "last_year_percent": 73.91,
+      "province": "Cáceres",
+      "river": "Fresnedosa"
+    },
+    "1064": {
+      "avg10_hm3": 1.0,
+      "avg10_percent": 36.0,
+      "basin": "Tajo",
+      "last_year_hm3": 2.0,
+      "last_year_label": "2025",
+      "last_year_percent": 40.0,
+      "province": "Toledo",
+      "river": "Portiña"
+    },
+    "1067": {
+      "avg10_hm3": 39.0,
+      "avg10_percent": 73.58,
+      "basin": "Tajo",
+      "last_year_hm3": 43.0,
+      "last_year_label": "2025",
+      "last_year_percent": 81.13,
+      "province": "Madrid",
+      "river": "Lozoya"
+    },
+    "1072": {
+      "avg10_hm3": 35.0,
+      "avg10_percent": 70.0,
+      "basin": "Tajo",
+      "last_year_hm3": 42.0,
+      "last_year_label": "2025",
+      "last_year_percent": 84.0,
+      "province": "Madrid",
+      "river": "Lozoya"
+    },
+    "1080": {
+      "avg10_hm3": 19.0,
+      "avg10_percent": 38.78,
+      "basin": "Tajo",
+      "last_year_hm3": 17.0,
+      "last_year_label": "2025",
+      "last_year_percent": 34.69,
+      "province": "Cáceres",
+      "river": "Ribera de Gata"
+    },
+    "1085": {
+      "avg10_hm3": 21.0,
+      "avg10_percent": 25.73,
+      "basin": "Tajo",
+      "last_year_hm3": 20.0,
+      "last_year_label": "2025",
+      "last_year_percent": 24.39,
+      "province": "Toledo",
+      "river": "Tiétar"
+    },
+    "1088": {
+      "avg10_hm3": 5.0,
+      "avg10_percent": 41.43,
+      "basin": "Tajo",
+      "last_year_hm3": 9.0,
+      "last_year_label": "2025",
+      "last_year_percent": 64.29,
+      "province": "Cáceres",
+      "river": "Salor"
+    },
+    "1090": {
+      "avg10_hm3": 387.0,
+      "avg10_percent": 57.05,
+      "basin": "Ebro",
+      "last_year_hm3": 485.0,
+      "last_year_label": "2025",
+      "last_year_percent": 71.43,
+      "province": "Huesca",
+      "river": "Noguera Ribagorzana"
+    },
+    "110": {
+      "avg10_hm3": 92.0,
+      "avg10_percent": 29.81,
+      "basin": "Duero",
+      "last_year_hm3": 85.0,
+      "last_year_label": "2025",
+      "last_year_percent": 27.33,
+      "province": "León",
+      "river": "Órbigo - Luna (Luna)"
+    },
+    "1102": {
+      "avg10_hm3": 191.0,
+      "avg10_percent": 47.28,
+      "basin": "Ebro",
+      "last_year_hm3": 280.0,
+      "last_year_label": "2025",
+      "last_year_percent": 69.31,
+      "province": "Lleida",
+      "river": "Segre"
+    },
+    "1104": {
+      "avg10_hm3": 201.0,
+      "avg10_percent": 96.0,
+      "basin": "Ebro",
+      "last_year_hm3": 201.0,
+      "last_year_label": "2025",
+      "last_year_percent": 95.71,
+      "province": "Tarragona",
+      "river": "Ebro"
+    },
+    "1111": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 33.33,
+      "basin": "Ebro",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 66.67,
+      "province": "Lleida",
+      "river": "Flamisell"
+    },
+    "1112": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 45.0,
+      "basin": "Ebro",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 66.67,
+      "province": "Zaragoza",
+      "river": "Arba de Lueste"
+    },
+    "1114": {
+      "avg10_hm3": 7.0,
+      "avg10_percent": 72.0,
+      "basin": "Ebro",
+      "last_year_hm3": 9.0,
+      "last_year_label": "2025",
+      "last_year_percent": 90.0,
+      "province": "Lleida",
+      "river": "Segre"
+    },
+    "1117": {
+      "avg10_hm3": 124.0,
+      "avg10_percent": 52.45,
+      "basin": "Ebro",
+      "last_year_hm3": 131.0,
+      "last_year_label": "2025",
+      "last_year_percent": 55.27,
+      "province": "Huesca",
+      "river": "Noguera Ribagorzana"
+    },
+    "1118": {
+      "avg10_hm3": 1.0,
+      "avg10_percent": 7.14,
+      "basin": "Ebro",
+      "last_year_hm3": 1.0,
+      "last_year_label": "2025",
+      "last_year_percent": 7.14,
+      "province": "Huesca",
+      "river": "Flumen"
+    },
+    "1121": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 212.0,
+      "basin": "Ebro",
+      "last_year_hm3": 0.0,
+      "last_year_label": "2025",
+      "last_year_percent": 0.0,
+      "province": "Teruel",
+      "river": "Guadalope"
+    },
+    "1125": {
+      "avg10_hm3": 17.0,
+      "avg10_percent": 86.0,
+      "basin": "Ebro",
+      "last_year_hm3": 16.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.0,
+      "province": "Burgos",
+      "river": "Ebro"
+    },
+    "1127": {
+      "avg10_hm3": 89.0,
+      "avg10_percent": 47.35,
+      "basin": "Ebro",
+      "last_year_hm3": 69.0,
+      "last_year_label": "2025",
+      "last_year_percent": 36.51,
+      "province": "Huesca",
+      "river": "Sotón"
+    },
+    "1131": {
+      "avg10_hm3": 141.0,
+      "avg10_percent": 62.38,
+      "basin": "Ebro",
+      "last_year_hm3": 151.0,
+      "last_year_label": "2025",
+      "last_year_percent": 66.52,
+      "province": "Lleida",
+      "river": "Noguera Pallaresa"
+    },
+    "1132": {
+      "avg10_hm3": 29.0,
+      "avg10_percent": 90.0,
+      "basin": "Ebro",
+      "last_year_hm3": 32.0,
+      "last_year_label": "2025",
+      "last_year_percent": 96.97,
+      "province": "Lleida",
+      "river": "Noguera Pallaresa"
+    },
+    "1134": {
+      "avg10_hm3": 3.0,
+      "avg10_percent": 44.29,
+      "basin": "Ebro",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 71.43,
+      "province": "Zaragoza",
+      "river": "Huerva"
+    },
+    "1146": {
+      "avg10_hm3": 35.0,
+      "avg10_percent": 42.93,
+      "basin": "Ebro",
+      "last_year_hm3": 54.0,
+      "last_year_label": "2025",
+      "last_year_percent": 65.85,
+      "province": "Zaragoza",
+      "river": "Piedra"
+    },
+    "1149": {
+      "avg10_hm3": 103.0,
+      "avg10_percent": 70.89,
+      "basin": "Ebro",
+      "last_year_hm3": 105.0,
+      "last_year_label": "2025",
+      "last_year_percent": 71.92,
+      "province": "Álava",
+      "river": "Zadorra"
+    },
+    "1150": {
+      "avg10_hm3": 3.0,
+      "avg10_percent": 60.0,
+      "basin": "Ebro",
+      "last_year_hm3": 3.0,
+      "last_year_label": "2025",
+      "last_year_percent": 50.0,
+      "province": "Navarra",
+      "river": "Alzania"
+    },
+    "1151": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 40.0,
+      "basin": "Ebro",
+      "last_year_hm3": 2.0,
+      "last_year_label": "2025",
+      "last_year_percent": 40.0,
+      "province": "Huesca",
+      "river": "Barranco de Urdiceto"
+    },
+    "1153": {
+      "avg10_hm3": 48.0,
+      "avg10_percent": 66.81,
+      "basin": "Ebro",
+      "last_year_hm3": 50.0,
+      "last_year_label": "2025",
+      "last_year_percent": 69.44,
+      "province": "Álava",
+      "river": "Santa Engracia"
+    },
+    "1159": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 51.25,
+      "basin": "Ebro",
+      "last_year_hm3": 10.0,
+      "last_year_label": "2025",
+      "last_year_percent": 62.5,
+      "province": "Huesca",
+      "river": "Guatizalema"
+    },
+    "116": {
+      "avg10_hm3": 19.0,
+      "avg10_percent": 53.51,
+      "basin": "Duero",
+      "last_year_hm3": 19.0,
+      "last_year_label": "2025",
+      "last_year_percent": 51.35,
+      "province": "León",
+      "river": "Casares"
+    },
+    "1160": {
+      "avg10_hm3": 14.0,
+      "avg10_percent": 58.75,
+      "basin": "Ebro",
+      "last_year_hm3": 19.0,
+      "last_year_label": "2025",
+      "last_year_percent": 79.17,
+      "province": "Zaragoza",
+      "river": "Val"
+    },
+    "1170": {
+      "avg10_hm3": 151.0,
+      "avg10_percent": 33.85,
+      "basin": "Ebro",
+      "last_year_hm3": 137.0,
+      "last_year_label": "2025",
+      "last_year_percent": 30.65,
+      "province": "Navarra",
+      "river": "Aragón"
+    },
+    "1172": {
+      "avg10_hm3": 16.0,
+      "avg10_percent": 28.62,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 8.62,
+      "province": "Granada",
+      "river": "Fardes"
+    },
+    "1178": {
+      "avg10_hm3": 71.0,
+      "avg10_percent": 51.45,
+      "basin": "Tajo",
+      "last_year_hm3": 89.0,
+      "last_year_label": "2025",
+      "last_year_percent": 64.49,
+      "province": "Madrid",
+      "river": "Alberche"
+    },
+    "118": {
+      "avg10_hm3": 28.0,
+      "avg10_percent": 48.45,
+      "basin": "Duero",
+      "last_year_hm3": 34.0,
+      "last_year_label": "2025",
+      "last_year_percent": 58.62,
+      "province": "Ávila",
+      "river": "Adaja"
+    },
+    "1186": {
+      "avg10_hm3": 28.0,
+      "avg10_percent": 44.53,
+      "basin": "Tajo",
+      "last_year_hm3": 44.0,
+      "last_year_label": "2025",
+      "last_year_percent": 68.75,
+      "province": "Guadalajara",
+      "river": "Tajuña"
+    },
+    "1190": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 40.0,
+      "basin": "Tajo",
+      "last_year_hm3": 3.0,
+      "last_year_label": "2025",
+      "last_year_percent": 42.86,
+      "province": "Toledo",
+      "river": "Torcón"
+    },
+    "1194": {
+      "avg10_hm3": 168.0,
+      "avg10_percent": 89.36,
+      "basin": "Tajo",
+      "last_year_hm3": 167.0,
+      "last_year_label": "2025",
+      "last_year_percent": 88.83,
+      "province": "Cáceres",
+      "river": "Tajo"
+    },
+    "1203": {
+      "avg10_hm3": 15.0,
+      "avg10_percent": 27.5,
+      "basin": "Tajo",
+      "last_year_hm3": 28.0,
+      "last_year_label": "2025",
+      "last_year_percent": 50.0,
+      "province": "Guadalajara",
+      "river": "Jarama"
+    },
+    "1207": {
+      "avg10_hm3": 507.0,
+      "avg10_percent": 35.08,
+      "basin": "Tajo",
+      "last_year_hm3": 722.0,
+      "last_year_label": "2025",
+      "last_year_percent": 49.93,
+      "province": "Cáceres",
+      "river": "Tajo"
+    },
+    "1209": {
+      "avg10_hm3": 50.0,
+      "avg10_percent": 94.72,
+      "basin": "Tajo",
+      "last_year_hm3": 51.0,
+      "last_year_label": "2025",
+      "last_year_percent": 96.23,
+      "province": "Cáceres",
+      "river": "Alagón"
+    },
+    "1212": {
+      "avg10_hm3": 81.0,
+      "avg10_percent": 65.65,
+      "basin": "Tajo",
+      "last_year_hm3": 104.0,
+      "last_year_label": "2025",
+      "last_year_percent": 83.87,
+      "province": "Madrid",
+      "river": "Aulencia"
+    },
+    "1219": {
+      "avg10_hm3": 18.0,
+      "avg10_percent": 80.87,
+      "basin": "Tajo",
+      "last_year_hm3": 15.0,
+      "last_year_label": "2025",
+      "last_year_percent": 65.22,
+      "province": "Madrid",
+      "river": "Lozoya"
+    },
+    "122": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 86.0,
+      "basin": "Duero",
+      "last_year_hm3": 9.0,
+      "last_year_label": "2025",
+      "last_year_percent": 90.0,
+      "province": "Palencia",
+      "river": "Ribera"
+    },
+    "1223": {
+      "avg10_hm3": 25.0,
+      "avg10_percent": 41.8,
+      "basin": "Cataluña Interna",
+      "last_year_hm3": 37.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.66,
+      "province": "Girona",
+      "river": "Muga"
+    },
+    "1226": {
+      "avg10_hm3": 73.0,
+      "avg10_percent": 66.97,
+      "basin": "Cataluña Interna",
+      "last_year_hm3": 93.0,
+      "last_year_label": "2025",
+      "last_year_percent": 85.32,
+      "province": "Barcelona",
+      "river": "Llobregat"
+    },
+    "1227": {
+      "avg10_hm3": 51.0,
+      "avg10_percent": 64.25,
+      "basin": "Cataluña Interna",
+      "last_year_hm3": 61.0,
+      "last_year_label": "2025",
+      "last_year_percent": 76.25,
+      "province": "Lleida",
+      "river": "Cardener"
+    },
+    "1228": {
+      "avg10_hm3": 1.0,
+      "avg10_percent": 30.0,
+      "basin": "Cataluña Interna",
+      "last_year_hm3": 2.0,
+      "last_year_label": "2025",
+      "last_year_percent": 40.0,
+      "province": "Tarragona",
+      "river": "Riudecanyes"
+    },
+    "1229": {
+      "avg10_hm3": 18.0,
+      "avg10_percent": 77.08,
+      "basin": "Cataluña Interna",
+      "last_year_hm3": 21.0,
+      "last_year_label": "2025",
+      "last_year_percent": 87.5,
+      "province": "Lleida",
+      "river": "Cardener"
+    },
+    "1230": {
+      "avg10_hm3": 89.0,
+      "avg10_percent": 54.36,
+      "basin": "Cataluña Interna",
+      "last_year_hm3": 95.0,
+      "last_year_label": "2025",
+      "last_year_percent": 57.58,
+      "province": "Barcelona",
+      "river": "Ter"
+    },
+    "1231": {
+      "avg10_hm3": 148.0,
+      "avg10_percent": 63.78,
+      "basin": "Cataluña Interna",
+      "last_year_hm3": 180.0,
+      "last_year_label": "2025",
+      "last_year_percent": 77.25,
+      "province": "Girona",
+      "river": "Ter"
+    },
+    "1232": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 73.64,
+      "basin": "País Vasco Interna",
+      "last_year_hm3": 8.0,
+      "last_year_label": "2025",
+      "last_year_percent": 72.73,
+      "province": "Guipúzcoa",
+      "river": "Ibai-Eder"
+    },
+    "1233": {
+      "avg10_hm3": 7.0,
+      "avg10_percent": 75.0,
+      "basin": "País Vasco Interna",
+      "last_year_hm3": 8.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.0,
+      "province": "Guipúzcoa",
+      "river": "Urkulu"
+    },
+    "1234": {
+      "avg10_hm3": 11.0,
+      "avg10_percent": 35.48,
+      "basin": "Galicia Costa",
+      "last_year_hm3": 11.0,
+      "last_year_label": "2025",
+      "last_year_percent": 35.48,
+      "province": "La Coruña",
+      "river": "Tambre"
+    },
+    "1235": {
+      "avg10_hm3": 14.0,
+      "avg10_percent": 63.64,
+      "basin": "Galicia Costa",
+      "last_year_hm3": 15.0,
+      "last_year_label": "2025",
+      "last_year_percent": 68.18,
+      "province": "La Coruña",
+      "river": "Mero"
+    },
+    "1236": {
+      "avg10_hm3": 17.0,
+      "avg10_percent": 77.73,
+      "basin": "Galicia Costa",
+      "last_year_hm3": 14.0,
+      "last_year_label": "2025",
+      "last_year_percent": 63.64,
+      "province": "Pontevedra",
+      "river": "Oitavén"
+    },
+    "1237": {
+      "avg10_hm3": 88.0,
+      "avg10_percent": 72.03,
+      "basin": "Galicia Costa",
+      "last_year_hm3": 80.0,
+      "last_year_label": "2025",
+      "last_year_percent": 65.04,
+      "province": "La Coruña",
+      "river": "Eume"
+    },
+    "1238": {
+      "avg10_hm3": 47.0,
+      "avg10_percent": 46.21,
+      "basin": "Galicia Costa",
+      "last_year_hm3": 45.0,
+      "last_year_label": "2025",
+      "last_year_percent": 43.69,
+      "province": "La Coruña",
+      "river": "Xallas"
+    },
+    "1239": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 73.64,
+      "basin": "Galicia Costa",
+      "last_year_hm3": 8.0,
+      "last_year_label": "2025",
+      "last_year_percent": 72.73,
+      "province": "La Coruña",
+      "river": "Forcadas"
+    },
+    "1240": {
+      "avg10_hm3": 175.0,
+      "avg10_percent": 58.96,
+      "basin": "Galicia Costa",
+      "last_year_hm3": 100.0,
+      "last_year_label": "2025",
+      "last_year_percent": 33.67,
+      "province": "Pontevedra",
+      "river": "Ulla"
+    },
+    "1241": {
+      "avg10_hm3": 21.0,
+      "avg10_percent": 63.64,
+      "basin": "Galicia Costa",
+      "last_year_hm3": 19.0,
+      "last_year_label": "2025",
+      "last_year_percent": 57.58,
+      "province": "La Coruña",
+      "river": "Eume"
+    },
+    "1242": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 71.67,
+      "basin": "Galicia Costa",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 66.67,
+      "province": "Lugo",
+      "river": "Cobo"
+    },
+    "1243": {
+      "avg10_hm3": 13.0,
+      "avg10_percent": 75.0,
+      "basin": "Galicia Costa",
+      "last_year_hm3": 17.0,
+      "last_year_label": "2025",
+      "last_year_percent": 94.44,
+      "province": "La Coruña",
+      "river": "Jallas"
+    },
+    "1244": {
+      "avg10_hm3": 14.0,
+      "avg10_percent": 79.44,
+      "basin": "Galicia Costa",
+      "last_year_hm3": 16.0,
+      "last_year_label": "2025",
+      "last_year_percent": 88.89,
+      "province": "La Coruña",
+      "river": "Veduino"
+    },
+    "1245": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 56.67,
+      "basin": "Ebro",
+      "last_year_hm3": 6.0,
+      "last_year_label": "2025",
+      "last_year_percent": 33.33,
+      "province": "Huesca",
+      "river": "Aguas Limpias"
+    },
+    "1246": {
+      "avg10_hm3": 7.0,
+      "avg10_percent": 38.89,
+      "basin": "Ebro",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 22.22,
+      "province": "Huesca",
+      "river": "Caldares"
+    },
+    "1247": {
+      "avg10_hm3": 30.0,
+      "avg10_percent": 60.0,
+      "basin": "Ebro",
+      "last_year_hm3": 30.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.0,
+      "province": "Lleida",
+      "river": "Flamisell"
+    },
+    "1248": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 90.0,
+      "basin": "Ebro",
+      "last_year_hm3": 9.0,
+      "last_year_label": "2025",
+      "last_year_percent": 90.0,
+      "province": "Lleida",
+      "river": "Espot"
+    },
+    "1249": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 45.91,
+      "basin": "Ebro",
+      "last_year_hm3": 10.0,
+      "last_year_label": "2025",
+      "last_year_percent": 45.45,
+      "province": "Lleida",
+      "river": "Valarties"
+    },
+    "125": {
+      "avg10_hm3": 141.0,
+      "avg10_percent": 56.75,
+      "basin": "Duero",
+      "last_year_hm3": 170.0,
+      "last_year_label": "2025",
+      "last_year_percent": 68.27,
+      "province": "Soria",
+      "river": "Duero"
+    },
+    "132": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 9.91,
+      "basin": "Duero",
+      "last_year_hm3": 41.0,
+      "last_year_label": "2025",
+      "last_year_percent": 37.27,
+      "province": "Salamanca",
+      "river": "Águeda"
+    },
+    "133": {
+      "avg10_hm3": 129.0,
+      "avg10_percent": 40.75,
+      "basin": "Duero",
+      "last_year_hm3": 144.0,
+      "last_year_label": "2025",
+      "last_year_percent": 45.28,
+      "province": "León",
+      "river": "Porma"
+    },
+    "135": {
+      "avg10_hm3": 29.0,
+      "avg10_percent": 54.26,
+      "basin": "Duero",
+      "last_year_hm3": 28.0,
+      "last_year_label": "2025",
+      "last_year_percent": 51.85,
+      "province": "Segovia",
+      "river": "Riaza"
+    },
+    "139": {
+      "avg10_hm3": 32.0,
+      "avg10_percent": 90.56,
+      "basin": "Duero",
+      "last_year_hm3": 32.0,
+      "last_year_label": "2025",
+      "last_year_percent": 88.89,
+      "province": "Zamora",
+      "river": "Tera"
+    },
+    "1393": {
+      "avg10_hm3": 15.0,
+      "avg10_percent": 52.33,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 18.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.0,
+      "province": "Jaén",
+      "river": "Guadalimar"
+    },
+    "1395": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 45.56,
+      "basin": "Ebro",
+      "last_year_hm3": 7.0,
+      "last_year_label": "2025",
+      "last_year_percent": 77.78,
+      "province": "Huesca",
+      "river": "Barranco Carnerario"
+    },
+    "1396": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 52.78,
+      "basin": "Ebro",
+      "last_year_hm3": 15.0,
+      "last_year_label": "2025",
+      "last_year_percent": 83.33,
+      "province": "Teruel",
+      "river": "Guadalope"
+    },
+    "1397": {
+      "avg10_hm3": 3.0,
+      "avg10_percent": 20.56,
+      "last_year_hm3": 11.0,
+      "last_year_label": "2025",
+      "last_year_percent": 61.11
+    },
+    "1398": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 40.0,
+      "basin": "Ebro",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.0,
+      "province": "Navarra",
+      "river": "Urrobi"
+    },
+    "1399": {
+      "avg10_hm3": 1.0,
+      "avg10_percent": 36.0,
+      "basin": "Ebro",
+      "last_year_hm3": 3.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.0,
+      "province": "Teruel"
+    },
+    "14": {
+      "avg10_hm3": 3.0,
+      "avg10_percent": 50.0,
+      "basin": "Guadalete-Barbate",
+      "last_year_hm3": 3.0,
+      "last_year_label": "2025",
+      "last_year_percent": 50.0,
+      "province": "Cádiz",
+      "river": "Almodóvar"
+    },
+    "1400": {
+      "avg10_hm3": 40.0,
+      "avg10_percent": 29.2,
+      "basin": "Ebro",
+      "last_year_hm3": 60.0,
+      "last_year_label": "2025",
+      "last_year_percent": 43.8,
+      "province": "Huesca"
+    },
+    "1401": {
+      "avg10_hm3": 0.0,
+      "avg10_percent": 6.25,
+      "basin": "Ebro",
+      "last_year_hm3": 1.0,
+      "last_year_label": "2025",
+      "last_year_percent": 12.5,
+      "province": "La Rioja",
+      "river": "Leza"
+    },
+    "1402": {
+      "avg10_hm3": 0.0,
+      "avg10_percent": 8.33,
+      "basin": "Ebro",
+      "last_year_hm3": 1.0,
+      "last_year_label": "2025",
+      "last_year_percent": 16.67,
+      "province": "Huesca"
+    },
+    "1403": {
+      "avg10_hm3": 3.0,
+      "avg10_percent": 7.31,
+      "basin": "Guadiana",
+      "last_year_hm3": 0.0,
+      "last_year_label": "2025",
+      "last_year_percent": 0.0,
+      "province": "Cáceres",
+      "river": "Alcollarin"
+    },
+    "1404": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 6.2,
+      "basin": "Guadiana",
+      "last_year_hm3": 16.0,
+      "last_year_label": "2025",
+      "last_year_percent": 20.25,
+      "province": "Cáceres",
+      "river": "Burdalo"
+    },
+    "1405": {
+      "avg10_hm3": 22.0,
+      "avg10_percent": 21.13,
+      "basin": "Guadiana",
+      "last_year_hm3": 85.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.19,
+      "province": "Badajoz",
+      "river": "Guadajira"
+    },
+    "1406": {
+      "avg10_hm3": 7.0,
+      "avg10_percent": 8.54,
+      "basin": "Ebro",
+      "last_year_hm3": 58.0,
+      "last_year_label": "2025",
+      "last_year_percent": 70.73,
+      "province": "Teruel",
+      "river": "Guadalope"
+    },
+    "141": {
+      "avg10_hm3": 5.0,
+      "avg10_percent": 80.0,
+      "basin": "Duero",
+      "last_year_hm3": 6.0,
+      "last_year_label": "2025",
+      "last_year_percent": 85.71,
+      "province": "Segovia",
+      "river": "Eresma"
+    },
+    "143": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 18.7,
+      "basin": "Duero",
+      "last_year_hm3": 2.0,
+      "last_year_label": "2025",
+      "last_year_percent": 8.7,
+      "province": "Zamora",
+      "river": "Segundera"
+    },
+    "144": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 100.0,
+      "basin": "Duero",
+      "last_year_hm3": 8.0,
+      "last_year_label": "2025",
+      "last_year_percent": 100.0,
+      "province": "Soria",
+      "river": "Duero"
+    },
+    "145": {
+      "avg10_hm3": 277.0,
+      "avg10_percent": 43.34,
+      "basin": "Duero",
+      "last_year_hm3": 286.0,
+      "last_year_label": "2025",
+      "last_year_percent": 44.62,
+      "province": "León",
+      "river": "Esla"
+    },
+    "148": {
+      "avg10_hm3": 6.0,
+      "avg10_percent": 100.0,
+      "basin": "Duero",
+      "last_year_hm3": 6.0,
+      "last_year_label": "2025",
+      "last_year_percent": 100.0,
+      "province": "Valladolid",
+      "river": "Duero"
+    },
+    "151": {
+      "avg10_hm3": 275.0,
+      "avg10_percent": 55.48,
+      "basin": "Duero",
+      "last_year_hm3": 298.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.08,
+      "province": "Salamanca",
+      "river": "Tormes"
+    },
+    "158": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 88.0,
+      "basin": "Duero",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.0,
+      "province": "Segovia",
+      "river": "Duratón"
+    },
+    "165": {
+      "avg10_hm3": 3.0,
+      "avg10_percent": 60.0,
+      "basin": "Ebro",
+      "last_year_hm3": 3.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.0,
+      "province": "Álava",
+      "river": "Albiña"
+    },
+    "167": {
+      "avg10_hm3": 36.0,
+      "avg10_percent": 55.15,
+      "basin": "Ebro",
+      "last_year_hm3": 43.0,
+      "last_year_label": "2025",
+      "last_year_percent": 65.15,
+      "province": "Navarra",
+      "river": "Salado"
+    },
+    "184": {
+      "avg10_hm3": 35.0,
+      "avg10_percent": 41.41,
+      "basin": "Ebro",
+      "last_year_hm3": 37.0,
+      "last_year_label": "2025",
+      "last_year_percent": 43.53,
+      "province": "Huesca",
+      "river": "Ésera"
+    },
+    "185": {
+      "avg10_hm3": 15.0,
+      "avg10_percent": 68.64,
+      "basin": "Ebro",
+      "last_year_hm3": 16.0,
+      "last_year_label": "2025",
+      "last_year_percent": 72.73,
+      "province": "Huesca",
+      "river": "Noguera Ribagorzana"
+    },
+    "19": {
+      "avg10_hm3": 67.0,
+      "avg10_percent": 52.17,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 113.0,
+      "last_year_label": "2025",
+      "last_year_percent": 87.6,
+      "province": "Huelva",
+      "river": "Ribera de Huelva"
+    },
+    "192": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 16.03,
+      "basin": "Ebro",
+      "last_year_hm3": 10.0,
+      "last_year_label": "2025",
+      "last_year_percent": 15.87,
+      "province": "Huesca",
+      "river": "Gállego"
+    },
+    "194": {
+      "avg10_hm3": 25.0,
+      "avg10_percent": 46.3,
+      "basin": "Ebro",
+      "last_year_hm3": 24.0,
+      "last_year_label": "2025",
+      "last_year_percent": 44.44,
+      "province": "Teruel",
+      "river": "Guadalope"
+    },
+    "195": {
+      "avg10_hm3": 83.0,
+      "avg10_percent": 51.35,
+      "basin": "Ebro",
+      "last_year_hm3": 88.0,
+      "last_year_label": "2025",
+      "last_year_percent": 53.99,
+      "province": "Lleida",
+      "river": "Noguera Pallaresa"
+    },
+    "2": {
+      "avg10_hm3": 11.0,
+      "avg10_percent": 75.33,
+      "basin": "Duero",
+      "last_year_hm3": 11.0,
+      "last_year_label": "2025",
+      "last_year_percent": 73.33,
+      "province": "Salamanca",
+      "river": "Águeda"
+    },
+    "20": {
+      "avg10_hm3": 13.0,
+      "avg10_percent": 96.43,
+      "basin": "Guadalete-Barbate",
+      "last_year_hm3": 14.0,
+      "last_year_label": "2025",
+      "last_year_percent": 100.0,
+      "province": "Cádiz",
+      "river": "Guadalete"
+    },
+    "206": {
+      "avg10_hm3": 41.0,
+      "avg10_percent": 50.0,
+      "basin": "Ebro",
+      "last_year_hm3": 51.0,
+      "last_year_label": "2025",
+      "last_year_percent": 62.2,
+      "province": "Zaragoza",
+      "river": "Guadalope"
+    },
+    "208": {
+      "avg10_hm3": 13.0,
+      "avg10_percent": 81.25,
+      "basin": "Ebro",
+      "last_year_hm3": 15.0,
+      "last_year_label": "2025",
+      "last_year_percent": 93.75,
+      "province": "Lleida",
+      "river": "Noguera de Tort"
+    },
+    "210": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 66.88,
+      "basin": "Ebro",
+      "last_year_hm3": 11.0,
+      "last_year_label": "2025",
+      "last_year_percent": 68.75,
+      "province": "Lleida",
+      "river": "Noguera de Cardós"
+    },
+    "215": {
+      "avg10_hm3": 3.0,
+      "avg10_percent": 26.67,
+      "basin": "Ebro",
+      "last_year_hm3": 2.0,
+      "last_year_label": "2025",
+      "last_year_percent": 16.67,
+      "province": "Tarragona",
+      "river": "Ciurana"
+    },
+    "220": {
+      "avg10_hm3": 13.0,
+      "avg10_percent": 61.82,
+      "basin": "Ebro",
+      "last_year_hm3": 17.0,
+      "last_year_label": "2025",
+      "last_year_percent": 77.27,
+      "province": "Teruel",
+      "river": "Martín"
+    },
+    "221": {
+      "avg10_hm3": 263.0,
+      "avg10_percent": 48.63,
+      "basin": "Ebro",
+      "last_year_hm3": 352.0,
+      "last_year_label": "2025",
+      "last_year_percent": 65.06,
+      "province": "Cantabria",
+      "river": "Ebro"
+    },
+    "222": {
+      "avg10_hm3": 12.0,
+      "avg10_percent": 26.52,
+      "basin": "Ebro",
+      "last_year_hm3": 28.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.87,
+      "province": "La Rioja",
+      "river": "Cidacos"
+    },
+    "224": {
+      "avg10_hm3": 96.0,
+      "avg10_percent": 63.16,
+      "basin": "Ebro",
+      "last_year_hm3": 115.0,
+      "last_year_label": "2025",
+      "last_year_percent": 75.66,
+      "province": "Huesca",
+      "river": "Noguera Ribagorzana"
+    },
+    "225": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 42.0,
+      "basin": "Ebro",
+      "last_year_hm3": 1.0,
+      "last_year_label": "2025",
+      "last_year_percent": 20.0,
+      "province": "Huesca",
+      "river": "Escarra"
+    },
+    "228": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 67.14,
+      "basin": "Ebro",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 71.43,
+      "province": "Teruel",
+      "river": "Derivación del Río Guadalope"
+    },
+    "23": {
+      "avg10_hm3": 41.0,
+      "avg10_percent": 25.03,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 61.0,
+      "last_year_label": "2025",
+      "last_year_percent": 36.53,
+      "province": "Córdoba",
+      "river": "Arenoso"
+    },
+    "231": {
+      "avg10_hm3": 14.0,
+      "avg10_percent": 70.48,
+      "basin": "Ebro",
+      "last_year_hm3": 13.0,
+      "last_year_label": "2025",
+      "last_year_percent": 61.9,
+      "province": "Navarra",
+      "river": "Arga"
+    },
+    "241": {
+      "avg10_hm3": 12.0,
+      "avg10_percent": 37.58,
+      "basin": "Ebro",
+      "last_year_hm3": 12.0,
+      "last_year_label": "2025",
+      "last_year_percent": 36.36,
+      "province": "La Rioja",
+      "river": "Albercos"
+    },
+    "244": {
+      "avg10_hm3": 282.0,
+      "avg10_percent": 70.58,
+      "basin": "Ebro",
+      "last_year_hm3": 236.0,
+      "last_year_label": "2025",
+      "last_year_percent": 59.0,
+      "province": "Huesca",
+      "river": "Cinca"
+    },
+    "249": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 26.0,
+      "basin": "Ebro",
+      "last_year_hm3": 1.0,
+      "last_year_label": "2025",
+      "last_year_percent": 10.0,
+      "province": "Tarragona",
+      "river": "Asmat"
+    },
+    "252": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 54.0,
+      "basin": "Ebro",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.0,
+      "province": "Huesca",
+      "river": "Ibón de Ip"
+    },
+    "253": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 60.0,
+      "basin": "Ebro",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 35.71,
+      "province": "Navarra",
+      "river": "Irati"
+    },
+    "255": {
+      "avg10_hm3": 189.0,
+      "avg10_percent": 45.32,
+      "basin": "Ebro",
+      "last_year_hm3": 215.0,
+      "last_year_label": "2025",
+      "last_year_percent": 51.56,
+      "province": "Navarra",
+      "river": "Irati"
+    },
+    "262": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 55.88,
+      "basin": "Ebro",
+      "last_year_hm3": 12.0,
+      "last_year_label": "2025",
+      "last_year_percent": 70.59,
+      "province": "Huesca",
+      "river": "Gállego"
+    },
+    "265": {
+      "avg10_hm3": 18.0,
+      "avg10_percent": 47.37,
+      "basin": "Ebro",
+      "last_year_hm3": 24.0,
+      "last_year_label": "2025",
+      "last_year_percent": 63.16,
+      "province": "Zaragoza",
+      "river": "Barranco Vitale"
+    },
+    "274": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 55.88,
+      "basin": "Ebro",
+      "last_year_hm3": 13.0,
+      "last_year_label": "2025",
+      "last_year_percent": 76.47,
+      "province": "Huesca",
+      "river": "Llauset"
+    },
+    "276": {
+      "avg10_hm3": 51.0,
+      "avg10_percent": 49.42,
+      "basin": "Ebro",
+      "last_year_hm3": 65.0,
+      "last_year_label": "2025",
+      "last_year_percent": 62.5,
+      "province": "Zaragoza",
+      "river": "Arroyo Carrizal"
+    },
+    "277": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 46.0,
+      "basin": "Ebro",
+      "last_year_hm3": 12.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.0,
+      "province": "Zaragoza",
+      "river": "Aranda"
+    },
+    "28": {
+      "avg10_hm3": 71.0,
+      "avg10_percent": 31.18,
+      "basin": "Guadalete-Barbate",
+      "last_year_hm3": 91.0,
+      "last_year_label": "2025",
+      "last_year_percent": 39.91,
+      "province": "Cádiz",
+      "river": "Barbate"
+    },
+    "282": {
+      "avg10_hm3": 31.0,
+      "avg10_percent": 46.18,
+      "basin": "Ebro",
+      "last_year_hm3": 35.0,
+      "last_year_label": "2025",
+      "last_year_percent": 51.47,
+      "province": "La Rioja",
+      "river": "Najerilla"
+    },
+    "297": {
+      "avg10_hm3": 134.0,
+      "avg10_percent": 30.9,
+      "basin": "Ebro",
+      "last_year_hm3": 209.0,
+      "last_year_label": "2025",
+      "last_year_percent": 48.05,
+      "province": "Huesca",
+      "river": "Cinca"
+    },
+    "298": {
+      "avg10_hm3": 889.0,
+      "avg10_percent": 64.81,
+      "basin": "Ebro",
+      "last_year_hm3": 737.0,
+      "last_year_label": "2025",
+      "last_year_percent": 53.68,
+      "province": "Zaragoza",
+      "river": "Ebro"
+    },
+    "3": {
+      "avg10_hm3": 99.0,
+      "avg10_percent": 40.36,
+      "basin": "Duero",
+      "last_year_hm3": 147.0,
+      "last_year_label": "2025",
+      "last_year_percent": 59.51,
+      "province": "Palencia",
+      "river": "Pisuerga"
+    },
+    "302": {
+      "avg10_hm3": 3.0,
+      "avg10_percent": 40.0,
+      "basin": "Ebro",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 62.5,
+      "province": "Zaragoza",
+      "river": "Aguasvivas"
+    },
+    "305": {
+      "avg10_hm3": 5.0,
+      "avg10_percent": 53.0,
+      "basin": "Ebro",
+      "last_year_hm3": 8.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.0,
+      "province": "Soria",
+      "river": "Derivación del Río Najima"
+    },
+    "309": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 15.77,
+      "basin": "Ebro",
+      "last_year_hm3": 45.0,
+      "last_year_label": "2025",
+      "last_year_percent": 86.54,
+      "province": "Huesca",
+      "river": "Flumen"
+    },
+    "316": {
+      "avg10_hm3": 49.0,
+      "avg10_percent": 58.69,
+      "basin": "Ebro",
+      "last_year_hm3": 68.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.95,
+      "province": "Lleida",
+      "river": "Segre"
+    },
+    "319": {
+      "avg10_hm3": 14.0,
+      "avg10_percent": 40.29,
+      "basin": "Ebro",
+      "last_year_hm3": 21.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.0,
+      "province": "La Rioja",
+      "river": "Piqueras"
+    },
+    "324": {
+      "avg10_hm3": 11.0,
+      "avg10_percent": 61.67,
+      "basin": "Ebro",
+      "last_year_hm3": 13.0,
+      "last_year_label": "2025",
+      "last_year_percent": 72.22,
+      "province": "Teruel",
+      "river": "Pena"
+    },
+    "325": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 60.67,
+      "basin": "Ebro",
+      "last_year_hm3": 8.0,
+      "last_year_label": "2025",
+      "last_year_percent": 53.33,
+      "province": "Huesca",
+      "river": "Gállego"
+    },
+    "33": {
+      "avg10_hm3": 146.0,
+      "avg10_percent": 44.63,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 274.0,
+      "last_year_label": "2025",
+      "last_year_percent": 83.54,
+      "province": "Córdoba",
+      "river": "Bembézar"
+    },
+    "332": {
+      "avg10_hm3": 88.0,
+      "avg10_percent": 35.91,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 88.0,
+      "last_year_label": "2025",
+      "last_year_percent": 35.63,
+      "province": "Jaén",
+      "river": "Guarrizas"
+    },
+    "334": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 48.42,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 16.0,
+      "last_year_label": "2025",
+      "last_year_percent": 84.21,
+      "province": "Ciudad Real",
+      "river": "Fresneda"
+    },
+    "341": {
+      "avg10_hm3": 25.0,
+      "avg10_percent": 72.29,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 21.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.0,
+      "province": "Sevilla",
+      "river": "Huelva"
+    },
+    "342": {
+      "avg10_hm3": 108.0,
+      "avg10_percent": 22.12,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 129.0,
+      "last_year_label": "2025",
+      "last_year_percent": 26.27,
+      "province": "Jaén",
+      "river": "Guadalimar"
+    },
+    "345": {
+      "avg10_hm3": 317.0,
+      "avg10_percent": 39.74,
+      "basin": "Guadalete-Barbate",
+      "last_year_hm3": 334.0,
+      "last_year_label": "2025",
+      "last_year_percent": 41.75,
+      "province": "Cádiz",
+      "river": "Majaceite"
+    },
+    "346": {
+      "avg10_hm3": 40.0,
+      "avg10_percent": 25.03,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 43.0,
+      "last_year_label": "2025",
+      "last_year_percent": 26.38,
+      "province": "Jaén",
+      "river": "Guadalén"
+    },
+    "347": {
+      "avg10_hm3": 83.0,
+      "avg10_percent": 57.31,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 106.0,
+      "last_year_label": "2025",
+      "last_year_percent": 73.1,
+      "province": "Córdoba",
+      "river": "Guadalmellato"
+    },
+    "348": {
+      "avg10_hm3": 125.0,
+      "avg10_percent": 36.43,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 150.0,
+      "last_year_label": "2025",
+      "last_year_percent": 43.48,
+      "province": "Jaén",
+      "river": "Guadalmena"
+    },
+    "35": {
+      "avg10_hm3": 33.0,
+      "avg10_percent": 36.92,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 28.0,
+      "last_year_label": "2025",
+      "last_year_percent": 30.77,
+      "province": "Granada",
+      "river": "Cacín"
+    },
+    "359": {
+      "avg10_hm3": 82.0,
+      "avg10_percent": 61.33,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 99.0,
+      "last_year_label": "2025",
+      "last_year_percent": 73.33,
+      "province": "Sevilla",
+      "river": "Huesna"
+    },
+    "360": {
+      "avg10_hm3": 76.0,
+      "avg10_percent": 56.59,
+      "basin": "Guadalete-Barbate",
+      "last_year_hm3": 91.0,
+      "last_year_label": "2025",
+      "last_year_percent": 67.41,
+      "province": "Cádiz",
+      "river": "Majaceite"
+    },
+    "361": {
+      "avg10_hm3": 269.0,
+      "avg10_percent": 29.27,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 197.0,
+      "last_year_label": "2025",
+      "last_year_percent": 21.41,
+      "province": "Córdoba",
+      "river": "Genil"
+    },
+    "362": {
+      "avg10_hm3": 96.0,
+      "avg10_percent": 29.6,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 138.0,
+      "last_year_label": "2025",
+      "last_year_percent": 42.46,
+      "province": "Jaén",
+      "river": "Jándula"
+    },
+    "365": {
+      "avg10_hm3": 37.0,
+      "avg10_percent": 36.63,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 64.0,
+      "last_year_label": "2025",
+      "last_year_percent": 63.37,
+      "province": "Sevilla",
+      "river": "Guadalbarcar"
+    },
+    "37": {
+      "avg10_hm3": 17.0,
+      "avg10_percent": 33.15,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 14.0,
+      "last_year_label": "2025",
+      "last_year_percent": 25.93,
+      "province": "Jaén",
+      "river": "Guadalentín"
+    },
+    "379": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 50.5,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 16.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.0,
+      "province": "Córdoba",
+      "river": "Martín"
+    },
+    "38": {
+      "avg10_hm3": 58.0,
+      "avg10_percent": 29.05,
+      "basin": "Guadalete-Barbate",
+      "last_year_hm3": 120.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.0,
+      "province": "Cádiz",
+      "river": "Guadalete"
+    },
+    "383": {
+      "avg10_hm3": 141.0,
+      "avg10_percent": 76.13,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 154.0,
+      "last_year_label": "2025",
+      "last_year_percent": 82.8,
+      "province": "Sevilla",
+      "river": "Viar"
+    },
+    "388": {
+      "avg10_hm3": 40.0,
+      "avg10_percent": 70.52,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 37.0,
+      "last_year_label": "2025",
+      "last_year_percent": 63.79,
+      "province": "Sevilla",
+      "river": "Ribera de Huelva"
+    },
+    "39": {
+      "avg10_hm3": 186.0,
+      "avg10_percent": 22.67,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 285.0,
+      "last_year_label": "2025",
+      "last_year_percent": 34.63,
+      "province": "Córdoba",
+      "river": "Guadiato"
+    },
+    "393": {
+      "avg10_hm3": 66.0,
+      "avg10_percent": 63.33,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 95.0,
+      "last_year_label": "2025",
+      "last_year_percent": 90.48,
+      "province": "Ciudad Real",
+      "river": "Montoro"
+    },
+    "397": {
+      "avg10_hm3": 185.0,
+      "avg10_percent": 32.42,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 151.0,
+      "last_year_label": "2025",
+      "last_year_percent": 26.44,
+      "province": "Granada",
+      "river": "Guadiana Menor"
+    },
+    "409": {
+      "avg10_hm3": 106.0,
+      "avg10_percent": 49.35,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 183.0,
+      "last_year_label": "2025",
+      "last_year_percent": 85.12,
+      "province": "Sevilla",
+      "river": "Viar"
+    },
+    "414": {
+      "avg10_hm3": 21.0,
+      "avg10_percent": 68.06,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 21.0,
+      "last_year_label": "2025",
+      "last_year_percent": 67.74,
+      "province": "Granada",
+      "river": "Castril"
+    },
+    "417": {
+      "avg10_hm3": 13.0,
+      "avg10_percent": 21.43,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 13.0,
+      "last_year_label": "2025",
+      "last_year_percent": 20.63,
+      "province": "Sevilla",
+      "river": "Corbones"
+    },
+    "419": {
+      "avg10_hm3": 98.0,
+      "avg10_percent": 35.12,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 214.0,
+      "last_year_label": "2025",
+      "last_year_percent": 76.16,
+      "province": "Córdoba",
+      "river": "Guadiato"
+    },
+    "42": {
+      "avg10_hm3": 24.0,
+      "avg10_percent": 41.02,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 27.0,
+      "last_year_label": "2025",
+      "last_year_percent": 45.76,
+      "province": "Sevilla",
+      "river": "Ribera de Cala"
+    },
+    "420": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 62.86,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 9.0,
+      "last_year_label": "2025",
+      "last_year_percent": 64.29,
+      "province": "Granada",
+      "river": "Aguas Blancas"
+    },
+    "421": {
+      "avg10_hm3": 12.0,
+      "avg10_percent": 37.88,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 11.0,
+      "last_year_label": "2025",
+      "last_year_percent": 33.33,
+      "province": "Jaén",
+      "river": "Quiebrajano"
+    },
+    "429": {
+      "avg10_hm3": 28.0,
+      "avg10_percent": 46.23,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 48.0,
+      "last_year_label": "2025",
+      "last_year_percent": 78.69,
+      "province": "Córdoba",
+      "river": "Retortillo"
+    },
+    "431": {
+      "avg10_hm3": 52.0,
+      "avg10_percent": 37.5,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 91.0,
+      "last_year_label": "2025",
+      "last_year_percent": 65.0,
+      "province": "Jaén",
+      "river": "Rumblar"
+    },
+    "435": {
+      "avg10_hm3": 13.0,
+      "avg10_percent": 11.45,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 8.0,
+      "last_year_label": "2025",
+      "last_year_percent": 6.84,
+      "province": "Granada",
+      "river": "Guardal"
+    },
+    "44": {
+      "avg10_hm3": 42.0,
+      "avg10_percent": 60.43,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 31.0,
+      "last_year_label": "2025",
+      "last_year_percent": 44.29,
+      "province": "Granada",
+      "river": "Genil"
+    },
+    "445": {
+      "avg10_hm3": 59.0,
+      "avg10_percent": 37.06,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 66.0,
+      "last_year_label": "2025",
+      "last_year_percent": 41.25,
+      "province": "Córdoba",
+      "river": "Guadalmellato"
+    },
+    "447": {
+      "avg10_hm3": 18.0,
+      "avg10_percent": 48.46,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 32.0,
+      "last_year_label": "2025",
+      "last_year_percent": 82.05,
+      "province": "Córdoba",
+      "river": "Guadiato"
+    },
+    "455": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 20.0,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 24.0,
+      "last_year_label": "2025",
+      "last_year_percent": 50.0,
+      "province": "Sevilla",
+      "river": "Salado de Moron"
+    },
+    "456": {
+      "avg10_hm3": 184.0,
+      "avg10_percent": 36.52,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 132.0,
+      "last_year_label": "2025",
+      "last_year_percent": 26.09,
+      "province": "Jaén",
+      "river": "Guadalquivir"
+    },
+    "458": {
+      "avg10_hm3": 44.0,
+      "avg10_percent": 30.21,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 31.0,
+      "last_year_label": "2025",
+      "last_year_percent": 21.23,
+      "province": "Córdoba",
+      "river": "Guadajoz"
+    },
+    "459": {
+      "avg10_hm3": 7.0,
+      "avg10_percent": 45.29,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 6.0,
+      "last_year_label": "2025",
+      "last_year_percent": 35.29,
+      "province": "Jaén",
+      "river": "Víboras"
+    },
+    "462": {
+      "avg10_hm3": 73.0,
+      "avg10_percent": 32.01,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 139.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.7,
+      "province": "Córdoba",
+      "river": "Yeguas"
+    },
+    "463": {
+      "avg10_hm3": 90.0,
+      "avg10_percent": 40.63,
+      "basin": "Guadalete-Barbate",
+      "last_year_hm3": 53.0,
+      "last_year_label": "2025",
+      "last_year_percent": 23.77,
+      "province": "Cádiz",
+      "river": "Guadalete"
+    },
+    "466": {
+      "avg10_hm3": 102.0,
+      "avg10_percent": 58.74,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 162.0,
+      "last_year_label": "2025",
+      "last_year_percent": 92.57,
+      "province": "Huelva",
+      "river": "Huelva"
+    },
+    "468": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 87.27,
+      "basin": "Guadiana",
+      "last_year_hm3": 10.0,
+      "last_year_label": "2025",
+      "last_year_percent": 90.91,
+      "province": "Badajoz",
+      "river": "Alcarrache"
+    },
+    "471": {
+      "avg10_hm3": 239.0,
+      "avg10_percent": 28.15,
+      "basin": "Guadiana",
+      "last_year_hm3": 276.0,
+      "last_year_label": "2025",
+      "last_year_percent": 32.39,
+      "province": "Badajoz",
+      "river": "Matachel"
+    },
+    "476": {
+      "avg10_hm3": 348.0,
+      "avg10_percent": 54.97,
+      "basin": "Guadiana",
+      "last_year_hm3": 339.0,
+      "last_year_label": "2025",
+      "last_year_percent": 53.47,
+      "province": "Huelva",
+      "river": "Malagon-Cobica"
+    },
+    "482": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 70.0,
+      "basin": "Guadiana",
+      "last_year_hm3": 3.0,
+      "last_year_label": "2025",
+      "last_year_percent": 50.0,
+      "province": "Badajoz",
+      "river": "El Rosal"
+    },
+    "483": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 62.86,
+      "basin": "Guadiana",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 71.43,
+      "province": "Badajoz",
+      "river": "Brovales"
+    },
+    "492": {
+      "avg10_hm3": 15.0,
+      "avg10_percent": 61.15,
+      "basin": "Guadiana",
+      "last_year_hm3": 16.0,
+      "last_year_label": "2025",
+      "last_year_percent": 61.54,
+      "province": "Badajoz",
+      "river": "Lácara"
+    },
+    "493": {
+      "avg10_hm3": 11.0,
+      "avg10_percent": 79.33,
+      "basin": "Guadiana",
+      "last_year_hm3": 12.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.0,
+      "province": "Cáceres",
+      "river": "Ruecas"
+    },
+    "50": {
+      "avg10_hm3": 14.0,
+      "avg10_percent": 31.33,
+      "basin": "Guadalete-Barbate",
+      "last_year_hm3": 20.0,
+      "last_year_label": "2025",
+      "last_year_percent": 44.44,
+      "province": "Cádiz",
+      "river": "Celemín"
+    },
+    "503": {
+      "avg10_hm3": 164.0,
+      "avg10_percent": 48.67,
+      "basin": "Guadiana",
+      "last_year_hm3": 228.0,
+      "last_year_label": "2025",
+      "last_year_percent": 67.46,
+      "province": "Huelva",
+      "river": "Chanza"
+    },
+    "504": {
+      "avg10_hm3": 538.0,
+      "avg10_percent": 35.77,
+      "basin": "Guadiana",
+      "last_year_hm3": 942.0,
+      "last_year_label": "2025",
+      "last_year_percent": 62.59,
+      "province": "Badajoz",
+      "river": "Guadiana"
+    },
+    "505": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 15.69,
+      "basin": "Guadiana",
+      "last_year_hm3": 47.0,
+      "last_year_label": "2025",
+      "last_year_percent": 81.03,
+      "province": "Córdoba",
+      "river": "Guadamatilla"
+    },
+    "506": {
+      "avg10_hm3": 0.0,
+      "avg10_percent": 30.0,
+      "basin": "Guadiana",
+      "last_year_hm3": 2.0,
+      "last_year_label": "2025",
+      "last_year_percent": 66.67,
+      "province": "Badajoz",
+      "river": "Albarregas"
+    },
+    "507": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 45.26,
+      "basin": "Tinto, Odiel y Piedras",
+      "last_year_hm3": 15.0,
+      "last_year_label": "2025",
+      "last_year_percent": 78.95,
+      "province": "Huelva",
+      "river": "Corumbel"
+    },
+    "511": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 66.67,
+      "basin": "Guadiana",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 83.33,
+      "province": "Cáceres",
+      "river": "Cubilar"
+    },
+    "521": {
+      "avg10_hm3": 255.0,
+      "avg10_percent": 46.12,
+      "basin": "Guadiana",
+      "last_year_hm3": 268.0,
+      "last_year_label": "2025",
+      "last_year_percent": 48.38,
+      "province": "Badajoz",
+      "river": "Guadiana"
+    },
+    "522": {
+      "avg10_hm3": 14.0,
+      "avg10_percent": 70.0,
+      "basin": "Guadiana",
+      "last_year_hm3": 15.0,
+      "last_year_label": "2025",
+      "last_year_percent": 71.43,
+      "province": "Badajoz",
+      "river": "Gargaligas"
+    },
+    "526": {
+      "avg10_hm3": 16.0,
+      "avg10_percent": 42.05,
+      "basin": "Guadiana",
+      "last_year_hm3": 29.0,
+      "last_year_label": "2025",
+      "last_year_percent": 74.36,
+      "province": "Ciudad Real",
+      "river": "Becea"
+    },
+    "529": {
+      "avg10_hm3": 20.0,
+      "avg10_percent": 86.25,
+      "basin": "Guadiana",
+      "last_year_hm3": 22.0,
+      "last_year_label": "2025",
+      "last_year_percent": 91.67,
+      "province": "Badajoz",
+      "river": "Lácara"
+    },
+    "535": {
+      "avg10_hm3": 29.0,
+      "avg10_percent": 67.91,
+      "basin": "Tinto, Odiel y Piedras",
+      "last_year_hm3": 30.0,
+      "last_year_label": "2025",
+      "last_year_percent": 69.77,
+      "province": "Huelva",
+      "river": "Jarrama"
+    },
+    "537": {
+      "avg10_hm3": 6.0,
+      "avg10_percent": 80.0,
+      "basin": "Guadiana",
+      "last_year_hm3": 7.0,
+      "last_year_label": "2025",
+      "last_year_percent": 87.5,
+      "province": "Badajoz",
+      "river": "Arroyo Conejo"
+    },
+    "538": {
+      "avg10_hm3": 5.0,
+      "avg10_percent": 45.0,
+      "basin": "Tinto, Odiel y Piedras",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 41.67,
+      "province": "Huelva",
+      "river": "Piedras"
+    },
+    "540": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 22.79,
+      "basin": "Guadiana",
+      "last_year_hm3": 3.0,
+      "last_year_label": "2025",
+      "last_year_percent": 6.98,
+      "province": "Ciudad Real",
+      "river": "Jabalón"
+    },
+    "545": {
+      "avg10_hm3": 22.0,
+      "avg10_percent": 65.29,
+      "basin": "Guadiana",
+      "last_year_hm3": 31.0,
+      "last_year_label": "2025",
+      "last_year_percent": 91.18,
+      "province": "Badajoz",
+      "river": "Matachel"
+    },
+    "548": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 99.09,
+      "basin": "Guadiana",
+      "last_year_hm3": 11.0,
+      "last_year_label": "2025",
+      "last_year_percent": 100.0,
+      "province": "Badajoz",
+      "river": "Guadiana"
+    },
+    "552": {
+      "avg10_hm3": 11.0,
+      "avg10_percent": 64.44,
+      "basin": "Guadiana",
+      "last_year_hm3": 13.0,
+      "last_year_label": "2025",
+      "last_year_percent": 72.22,
+      "province": "Badajoz",
+      "river": "Nogales"
+    },
+    "553": {
+      "avg10_hm3": 7.0,
+      "avg10_percent": 88.75,
+      "basin": "Tinto, Odiel y Piedras",
+      "last_year_hm3": 7.0,
+      "last_year_label": "2025",
+      "last_year_percent": 87.5,
+      "province": "Huelva",
+      "river": "Odiel"
+    },
+    "555": {
+      "avg10_hm3": 529.0,
+      "avg10_percent": 65.5,
+      "basin": "Guadiana",
+      "last_year_hm3": 632.0,
+      "last_year_label": "2025",
+      "last_year_percent": 78.22,
+      "province": "Badajoz",
+      "river": "Guadiana"
+    },
+    "559": {
+      "avg10_hm3": 28.0,
+      "avg10_percent": 56.67,
+      "basin": "Guadiana",
+      "last_year_hm3": 16.0,
+      "last_year_label": "2025",
+      "last_year_percent": 31.37,
+      "province": "Ciudad Real",
+      "river": "Guadiana"
+    },
+    "56": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 24.75,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 10.0,
+      "province": "Granada",
+      "river": "Colomera"
+    },
+    "560": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 58.13,
+      "basin": "Guadiana",
+      "last_year_hm3": 13.0,
+      "last_year_label": "2025",
+      "last_year_percent": 81.25,
+      "province": "Badajoz",
+      "river": "Olivenza"
+    },
+    "561": {
+      "avg10_hm3": 34.0,
+      "avg10_percent": 56.83,
+      "basin": "Tinto, Odiel y Piedras",
+      "last_year_hm3": 40.0,
+      "last_year_label": "2025",
+      "last_year_percent": 66.67,
+      "province": "Huelva",
+      "river": "Piedras"
+    },
+    "563": {
+      "avg10_hm3": 3.0,
+      "avg10_percent": 76.0,
+      "basin": "Guadiana",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.0,
+      "province": "Badajoz",
+      "river": "Pardillas"
+    },
+    "565": {
+      "avg10_hm3": 5.0,
+      "avg10_percent": 75.71,
+      "basin": "Guadiana",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 71.43,
+      "province": "Ciudad Real",
+      "river": "Azuer"
+    },
+    "576": {
+      "avg10_hm3": 27.0,
+      "avg10_percent": 66.19,
+      "basin": "Guadiana",
+      "last_year_hm3": 33.0,
+      "last_year_label": "2025",
+      "last_year_percent": 78.57,
+      "province": "Cáceres",
+      "river": "Ruecas"
+    },
+    "578": {
+      "avg10_hm3": 48.0,
+      "avg10_percent": 82.76,
+      "basin": "Tinto, Odiel y Piedras",
+      "last_year_hm3": 48.0,
+      "last_year_label": "2025",
+      "last_year_percent": 82.76,
+      "province": "Huelva",
+      "river": "Meca"
+    },
+    "581": {
+      "avg10_hm3": 1045.0,
+      "avg10_percent": 32.49,
+      "basin": "Guadiana",
+      "last_year_hm3": 2009.0,
+      "last_year_label": "2025",
+      "last_year_percent": 62.41,
+      "province": "Badajoz",
+      "river": "Zújar"
+    },
+    "582": {
+      "avg10_hm3": 103.0,
+      "avg10_percent": 44.25,
+      "basin": "Guadiana",
+      "last_year_hm3": 124.0,
+      "last_year_label": "2025",
+      "last_year_percent": 53.22,
+      "province": "Cáceres",
+      "river": "Pizarroso"
+    },
+    "585": {
+      "avg10_hm3": 26.0,
+      "avg10_percent": 91.38,
+      "basin": "Tinto, Odiel y Piedras",
+      "last_year_hm3": 25.0,
+      "last_year_label": "2025",
+      "last_year_percent": 86.21,
+      "province": "Huelva",
+      "river": "Olivargas"
+    },
+    "590": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 48.0,
+      "basin": "Guadiana",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.0,
+      "province": "Badajoz",
+      "river": "Bodion"
+    },
+    "592": {
+      "avg10_hm3": 47.0,
+      "avg10_percent": 25.79,
+      "basin": "Guadiana",
+      "last_year_hm3": 130.0,
+      "last_year_label": "2025",
+      "last_year_percent": 71.04,
+      "province": "Ciudad Real",
+      "river": "Bullaque"
+    },
+    "6": {
+      "avg10_hm3": 14.0,
+      "avg10_percent": 59.58,
+      "basin": "Tajo",
+      "last_year_hm3": 18.0,
+      "last_year_label": "2025",
+      "last_year_percent": 75.0,
+      "province": "Ávila",
+      "river": "Aceña (Fuensanta)"
+    },
+    "603": {
+      "avg10_hm3": 11.0,
+      "avg10_percent": 55.5,
+      "basin": "Guadiana",
+      "last_year_hm3": 13.0,
+      "last_year_label": "2025",
+      "last_year_percent": 65.0,
+      "province": "Badajoz",
+      "river": "Ardila"
+    },
+    "604": {
+      "avg10_hm3": 5.0,
+      "avg10_percent": 14.71,
+      "basin": "Guadiana",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 11.76,
+      "province": "Ciudad Real",
+      "river": "Jabalón"
+    },
+    "605": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 25.0,
+      "basin": "Guadiana",
+      "last_year_hm3": 15.0,
+      "last_year_label": "2025",
+      "last_year_percent": 46.88,
+      "province": "Ciudad Real",
+      "river": "Guadiana"
+    },
+    "606": {
+      "avg10_hm3": 86.0,
+      "avg10_percent": 65.95,
+      "basin": "Guadiana",
+      "last_year_hm3": 91.0,
+      "last_year_label": "2025",
+      "last_year_percent": 69.47,
+      "province": "Badajoz",
+      "river": "Zapatón"
+    },
+    "611": {
+      "avg10_hm3": 186.0,
+      "avg10_percent": 61.85,
+      "basin": "Guadiana",
+      "last_year_hm3": 175.0,
+      "last_year_label": "2025",
+      "last_year_percent": 57.95,
+      "province": "Badajoz",
+      "river": "Zújar"
+    },
+    "614": {
+      "avg10_hm3": 511.0,
+      "avg10_percent": 45.74,
+      "basin": "Júcar",
+      "last_year_hm3": 693.0,
+      "last_year_label": "2025",
+      "last_year_percent": 61.99,
+      "province": "Cuenca",
+      "river": "Júcar"
+    },
+    "616": {
+      "avg10_hm3": 0.0,
+      "avg10_percent": 3.33,
+      "basin": "Júcar",
+      "last_year_hm3": 0.0,
+      "last_year_label": "2025",
+      "last_year_percent": 0.0,
+      "province": "Valencia",
+      "river": "Palancia"
+    },
+    "618": {
+      "avg10_hm3": 5.0,
+      "avg10_percent": 33.13,
+      "basin": "Júcar",
+      "last_year_hm3": 2.0,
+      "last_year_label": "2025",
+      "last_year_percent": 12.5,
+      "province": "Alicante",
+      "river": "Amadorio"
+    },
+    "619": {
+      "avg10_hm3": 48.0,
+      "avg10_percent": 35.55,
+      "basin": "Júcar",
+      "last_year_hm3": 53.0,
+      "last_year_label": "2025",
+      "last_year_percent": 38.69,
+      "province": "Castellón",
+      "river": "Mijares"
+    },
+    "62": {
+      "avg10_hm3": 6.0,
+      "avg10_percent": 42.86,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 28.57,
+      "province": "Granada",
+      "river": "Cubillas"
+    },
+    "620": {
+      "avg10_hm3": 15.0,
+      "avg10_percent": 73.81,
+      "basin": "Júcar",
+      "last_year_hm3": 18.0,
+      "last_year_label": "2025",
+      "last_year_percent": 85.71,
+      "province": "Teruel",
+      "river": "Guadalaviar"
+    },
+    "623": {
+      "avg10_hm3": 11.0,
+      "avg10_percent": 15.94,
+      "basin": "Júcar",
+      "last_year_hm3": 13.0,
+      "last_year_label": "2025",
+      "last_year_percent": 18.84,
+      "province": "Valencia",
+      "river": "Albaida"
+    },
+    "624": {
+      "avg10_hm3": 125.0,
+      "avg10_percent": 56.79,
+      "basin": "Júcar",
+      "last_year_hm3": 119.0,
+      "last_year_label": "2025",
+      "last_year_percent": 53.85,
+      "province": "Valencia",
+      "river": "Turia"
+    },
+    "625": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 38.89,
+      "basin": "Júcar",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 18.52,
+      "province": "Alicante",
+      "river": "Serpis"
+    },
+    "628": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 32.5,
+      "basin": "Júcar",
+      "last_year_hm3": 2.0,
+      "last_year_label": "2025",
+      "last_year_percent": 25.0,
+      "province": "Valencia",
+      "river": "Reatillo o Lobo"
+    },
+    "631": {
+      "avg10_hm3": 199.0,
+      "avg10_percent": 55.15,
+      "basin": "Júcar",
+      "last_year_hm3": 238.0,
+      "last_year_label": "2025",
+      "last_year_percent": 65.93,
+      "province": "Valencia",
+      "river": "Cabriel"
+    },
+    "633": {
+      "avg10_hm3": 108.0,
+      "avg10_percent": 91.53,
+      "basin": "Júcar",
+      "last_year_hm3": 104.0,
+      "last_year_label": "2025",
+      "last_year_percent": 88.14,
+      "province": "Valencia",
+      "river": "Júcar"
+    },
+    "637": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 4.95,
+      "basin": "Júcar",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 5.05,
+      "province": "Valencia",
+      "river": "Escalona"
+    },
+    "640": {
+      "avg10_hm3": 12.0,
+      "avg10_percent": 32.97,
+      "basin": "Júcar",
+      "last_year_hm3": 20.0,
+      "last_year_label": "2025",
+      "last_year_percent": 54.05,
+      "province": "Valencia",
+      "river": "Magro"
+    },
+    "642": {
+      "avg10_hm3": 6.0,
+      "avg10_percent": 48.46,
+      "basin": "Júcar",
+      "last_year_hm3": 3.0,
+      "last_year_label": "2025",
+      "last_year_percent": 23.08,
+      "province": "Alicante",
+      "river": "Guadalest"
+    },
+    "644": {
+      "avg10_hm3": 22.0,
+      "avg10_percent": 30.41,
+      "basin": "Júcar",
+      "last_year_hm3": 20.0,
+      "last_year_label": "2025",
+      "last_year_percent": 27.4,
+      "province": "Valencia",
+      "river": "Turia"
+    },
+    "645": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 22.22,
+      "basin": "Júcar",
+      "last_year_hm3": 7.0,
+      "last_year_label": "2025",
+      "last_year_percent": 38.89,
+      "province": "Castellón",
+      "river": "Rambla de la Viuda"
+    },
+    "648": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 48.5,
+      "basin": "Júcar",
+      "last_year_hm3": 14.0,
+      "last_year_label": "2025",
+      "last_year_percent": 70.0,
+      "province": "Valencia",
+      "river": "Júcar"
+    },
+    "649": {
+      "avg10_hm3": 21.0,
+      "avg10_percent": 75.17,
+      "basin": "Júcar",
+      "last_year_hm3": 21.0,
+      "last_year_label": "2025",
+      "last_year_percent": 72.41,
+      "province": "Valencia",
+      "river": "Júcar"
+    },
+    "655": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 41.67,
+      "basin": "Júcar",
+      "last_year_hm3": 3.0,
+      "last_year_label": "2025",
+      "last_year_percent": 50.0,
+      "province": "Castellón",
+      "river": "Palancia"
+    },
+    "661": {
+      "avg10_hm3": 29.0,
+      "avg10_percent": 59.18,
+      "basin": "Júcar",
+      "last_year_hm3": 31.0,
+      "last_year_label": "2025",
+      "last_year_percent": 63.27,
+      "province": "Castellón",
+      "river": "Mijares"
+    },
+    "663": {
+      "avg10_hm3": 3.0,
+      "avg10_percent": 39.0,
+      "basin": "Júcar",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 40.0,
+      "province": "Cuenca",
+      "river": "Júcar"
+    },
+    "667": {
+      "avg10_hm3": 63.0,
+      "avg10_percent": 16.62,
+      "basin": "Júcar",
+      "last_year_hm3": 57.0,
+      "last_year_label": "2025",
+      "last_year_percent": 15.04,
+      "province": "Valencia",
+      "river": "Júcar"
+    },
+    "668": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 43.64,
+      "basin": "Júcar",
+      "last_year_hm3": 8.0,
+      "last_year_label": "2025",
+      "last_year_percent": 72.73,
+      "province": "Castellón",
+      "river": "Cenia"
+    },
+    "675": {
+      "avg10_hm3": 35.0,
+      "avg10_percent": 38.9,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 37.0,
+      "last_year_label": "2025",
+      "last_year_percent": 40.66,
+      "province": "Orense",
+      "river": "Avia"
+    },
+    "676": {
+      "avg10_hm3": 5.0,
+      "avg10_percent": 62.5,
+      "basin": "Cantábrico Occidental",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 50.0,
+      "province": "Asturias",
+      "river": "Barrea"
+    },
+    "677": {
+      "avg10_hm3": 20.0,
+      "avg10_percent": 91.36,
+      "basin": "Cantábrico Occidental",
+      "last_year_hm3": 19.0,
+      "last_year_label": "2025",
+      "last_year_percent": 86.36,
+      "province": "Cantabria",
+      "river": "Torina"
+    },
+    "679": {
+      "avg10_hm3": 29.0,
+      "avg10_percent": 76.58,
+      "basin": "Cantábrico Oriental",
+      "last_year_hm3": 28.0,
+      "last_year_label": "2025",
+      "last_year_percent": 73.68,
+      "province": "Navarra",
+      "river": "Añarbe"
+    },
+    "681": {
+      "avg10_hm3": 36.0,
+      "avg10_percent": 89.76,
+      "basin": "Cantábrico Occidental",
+      "last_year_hm3": 36.0,
+      "last_year_label": "2025",
+      "last_year_percent": 87.8,
+      "province": "Asturias",
+      "river": "Navia"
+    },
+    "687": {
+      "avg10_hm3": 163.0,
+      "avg10_percent": 68.53,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 183.0,
+      "last_year_label": "2025",
+      "last_year_percent": 76.89,
+      "province": "Orense",
+      "river": "Bibey"
+    },
+    "688": {
+      "avg10_hm3": 30.0,
+      "avg10_percent": 88.53,
+      "basin": "Cantábrico Occidental",
+      "last_year_hm3": 31.0,
+      "last_year_label": "2025",
+      "last_year_percent": 91.18,
+      "province": "Asturias",
+      "river": "Narcea"
+    },
+    "689": {
+      "avg10_hm3": 227.0,
+      "avg10_percent": 66.57,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 316.0,
+      "last_year_label": "2025",
+      "last_year_percent": 92.67,
+      "province": "León",
+      "river": "Sil"
+    },
+    "691": {
+      "avg10_hm3": 340.0,
+      "avg10_percent": 51.94,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 439.0,
+      "last_year_label": "2025",
+      "last_year_percent": 67.02,
+      "province": "Lugo",
+      "river": "Miño"
+    },
+    "696": {
+      "avg10_hm3": 6.0,
+      "avg10_percent": 48.57,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 12.0,
+      "last_year_label": "2025",
+      "last_year_percent": 85.71,
+      "province": "León",
+      "river": "Arroyo Balen"
+    },
+    "70": {
+      "avg10_hm3": 104.0,
+      "avg10_percent": 91.93,
+      "basin": "Duero",
+      "last_year_hm3": 102.0,
+      "last_year_label": "2025",
+      "last_year_percent": 89.47,
+      "province": "Salamanca",
+      "river": "Duero"
+    },
+    "701": {
+      "avg10_hm3": 52.0,
+      "avg10_percent": 87.17,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 53.0,
+      "last_year_label": "2025",
+      "last_year_percent": 88.33,
+      "province": "Orense",
+      "river": "Miño"
+    },
+    "703": {
+      "avg10_hm3": 20.0,
+      "avg10_percent": 51.25,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 21.0,
+      "last_year_label": "2025",
+      "last_year_percent": 52.5,
+      "province": "Orense",
+      "river": "Cenza"
+    },
+    "704": {
+      "avg10_hm3": 30.0,
+      "avg10_percent": 49.84,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 33.0,
+      "last_year_label": "2025",
+      "last_year_percent": 54.1,
+      "province": "Orense",
+      "river": "Navea"
+    },
+    "705": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 22.5,
+      "basin": "Cantábrico Occidental",
+      "last_year_hm3": 1.0,
+      "last_year_label": "2025",
+      "last_year_percent": 8.33,
+      "province": "Cantabria",
+      "river": "Nansa"
+    },
+    "706": {
+      "avg10_hm3": 37.0,
+      "avg10_percent": 47.38,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 46.0,
+      "last_year_label": "2025",
+      "last_year_percent": 57.5,
+      "province": "Orense",
+      "river": "Limia"
+    },
+    "708": {
+      "avg10_hm3": 83.0,
+      "avg10_percent": 85.77,
+      "basin": "Cantábrico Occidental",
+      "last_year_hm3": 70.0,
+      "last_year_label": "2025",
+      "last_year_percent": 72.16,
+      "province": "Asturias",
+      "river": "Navia"
+    },
+    "71": {
+      "avg10_hm3": 1565.0,
+      "avg10_percent": 59.1,
+      "basin": "Duero",
+      "last_year_hm3": 2095.0,
+      "last_year_label": "2025",
+      "last_year_percent": 79.09,
+      "province": "Salamanca",
+      "river": "Tormes"
+    },
+    "711": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 32.14,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 35.71,
+      "province": "Orense",
+      "river": "Edrada"
+    },
+    "715": {
+      "avg10_hm3": 38.0,
+      "avg10_percent": 87.5,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 39.0,
+      "last_year_label": "2025",
+      "last_year_percent": 88.64,
+      "province": "Pontevedra",
+      "river": "Miño"
+    },
+    "719": {
+      "avg10_hm3": 3.0,
+      "avg10_percent": 62.0,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 3.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.0,
+      "province": "Orense",
+      "river": "Navea"
+    },
+    "721": {
+      "avg10_hm3": 6.0,
+      "avg10_percent": 76.25,
+      "basin": "Cantábrico Oriental",
+      "last_year_hm3": 7.0,
+      "last_year_label": "2025",
+      "last_year_percent": 87.5,
+      "province": "Guipúzcoa",
+      "river": "Ibiur"
+    },
+    "73": {
+      "avg10_hm3": 14.0,
+      "avg10_percent": 66.36,
+      "basin": "Duero",
+      "last_year_hm3": 11.0,
+      "last_year_label": "2025",
+      "last_year_percent": 50.0,
+      "province": "Burgos",
+      "river": "Arlanzón"
+    },
+    "735": {
+      "avg10_hm3": 35.0,
+      "avg10_percent": 54.77,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 41.0,
+      "last_year_label": "2025",
+      "last_year_percent": 63.08,
+      "province": "León",
+      "river": "Valseco"
+    },
+    "740": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 94.0,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 9.0,
+      "last_year_label": "2025",
+      "last_year_percent": 90.0,
+      "province": "Lugo",
+      "river": "Bibey"
+    },
+    "745": {
+      "avg10_hm3": 14.0,
+      "avg10_percent": 67.73,
+      "basin": "Cantábrico Oriental",
+      "last_year_hm3": 14.0,
+      "last_year_label": "2025",
+      "last_year_percent": 63.64,
+      "province": "Burgos",
+      "river": "Ordunte"
+    },
+    "747": {
+      "avg10_hm3": 175.0,
+      "avg10_percent": 96.32,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 175.0,
+      "last_year_label": "2025",
+      "last_year_percent": 96.15,
+      "province": "Lugo",
+      "river": "Miño"
+    },
+    "750": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 83.85,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 10.0,
+      "last_year_label": "2025",
+      "last_year_percent": 76.92,
+      "province": "Orense",
+      "river": "Sil"
+    },
+    "751": {
+      "avg10_hm3": 5.0,
+      "avg10_percent": 57.0,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 40.0,
+      "province": "Orense",
+      "river": "Bibey"
+    },
+    "752": {
+      "avg10_hm3": 314.0,
+      "avg10_percent": 58.68,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 419.0,
+      "last_year_label": "2025",
+      "last_year_percent": 78.17,
+      "province": "Orense",
+      "river": "Camba"
+    },
+    "753": {
+      "avg10_hm3": 88.0,
+      "avg10_percent": 72.3,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 96.0,
+      "last_year_label": "2025",
+      "last_year_percent": 78.69,
+      "province": "Orense",
+      "river": "Jares"
+    },
+    "757": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 52.5,
+      "basin": "Cantábrico Occidental",
+      "last_year_hm3": 3.0,
+      "last_year_label": "2025",
+      "last_year_percent": 75.0,
+      "province": "Asturias",
+      "river": "Nalón"
+    },
+    "758": {
+      "avg10_hm3": 12.0,
+      "avg10_percent": 43.57,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 11.0,
+      "last_year_label": "2025",
+      "last_year_percent": 39.29,
+      "province": "León",
+      "river": "Sil"
+    },
+    "759": {
+      "avg10_hm3": 36.0,
+      "avg10_percent": 41.72,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 36.0,
+      "last_year_label": "2025",
+      "last_year_percent": 41.38,
+      "province": "Orense",
+      "river": "Salas"
+    },
+    "761": {
+      "avg10_hm3": 164.0,
+      "avg10_percent": 68.95,
+      "basin": "Cantábrico Occidental",
+      "last_year_hm3": 132.0,
+      "last_year_label": "2025",
+      "last_year_percent": 55.46,
+      "province": "Asturias",
+      "river": "Navia"
+    },
+    "763": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 86.0,
+      "basin": "Cantábrico Oriental",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.0,
+      "province": "Navarra",
+      "river": "Endara"
+    },
+    "764": {
+      "avg10_hm3": 178.0,
+      "avg10_percent": 83.62,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 164.0,
+      "last_year_label": "2025",
+      "last_year_percent": 77.0,
+      "province": "Orense",
+      "river": "Sil"
+    },
+    "765": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 91.0,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 9.0,
+      "last_year_label": "2025",
+      "last_year_percent": 90.0,
+      "province": "Lugo",
+      "river": "Sil"
+    },
+    "767": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 76.67,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 83.33,
+      "province": "Orense",
+      "river": "Sil"
+    },
+    "768": {
+      "avg10_hm3": 21.0,
+      "avg10_percent": 45.65,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 12.0,
+      "last_year_label": "2025",
+      "last_year_percent": 26.09,
+      "province": "Zamora",
+      "river": "Bibey"
+    },
+    "769": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 80.0,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 8.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.0,
+      "province": "Orense",
+      "river": "Jares"
+    },
+    "77": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 67.14,
+      "basin": "Duero",
+      "last_year_hm3": 10.0,
+      "last_year_label": "2025",
+      "last_year_percent": 71.43,
+      "province": "Segovia",
+      "river": "Duratón"
+    },
+    "771": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 90.91,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 10.0,
+      "last_year_label": "2025",
+      "last_year_percent": 90.91,
+      "province": "Lugo",
+      "river": "Sil"
+    },
+    "773": {
+      "avg10_hm3": 27.0,
+      "avg10_percent": 81.18,
+      "basin": "Cantábrico Occidental",
+      "last_year_hm3": 24.0,
+      "last_year_label": "2025",
+      "last_year_percent": 70.59,
+      "province": "Asturias",
+      "river": "Nalón"
+    },
+    "78": {
+      "avg10_hm3": 21.0,
+      "avg10_percent": 30.43,
+      "basin": "Duero",
+      "last_year_hm3": 20.0,
+      "last_year_label": "2025",
+      "last_year_percent": 28.99,
+      "province": "Palencia",
+      "river": "Carrión"
+    },
+    "783": {
+      "avg10_hm3": 13.0,
+      "avg10_percent": 80.59,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 14.0,
+      "last_year_label": "2025",
+      "last_year_percent": 82.35,
+      "province": "Orense",
+      "river": "Miño"
+    },
+    "784": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 38.57,
+      "basin": "Miño-Sil",
+      "last_year_hm3": 8.0,
+      "last_year_label": "2025",
+      "last_year_percent": 38.1,
+      "province": "Lugo",
+      "river": "Mao"
+    },
+    "789": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 20.0,
+      "basin": "Segura",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 18.18,
+      "province": "Murcia",
+      "river": "Quipar"
+    },
+    "790": {
+      "avg10_hm3": 5.0,
+      "avg10_percent": 95.0,
+      "basin": "Segura",
+      "last_year_hm3": 6.0,
+      "last_year_label": "2025",
+      "last_year_percent": 100.0,
+      "province": "Jaén",
+      "river": "Segura"
+    },
+    "791": {
+      "avg10_hm3": 6.0,
+      "avg10_percent": 64.0,
+      "basin": "Segura",
+      "last_year_hm3": 6.0,
+      "last_year_label": "2025",
+      "last_year_percent": 60.0,
+      "province": "Murcia",
+      "river": "Argos"
+    },
+    "792": {
+      "avg10_hm3": 13.0,
+      "avg10_percent": 36.94,
+      "basin": "Segura",
+      "last_year_hm3": 6.0,
+      "last_year_label": "2025",
+      "last_year_percent": 16.67,
+      "province": "Albacete",
+      "river": "Mundo"
+    },
+    "795": {
+      "avg10_hm3": 122.0,
+      "avg10_percent": 28.05,
+      "basin": "Segura",
+      "last_year_hm3": 78.0,
+      "last_year_label": "2025",
+      "last_year_percent": 17.85,
+      "province": "Albacete",
+      "river": "Segura"
+    },
+    "796": {
+      "avg10_hm3": 3.0,
+      "avg10_percent": 55.71,
+      "basin": "Segura",
+      "last_year_hm3": 5.0,
+      "last_year_label": "2025",
+      "last_year_percent": 71.43,
+      "province": "Murcia",
+      "river": "Mula"
+    },
+    "797": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 65.38,
+      "basin": "Segura",
+      "last_year_hm3": 8.0,
+      "last_year_label": "2025",
+      "last_year_percent": 61.54,
+      "province": "Alicante",
+      "river": "Barranco del Bosch"
+    },
+    "799": {
+      "avg10_hm3": 40.0,
+      "avg10_percent": 19.33,
+      "basin": "Segura",
+      "last_year_hm3": 41.0,
+      "last_year_label": "2025",
+      "last_year_percent": 19.52,
+      "province": "Albacete",
+      "river": "Segura"
+    },
+    "8": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 44.0,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 9.0,
+      "last_year_label": "2025",
+      "last_year_percent": 45.0,
+      "province": "Sevilla",
+      "river": "Agrio"
+    },
+    "80": {
+      "avg10_hm3": 23.0,
+      "avg10_percent": 88.52,
+      "basin": "Duero",
+      "last_year_hm3": 24.0,
+      "last_year_label": "2025",
+      "last_year_percent": 88.89,
+      "province": "Zamora",
+      "river": "Duero"
+    },
+    "81": {
+      "avg10_hm3": 85.0,
+      "avg10_percent": 33.37,
+      "basin": "Duero",
+      "last_year_hm3": 104.0,
+      "last_year_label": "2025",
+      "last_year_percent": 40.78,
+      "province": "Zamora",
+      "river": "Tera"
+    },
+    "811": {
+      "avg10_hm3": 64.0,
+      "avg10_percent": 26.26,
+      "basin": "Segura",
+      "last_year_hm3": 45.0,
+      "last_year_label": "2025",
+      "last_year_percent": 18.29,
+      "province": "Alicante",
+      "river": "Alcoriza"
+    },
+    "816": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 41.92,
+      "basin": "Segura",
+      "last_year_hm3": 16.0,
+      "last_year_label": "2025",
+      "last_year_percent": 61.54,
+      "province": "Murcia",
+      "river": "Guadalentín/Sangonera"
+    },
+    "819": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 18.22,
+      "basin": "Segura",
+      "last_year_hm3": 7.0,
+      "last_year_label": "2025",
+      "last_year_percent": 15.56,
+      "province": "Murcia",
+      "river": "Algeciras"
+    },
+    "82": {
+      "avg10_hm3": 32.0,
+      "avg10_percent": 33.68,
+      "basin": "Duero",
+      "last_year_hm3": 39.0,
+      "last_year_label": "2025",
+      "last_year_percent": 41.05,
+      "province": "Palencia",
+      "river": "Carrión"
+    },
+    "827": {
+      "avg10_hm3": 2.0,
+      "avg10_percent": 10.77,
+      "basin": "Segura",
+      "last_year_hm3": 2.0,
+      "last_year_label": "2025",
+      "last_year_percent": 7.69,
+      "province": "Murcia",
+      "river": "Salada"
+    },
+    "830": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 48.89,
+      "basin": "Segura",
+      "last_year_hm3": 6.0,
+      "last_year_label": "2025",
+      "last_year_percent": 66.67,
+      "province": "Albacete",
+      "river": "Taibilla"
+    },
+    "832": {
+      "avg10_hm3": 13.0,
+      "avg10_percent": 39.43,
+      "basin": "Segura",
+      "last_year_hm3": 7.0,
+      "last_year_label": "2025",
+      "last_year_percent": 20.0,
+      "province": "Albacete",
+      "river": "Mundo"
+    },
+    "834": {
+      "avg10_hm3": 0.0,
+      "avg10_percent": 2.5,
+      "basin": "Segura",
+      "last_year_hm3": 1.0,
+      "last_year_label": "2025",
+      "last_year_percent": 8.33,
+      "province": "Murcia",
+      "river": "Luchena"
+    },
+    "840": {
+      "avg10_hm3": 7.0,
+      "avg10_percent": 11.75,
+      "basin": "Med. Andaluza",
+      "last_year_hm3": 8.0,
+      "last_year_label": "2025",
+      "last_year_percent": 12.7,
+      "province": "Almería",
+      "river": "Grande - Adra"
+    },
+    "842": {
+      "avg10_hm3": 37.0,
+      "avg10_percent": 69.81,
+      "basin": "Med. Andaluza",
+      "last_year_hm3": 39.0,
+      "last_year_label": "2025",
+      "last_year_percent": 73.58,
+      "province": "Granada",
+      "river": "Ízbor"
+    },
+    "843": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 48.18,
+      "basin": "Med. Andaluza",
+      "last_year_hm3": 12.0,
+      "last_year_label": "2025",
+      "last_year_percent": 54.55,
+      "province": "Málaga",
+      "river": "Campanillas"
+    },
+    "845": {
+      "avg10_hm3": 33.0,
+      "avg10_percent": 40.37,
+      "basin": "Med. Andaluza",
+      "last_year_hm3": 48.0,
+      "last_year_label": "2025",
+      "last_year_percent": 58.54,
+      "province": "Cádiz",
+      "river": "Palmones"
+    },
+    "847": {
+      "avg10_hm3": 37.0,
+      "avg10_percent": 60.81,
+      "basin": "Med. Andaluza",
+      "last_year_hm3": 42.0,
+      "last_year_label": "2025",
+      "last_year_percent": 67.74,
+      "province": "Málaga",
+      "river": "Verde"
+    },
+    "848": {
+      "avg10_hm3": 28.0,
+      "avg10_percent": 43.18,
+      "basin": "Med. Andaluza",
+      "last_year_hm3": 37.0,
+      "last_year_label": "2025",
+      "last_year_percent": 56.06,
+      "province": "Málaga",
+      "river": "Ardales"
+    },
+    "850": {
+      "avg10_hm3": 17.0,
+      "avg10_percent": 10.81,
+      "basin": "Med. Andaluza",
+      "last_year_hm3": 11.0,
+      "last_year_label": "2025",
+      "last_year_percent": 6.83,
+      "province": "Almería",
+      "river": "Almanzora"
+    },
+    "856": {
+      "avg10_hm3": 135.0,
+      "avg10_percent": 48.64,
+      "basin": "Med. Andaluza",
+      "last_year_hm3": 130.0,
+      "last_year_label": "2025",
+      "last_year_percent": 46.59,
+      "province": "Málaga",
+      "river": "Guadalhorce"
+    },
+    "86": {
+      "avg10_hm3": 21.0,
+      "avg10_percent": 35.76,
+      "basin": "Duero",
+      "last_year_hm3": 39.0,
+      "last_year_label": "2025",
+      "last_year_percent": 66.1,
+      "province": "Palencia",
+      "river": "Pisuerga"
+    },
+    "860": {
+      "avg10_hm3": 44.0,
+      "avg10_percent": 50.11,
+      "basin": "Med. Andaluza",
+      "last_year_hm3": 67.0,
+      "last_year_label": "2025",
+      "last_year_percent": 76.14,
+      "province": "Cádiz",
+      "river": "Guadarranque"
+    },
+    "863": {
+      "avg10_hm3": 9.0,
+      "avg10_percent": 45.0,
+      "basin": "Med. Andaluza",
+      "last_year_hm3": 13.0,
+      "last_year_label": "2025",
+      "last_year_percent": 59.09,
+      "province": "Málaga",
+      "river": "Guadalmedina"
+    },
+    "871": {
+      "avg10_hm3": 76.0,
+      "avg10_percent": 68.47,
+      "basin": "Med. Andaluza",
+      "last_year_hm3": 80.0,
+      "last_year_label": "2025",
+      "last_year_percent": 72.07,
+      "province": "Granada",
+      "river": "Guadalfeo"
+    },
+    "883": {
+      "avg10_hm3": 44.0,
+      "avg10_percent": 27.15,
+      "basin": "Med. Andaluza",
+      "last_year_hm3": 73.0,
+      "last_year_label": "2025",
+      "last_year_percent": 44.24,
+      "province": "Málaga",
+      "river": "Guaro"
+    },
+    "887": {
+      "avg10_hm3": 85.0,
+      "avg10_percent": 47.56,
+      "basin": "Tajo",
+      "last_year_hm3": 134.0,
+      "last_year_label": "2025",
+      "last_year_percent": 74.44,
+      "province": "Guadalajara",
+      "river": "Bornova"
+    },
+    "89": {
+      "avg10_hm3": 540.0,
+      "avg10_percent": 47.21,
+      "basin": "Duero",
+      "last_year_hm3": 606.0,
+      "last_year_label": "2025",
+      "last_year_percent": 52.93,
+      "province": "Zamora",
+      "river": "Esla"
+    },
+    "893": {
+      "avg10_hm3": 6.0,
+      "avg10_percent": 85.71,
+      "basin": "Tajo",
+      "last_year_hm3": 6.0,
+      "last_year_label": "2025",
+      "last_year_percent": 85.71,
+      "province": "Guadalajara",
+      "river": "Tajo"
+    },
+    "9": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 66.67,
+      "basin": "Guadalquivir",
+      "last_year_hm3": 3.0,
+      "last_year_label": "2025",
+      "last_year_percent": 50.0,
+      "province": "Jaén",
+      "river": "Aguascebas Chico"
+    },
+    "90": {
+      "avg10_hm3": 175.0,
+      "avg10_percent": 97.02,
+      "basin": "Duero",
+      "last_year_hm3": 176.0,
+      "last_year_label": "2025",
+      "last_year_percent": 97.24,
+      "province": "Salamanca",
+      "river": "Duero"
+    },
+    "907": {
+      "avg10_hm3": 15.0,
+      "avg10_percent": 44.0,
+      "basin": "Tajo",
+      "last_year_hm3": 28.0,
+      "last_year_label": "2025",
+      "last_year_percent": 80.0,
+      "province": "Guadalajara",
+      "river": "Salado"
+    },
+    "908": {
+      "avg10_hm3": 318.0,
+      "avg10_percent": 74.67,
+      "basin": "Tajo",
+      "last_year_hm3": 358.0,
+      "last_year_label": "2025",
+      "last_year_percent": 84.04,
+      "province": "Madrid",
+      "river": "Lozoya"
+    },
+    "91": {
+      "avg10_hm3": 4.0,
+      "avg10_percent": 76.67,
+      "basin": "Duero",
+      "last_year_hm3": 6.0,
+      "last_year_label": "2025",
+      "last_year_percent": 100.0,
+      "province": "Ávila",
+      "river": "Voltoya"
+    },
+    "911": {
+      "avg10_hm3": 77.0,
+      "avg10_percent": 68.58,
+      "basin": "Tajo",
+      "last_year_hm3": 80.0,
+      "last_year_label": "2025",
+      "last_year_percent": 70.8,
+      "province": "Toledo",
+      "river": "Tajo"
+    },
+    "912": {
+      "avg10_hm3": 24.0,
+      "avg10_percent": 60.24,
+      "basin": "Tajo",
+      "last_year_hm3": 28.0,
+      "last_year_label": "2025",
+      "last_year_percent": 68.29,
+      "province": "Cáceres",
+      "river": "Baños"
+    },
+    "919": {
+      "avg10_hm3": 7.0,
+      "avg10_percent": 55.0,
+      "basin": "Tajo",
+      "last_year_hm3": 7.0,
+      "last_year_label": "2025",
+      "last_year_percent": 50.0,
+      "province": "Salamanca",
+      "river": "Angostura"
+    },
+    "920": {
+      "avg10_hm3": 30.0,
+      "avg10_percent": 57.55,
+      "basin": "Tajo",
+      "last_year_hm3": 31.0,
+      "last_year_label": "2025",
+      "last_year_percent": 58.49,
+      "province": "Guadalajara",
+      "river": "Sorbe"
+    },
+    "921": {
+      "avg10_hm3": 26.0,
+      "avg10_percent": 84.84,
+      "basin": "Tajo",
+      "last_year_hm3": 26.0,
+      "last_year_label": "2025",
+      "last_year_percent": 83.87,
+      "province": "Guadalajara",
+      "river": "Tajo"
+    },
+    "923": {
+      "avg10_hm3": 33.0,
+      "avg10_percent": 38.18,
+      "basin": "Tajo",
+      "last_year_hm3": 45.0,
+      "last_year_label": "2025",
+      "last_year_percent": 51.14,
+      "province": "Cáceres",
+      "river": "Árrago"
+    },
+    "931": {
+      "avg10_hm3": 352.0,
+      "avg10_percent": 20.7,
+      "basin": "Tajo",
+      "last_year_hm3": 813.0,
+      "last_year_label": "2025",
+      "last_year_percent": 47.68,
+      "province": "Guadalajara",
+      "river": "Guadiela"
+    },
+    "936": {
+      "avg10_hm3": 92.0,
+      "avg10_percent": 45.97,
+      "basin": "Tajo",
+      "last_year_hm3": 120.0,
+      "last_year_label": "2025",
+      "last_year_percent": 59.7,
+      "province": "Ávila",
+      "river": "Alberche"
+    },
+    "946": {
+      "avg10_hm3": 43.0,
+      "avg10_percent": 97.73,
+      "basin": "Tajo",
+      "last_year_hm3": 43.0,
+      "last_year_label": "2025",
+      "last_year_percent": 97.73,
+      "province": "Toledo",
+      "river": "Tajo"
+    },
+    "949": {
+      "avg10_hm3": 1.0,
+      "avg10_percent": 22.5,
+      "basin": "Tajo",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 50.0,
+      "province": "Toledo",
+      "river": "Algodor"
+    },
+    "95": {
+      "avg10_hm3": 46.0,
+      "avg10_percent": 61.6,
+      "basin": "Duero",
+      "last_year_hm3": 53.0,
+      "last_year_label": "2025",
+      "last_year_percent": 70.67,
+      "province": "Burgos",
+      "river": "Arlanzón"
+    },
+    "950": {
+      "avg10_hm3": 7.0,
+      "avg10_percent": 100.0,
+      "basin": "Tajo",
+      "last_year_hm3": 7.0,
+      "last_year_label": "2025",
+      "last_year_percent": 100.0,
+      "province": "Toledo",
+      "river": "Alberche"
+    },
+    "952": {
+      "avg10_hm3": 242.0,
+      "avg10_percent": 93.19,
+      "basin": "Tajo",
+      "last_year_hm3": 245.0,
+      "last_year_label": "2025",
+      "last_year_percent": 94.23,
+      "province": "Cáceres",
+      "river": "Tajo - Sever"
+    },
+    "967": {
+      "avg10_hm3": 296.0,
+      "avg10_percent": 36.48,
+      "basin": "Tajo",
+      "last_year_hm3": 589.0,
+      "last_year_label": "2025",
+      "last_year_percent": 72.45,
+      "province": "Guadalajara",
+      "river": "Tajo"
+    },
+    "97": {
+      "avg10_hm3": 149.0,
+      "avg10_percent": 88.28,
+      "basin": "Duero",
+      "last_year_hm3": 156.0,
+      "last_year_label": "2025",
+      "last_year_percent": 92.31,
+      "province": "Zamora",
+      "river": "Tera"
+    },
+    "970": {
+      "avg10_hm3": 8.0,
+      "avg10_percent": 6.09,
+      "basin": "Tajo",
+      "last_year_hm3": 10.0,
+      "last_year_label": "2025",
+      "last_year_percent": 7.52,
+      "province": "Toledo",
+      "river": "Algodor"
+    },
+    "977": {
+      "avg10_hm3": 339.0,
+      "avg10_percent": 37.31,
+      "basin": "Tajo",
+      "last_year_hm3": 418.0,
+      "last_year_label": "2025",
+      "last_year_percent": 45.88,
+      "province": "Cáceres",
+      "river": "Alagón"
+    },
+    "987": {
+      "avg10_hm3": 10.0,
+      "avg10_percent": 50.0,
+      "basin": "Tajo",
+      "last_year_hm3": 11.0,
+      "last_year_label": "2025",
+      "last_year_percent": 55.0,
+      "province": "Cáceres",
+      "river": "Guadiloba"
+    },
+    "988": {
+      "avg10_hm3": 11.0,
+      "avg10_percent": 65.0,
+      "basin": "Tajo",
+      "last_year_hm3": 17.0,
+      "last_year_label": "2025",
+      "last_year_percent": 94.44,
+      "province": "Toledo",
+      "river": "Guajaraz"
+    },
+    "99": {
+      "avg10_hm3": 6.0,
+      "avg10_percent": 100.0,
+      "basin": "Duero",
+      "last_year_hm3": 6.0,
+      "last_year_label": "2025",
+      "last_year_percent": 100.0,
+      "province": "Salamanca",
+      "river": "Tormes"
+    },
+    "990": {
+      "avg10_hm3": 11.0,
+      "avg10_percent": 90.0,
+      "basin": "Tajo",
+      "last_year_hm3": 11.0,
+      "last_year_label": "2025",
+      "last_year_percent": 84.62,
+      "province": "Cáceres",
+      "river": "Alagón"
+    },
+    "999": {
+      "avg10_hm3": 3.0,
+      "avg10_percent": 51.43,
+      "basin": "Tajo",
+      "last_year_hm3": 4.0,
+      "last_year_label": "2025",
+      "last_year_percent": 57.14,
+      "province": "Madrid",
+      "river": "Jarosa"
+    }
+  }
+}

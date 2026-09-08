@@ -196,21 +196,32 @@ def parse_info(page):
 def parse_reservoir(page, reservoir_id, url):
     """Turn a /pantano-<id>-<slug>.html page into a dict of figures."""
     blocks = sections(page)
-    name = ""
-    section = None
-    for title, chunk in blocks.items():
-        if title.startswith("embalse:"):
-            name = title.split(":", 1)[1].strip()
-            match = re.search(r'class="SeccionCentral_TituloTexto">(.*?)</div>', chunk, re.S)
-            if match:
-                name = text_of(match.group(1)).split(":", 1)[1].strip()
-            section = chunk
-            break
-    if section is None:
+    candidates = [(t, c) for t, c in blocks.items() if t.startswith("embalse:")]
+    # A reservoir with live gauges carries an extra "Embalse: X (Tiempo Real)"
+    # block ahead of the weekly one, and that block holds different rows. The
+    # weekly figures are what the rest of the site reports, so prefer them.
+    if not candidates:
         raise RuntimeError(f"no reservoir block found on {url}")
 
+    # A reservoir with live gauges carries extra blocks — "(Tiempo Real)",
+    # "(Caudal desembalsado)" — ahead of the weekly one, and those hold
+    # different rows. Rather than guess from the heading, which some reservoirs
+    # genuinely have brackets in ("Porma (Juan Benet)"), take the first block
+    # that actually carries the weekly figures.
+    title, section, stats = candidates[0][0], candidates[0][1], {}
+    for candidate_title, chunk in candidates:
+        parsed = parse_stats(chunk)
+        if parsed.get("volume_hm3") is not None and parsed.get("capacity_hm3") is not None:
+            title, section, stats = candidate_title, chunk, parsed
+            break
+
+    name = title.split(":", 1)[1].strip()
+    match = re.search(r'class="SeccionCentral_TituloTexto">(.*?)</div>', section, re.S)
+    if match:
+        name = text_of(match.group(1)).split(":", 1)[1].strip()
+
     record = {"id": reservoir_id, "name": name, "url": url}
-    record.update(parse_stats(section))
+    record.update(stats or parse_stats(section))
     record.update(parse_info(page))
     if record.get("volume_hm3") is None:
         raise RuntimeError(f"no water figures found on {url}")
@@ -368,55 +379,131 @@ def command_search(args):
     return 0
 
 
+# Fields that reach the published payload. Every reservoir in Spain travels in
+# it so the plugin's form field can name any of them, so the entries are kept to
+# what the templates actually read.
+PAYLOAD_FIELDS = (
+    "id", "id_text", "name", "basin", "province", "river",
+    "volume_hm3", "capacity_hm3", "change_hm3", "percent", "bar_percent", "avg10_bar_percent",
+    "percent_text", "volume_text", "capacity_text", "change_text",
+    "change_percent_text", "last_year_label", "last_year_text", "avg10_text",
+    "vs_last_year_text", "vs_avg10_text", "trend_glyph",
+)
+
+# The figures that only a reservoir's own page carries, cached between runs.
+DETAIL_FIELDS = (
+    "change_percent", "last_year_hm3", "last_year_percent", "last_year_label",
+    "avg10_hm3", "avg10_percent", "province", "river", "basin",
+)
+DETAIL_DELAY = 0.7
+
+
+def slim(record):
+    return {key: record[key] for key in PAYLOAD_FIELDS if record.get(key) is not None}
+
+
+def load_detail_cache(path):
+    try:
+        with open(path, encoding="utf-8") as fh:
+            cache = json.load(fh)
+    except (OSError, ValueError):
+        return {"as_of": None, "reservoirs": {}}
+    cache.setdefault("as_of", None)
+    cache.setdefault("reservoirs", {})
+    return cache
+
+
+def save_detail_cache(path, cache):
+    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(cache, fh, ensure_ascii=False, indent=2, sort_keys=True)
+        fh.write("\n")
+
+
+def refresh_detail(cache, index, as_of, path, cache_seconds=0, force=False):
+    """Top the cache up with the per-reservoir figures the basin pages omit.
+
+    A reservoir's own page is the only place carrying last year and the ten-year
+    average, and those move once a week with everything else. So the whole set is
+    refetched when the site's date changes, and otherwise only the reservoirs
+    missing from the cache (new ones, or a run that was cut short).
+    """
+    stale = force or cache.get("as_of") != as_of
+    wanted = [e for e in index if stale or str(e["id"]) not in cache["reservoirs"]]
+    if not wanted:
+        return 0
+
+    print(f"Refreshing detail for {len(wanted)} reservoir(s)"
+          f"{' (new week)' if stale else ''}...", file=sys.stderr)
+    done = 0
+    for entry in wanted:
+        url = reservoir_url(entry["id"], entry["slug"])
+        try:
+            record = parse_reservoir(fetch(url, cache_seconds=cache_seconds), entry["id"], url)
+        except RuntimeError as error:
+            # One unreadable page should not cost us the other 400.
+            print(f"  skipped {entry['name']} ({entry['id']}): {error}", file=sys.stderr)
+            continue
+        cache["reservoirs"][str(entry["id"])] = {
+            key: record[key] for key in DETAIL_FIELDS if record.get(key) is not None
+        }
+        done += 1
+        # Save as we go: a run that is cut short keeps its work, and the next one
+        # picks up only what is still missing.
+        if done % 50 == 0:
+            save_detail_cache(path, cache)
+        time.sleep(DETAIL_DELAY)
+    cache["as_of"] = as_of
+    save_detail_cache(path, cache)
+    return done
+
+
 def command_build(args):
     with open(args.config, encoding="utf-8") as fh:
         config = json.load(fh)
-
-    ids = [int(value) for value in args.ids.split(",")] if args.ids else config.get("reservoirs", [])
-    if not ids:
-        print("config.json lists no reservoirs", file=sys.stderr)
-        return 1
     locale = config.get("number_format", "es")
     cache_seconds = args.cache
 
     home = fetch(BASE + "/", cache_seconds=cache_seconds)
     national = decorate(parse_national(home), locale)
+    as_of = national.get("as_of")
+
+    # The basin tables report weekly figures for about 374 of the ~990 reservoirs
+    # on the site; the rest are small enough that only their own page carries a
+    # number. Those reported ones are what the plugin offers, which keeps the
+    # payload small and the crawl polite.
+    index = [e for e in build_index(cache_seconds=cache_seconds) if e.get("capacity_hm3")]
+
+    cache = load_detail_cache(args.detail)
+    if not args.skip_detail:
+        refresh_detail(cache, index, as_of, args.detail,
+                       cache_seconds=cache_seconds, force=args.refresh_detail)
 
     reservoirs = []
-    for reservoir_id in ids:
-        url = resolve_url(reservoir_id, cache_seconds=cache_seconds)
-        page = fetch(url, cache_seconds=cache_seconds)
-        reservoirs.append(decorate(parse_reservoir(page, int(reservoir_id), url), locale))
-        time.sleep(0.5)
+    for entry in index:
+        record = {
+            "id": entry["id"],
+            "id_text": str(entry["id"]),
+            "name": entry["name"],
+            "basin": entry["basin"],
+            "volume_hm3": entry["volume_hm3"],
+            "capacity_hm3": entry["capacity_hm3"],
+            "change_hm3": entry["change_hm3"],
+        }
+        record.update(cache["reservoirs"].get(str(entry["id"]), {}))
+        reservoirs.append(slim(decorate(record, locale)))
 
-    # A combined figure, so a screen showing several reservoirs can also show
-    # what they hold between them.
-    capacity = sum(r["capacity_hm3"] or 0 for r in reservoirs)
-    volume = sum(r["volume_hm3"] or 0 for r in reservoirs)
-    total = decorate({
-        "name": config.get("title", "Total"),
-        "capacity_hm3": capacity,
-        "volume_hm3": volume,
-        "percent": round(100 * volume / capacity, 2) if capacity else None,
-        "change_hm3": sum(r.get("change_hm3") or 0 for r in reservoirs),
-    }, locale)
-
-    as_of = next((r.get("as_of") for r in reservoirs if r.get("as_of")), national.get("as_of"))
-    as_of_label = next(
-        (r.get("as_of_label") for r in reservoirs if r.get("as_of_label")),
-        national.get("as_of_label"),
-    )
-
+    default_ids = [str(value) for value in (config.get("reservoirs") or [])]
     payload = {
         "title": config.get("title", "Embalses"),
         "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "as_of": as_of,
-        "as_of_label": as_of_label,
+        "as_of_label": national.get("as_of_label"),
         "source": BASE,
         "count": len(reservoirs),
+        "default_ids": ",".join(default_ids),
         "reservoirs": reservoirs,
-        "total": total,
-        "national": national,
+        "national": slim(national),
     }
 
     # embalses.net moves once a week, so most runs produce the same figures with
@@ -429,18 +516,21 @@ def command_build(args):
                 previous = json.load(fh)
         except (OSError, ValueError):
             previous = None
+    unchanged = False
     if previous:
         before = {k: v for k, v in previous.items() if k != "generated_at"}
         after = {k: v for k, v in payload.items() if k != "generated_at"}
-        if before == after:
+        unchanged = before == after
+        if unchanged:
             payload["generated_at"] = previous.get("generated_at", payload["generated_at"])
 
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as fh:
-        json.dump(payload, fh, ensure_ascii=False, indent=2)
+        json.dump(payload, fh, ensure_ascii=False, separators=(",", ":"))
         fh.write("\n")
-    state = "unchanged" if previous and before == after else "updated"
-    print(f"Wrote {args.out} ({state}): {len(reservoirs)} reservoir(s), data of {as_of_label}")
+    size = os.path.getsize(args.out)
+    print(f"Wrote {args.out} ({'unchanged' if unchanged else 'updated'}): "
+          f"{len(reservoirs)} reservoirs, {size // 1024} kB, data of {national.get('as_of_label')}")
     return 0
 
 
@@ -455,7 +545,12 @@ def main(argv=None):
     build = subparsers.add_parser("build", help="write the TRMNL JSON payload")
     build.add_argument("--config", default=os.path.join(ROOT, "config.json"))
     build.add_argument("--out", default=os.path.join(ROOT, "docs", "trmnl.json"))
-    build.add_argument("--ids", help="comma separated ids, overriding config.json")
+    build.add_argument("--detail", default=os.path.join(ROOT, "data", "detail.json"),
+                       help="cache of the per-reservoir figures the basin pages omit")
+    build.add_argument("--refresh-detail", action="store_true",
+                       help="refetch every reservoir page, not just the missing ones")
+    build.add_argument("--skip-detail", action="store_true",
+                       help="do not touch the detail cache (quick local run)")
     build.add_argument("--cache", type=int, default=0,
                        help="serve pages from .cache/ for N seconds (development)")
     build.set_defaults(func=command_build)

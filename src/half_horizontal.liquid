@@ -1,5 +1,12 @@
 {% assign heading = trmnl.plugin_settings.custom_fields_values.heading | default: title | default: "Embalses" %}
-{% assign list = reservoirs %}
+{% comment %} The payload carries every reservoir embalses.net reports weekly.
+   The reservoir_ids form field picks which of them to show, in the order given;
+   an id is the number in the page URL, so /pantano-871-rules.html is 871. With
+   the field left empty we fall back to the ids baked into the payload. {% endcomment %}
+{% assign selection = trmnl.plugin_settings.custom_fields_values.reservoir_ids | default: default_ids %}
+{% assign wanted = selection | split: "," %}
+{% assign list = "" | split: "," %}
+{% for token in wanted %}{% assign key = token | strip %}{% assign found = reservoirs | where: "id_text", key %}{% assign list = list | concat: found %}{% endfor %}
 {% assign shown = list.size | default: 0 %}
 
 <style>
@@ -12,7 +19,7 @@
 
 {% if shown == 0 %}
   <div class="layout layout--col layout--center" style="text-align: center;">
-    <span class="title title--small">Sin datos de embalses</span>
+    <span class="title title--small">Revisa los ids del plugin</span>
 </div>
 
 {% elsif shown == 1 %}

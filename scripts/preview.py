@@ -67,14 +67,25 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--data", default=os.path.join(ROOT, "docs", "trmnl.json"))
     parser.add_argument("--out", default=os.path.join(ROOT, "preview.html"))
-    parser.add_argument("--limit", type=int, help="only render the first N reservoirs")
+    parser.add_argument("--ids", help="comma separated ids to render, as the form field would")
+    parser.add_argument("--limit", type=int, help="only render the first N of the selection")
+    parser.add_argument("--footer", default="españa", help="footer field: españa, conjunto or ninguno")
+    parser.add_argument("--heading", default="Embalses", help="heading field")
     args = parser.parse_args()
 
     with open(args.data, encoding="utf-8") as fh:
         data = json.load(fh)
+    # Stand in for the plugin's form fields, which is where the templates read
+    # the selection from (falling back to default_ids in the payload).
+    selection = (args.ids or data.get("default_ids", "")).split(",")
+    selection = [token.strip() for token in selection if token.strip()]
     if args.limit:
-        data["reservoirs"] = data["reservoirs"][: args.limit]
-        data["count"] = len(data["reservoirs"])
+        selection = selection[: args.limit]
+    data["trmnl"] = {"plugin_settings": {"custom_fields_values": {
+        "reservoir_ids": ",".join(selection),
+        "heading": args.heading,
+        "footer": args.footer,
+    }}}
 
     env = Environment()
     cases = []
@@ -82,7 +93,7 @@ def main():
         with open(os.path.join(ROOT, "src", f"{view}.liquid"), encoding="utf-8") as fh:
             template = env.from_string(fh.read())
         cases.append(CASE.format(
-            name=f"{view} — {len(data['reservoirs'])} reservoir(s)",
+            name=f"{view} — {len(selection)} reservoir(s): {','.join(selection)} | footer={args.footer}",
             view=view,
             open=f'<div class="mashup {mashup}">' if mashup else "",
             close="</div>" if mashup else "",

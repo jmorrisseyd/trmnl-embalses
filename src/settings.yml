@@ -10,6 +10,14 @@ refresh_interval: 720
 dark_mode: false
 no_screen_padding: false
 custom_fields:
+  - keyname: reservoir_ids
+    name: Embalses
+    field_type: multi_string
+    description: >-
+      Ids de embalses.net separados por comas, en el orden que quieras verlos.
+      El id es el número de la URL: embalses.net/pantano-<b>871</b>-rules.html.
+    help_text: Ejemplo:&nbsp;871,795,830
+    default: "795,830,816,799"
   - keyname: heading
     name: Título
     field_type: string

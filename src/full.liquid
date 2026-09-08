@@ -1,8 +1,15 @@
-{% assign heading = trmnl.plugin_settings.custom_fields_values.heading | default: title | default: "Embalses" %}
+ {% assign heading = trmnl.plugin_settings.custom_fields_values.heading | default: title | default: "Embalses" %}
 {% comment %} TRMNL stores a select's value parameterised ("España" -> "espana"),
    so match loosely on a downcased value rather than on the exact label. {% endcomment %}
 {% assign footer_mode = trmnl.plugin_settings.custom_fields_values.footer | default: "espana" | downcase %}
-{% assign list = reservoirs %}
+{% comment %} The payload carries every reservoir embalses.net reports weekly.
+   The reservoir_ids form field picks which of them to show, in the order given;
+   an id is the number in the page URL, so /pantano-871-rules.html is 871. With
+   the field left empty we fall back to the ids baked into the payload. {% endcomment %}
+{% assign selection = trmnl.plugin_settings.custom_fields_values.reservoir_ids | default: default_ids %}
+{% assign wanted = selection | split: "," %}
+{% assign list = "" | split: "," %}
+{% for token in wanted %}{% assign key = token | strip %}{% assign found = reservoirs | where: "id_text", key %}{% assign list = list | concat: found %}{% endfor %}
 {% assign shown = list.size | default: 0 %}
 
 <style>
@@ -18,8 +25,8 @@
 
 {% if shown == 0 %}
   <div class="layout layout--col layout--center" style="text-align: center;">
-    <div class="title">Sin datos de embalses</div>
-    <div class="description">Revisa la URL del plugin o el registro de la acción</div>
+    <div class="title">Ningún embalse seleccionado</div>
+    <div class="description">Pon los ids de embalses.net en el campo "Embalses" del plugin, separados por comas</div>
 </div>
 
 {% elsif shown == 1 %}
@@ -55,7 +62,7 @@
       <div class="col flex flex--col flex--left gap--none">
         <span class="label label--small">Semana</span>
         <span class="value value--small value--tnums">{{ r.trend_glyph }} {{ r.change_text }}</span>
-        <span class="label label--small">hm&sup3; ({{ r.change_percent_text }}%)</span>
+        <span class="label label--small">hm&sup3;{% unless r.change_percent_text == "—" %} ({{ r.change_percent_text }}%){% endunless %}</span>
     </div>
       <div class="col flex flex--col flex--left gap--none">
         <span class="label label--small">{{ r.last_year_label | default: "Año pasado" }}</span>
@@ -96,10 +103,16 @@
     {% endfor %}
 
     {% unless footer_mode contains "ningun" %}
-      {% if footer_mode contains "conjunto" %}{% assign foot = total %}{% assign foot_name = "Conjunto" %}
-      {% else %}{% assign foot = national %}{% assign foot_name = "España" %}{% endif %}
       <div class="flex flex--row flex--between flex--bottom" style="border-top: 2px solid black; padding-top: 6px;">
-        <span class="label label--small">{{ foot_name }} {{ foot.percent_text }}% &middot; {{ foot.volume_text }} / {{ foot.capacity_text }} hm&sup3; &middot; {{ foot.trend_glyph }} {{ foot.change_text }} hm&sup3; en la semana</span>
+      {% if footer_mode contains "conjunto" %}
+        {% comment %} What "the total" covers depends on which ids were chosen, so
+           it is added up here rather than in the payload. {% endcomment %}
+        {% assign sum_volume = 0 %}{% assign sum_capacity = 0 %}{% assign sum_change = 0 %}
+        {% for r in list %}{% assign sum_volume = sum_volume | plus: r.volume_hm3 %}{% assign sum_capacity = sum_capacity | plus: r.capacity_hm3 %}{% assign sum_change = sum_change | plus: r.change_hm3 %}{% endfor %}
+        <span class="label label--small">Conjunto{% if sum_capacity > 0 %} {{ sum_volume | times: 100.0 | divided_by: sum_capacity | round: 1 | replace: ".", "," }}%{% endif %} &middot; {{ sum_volume | round: 0 }} / {{ sum_capacity | round: 0 }} hm&sup3; &middot; {% if sum_change > 0 %}+{% endif %}{{ sum_change | round: 0 }} hm&sup3; en la semana</span>
+      {% else %}
+        <span class="label label--small">España {{ national.percent_text }}% &middot; {{ national.volume_text }} / {{ national.capacity_text }} hm&sup3; &middot; {{ national.trend_glyph }} {{ national.change_text }} hm&sup3; en la semana</span>
+      {% endif %}
         <span class="label label--small">línea = media 10 años</span>
     </div>
     {% endunless %}
