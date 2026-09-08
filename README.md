@@ -50,15 +50,17 @@ important first — the views show the first few and the narrow layouts only hav
 room for three.
 
 [`config.json`](config.json) holds the fallback used when that field is left
-empty, plus the number format — `es` (1.234,5) or `en` (1,234.5):
+empty:
 
 ```json
 {
   "title": "Embalses",
-  "number_format": "es",
   "reservoirs": [795, 830, 816, 799]
 }
 ```
+
+Figures are written the Spanish way (86,5%), by the templates for each
+reservoir and by the scraper for the national line.
 
 Run the build once to check it works and to see the data you will get. The
 first run reads every reservoir's own page to fill `data/detail.json`, which

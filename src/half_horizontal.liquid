@@ -52,8 +52,13 @@
 </div>
 
 {% else %}
+  {% comment %} Cap the list once, so what is totalled and counted below is
+     exactly what gets drawn. {% endcomment %}
+  {% assign visible = list | slice: 0, 3 %}
+  {% assign hidden = shown | minus: visible.size %}
+
   <div class="layout layout--col gap--distribute">
-    {% for r in list limit: 3 %}
+    {% for r in visible %}
       <div class="progress-bar progress-bar--small">
         <div class="content">
           <span class="title title--small">{{ r.n }}</span>
@@ -66,8 +71,8 @@
       </div>
     </div>
     {% endfor %}
-    {% if shown > 3 %}
-      <span class="label label--small">y {{ shown | minus: 3 }} embalse(s) más</span>
+    {% if hidden > 0 %}
+      <span class="label label--small">y {{ hidden }} embalse(s) más</span>
     {% endif %}
 </div>
 {% endif %}

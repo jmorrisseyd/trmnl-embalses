@@ -1,5 +1,9 @@
 {
   "title": "Embalses",
-  "number_format": "es",
-  "reservoirs": [795, 830, 816, 799]
+  "reservoirs": [
+    795,
+    830,
+    816,
+    799
+  ]
 }

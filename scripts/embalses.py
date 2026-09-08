@@ -288,20 +288,6 @@ def reservoir_url(reservoir_id, slug):
     return f"{BASE}/pantano-{reservoir_id}-{slug}.html"
 
 
-def resolve_url(reservoir_id, index_cache={}, cache_seconds=21600):
-    """Find a reservoir's canonical URL from the index (its slug is in the path)."""
-    if not index_cache:
-        for entry in build_index(cache_seconds=cache_seconds):
-            index_cache[entry["id"]] = entry
-    entry = index_cache.get(int(reservoir_id))
-    if not entry:
-        raise RuntimeError(
-            f"reservoir {reservoir_id} is not listed on embalses.net; "
-            f"run `embalses.py search <name>` to find the right id"
-        )
-    return reservoir_url(entry["id"], entry["slug"])
-
-
 # --------------------------------------------------------------------------
 # formatting for the display
 # --------------------------------------------------------------------------
@@ -375,7 +361,8 @@ def command_search(args):
         fill = f"{100 * volume / capacity:5.1f}%" if capacity else "    —"
         print(f"{entry['id']:>5}  {entry['name'][:32]:<32} {entry['basin'][:22]:<22} "
               f"{capacity:>8.0f} {volume:>8.0f}  {fill}")
-    print(f"\n{len(matches)} reservoir(s). Put the ids in config.json.", file=sys.stderr)
+    print(f"\n{len(matches)} reservoir(s). Put the ids in the plugin's Embalses field, "
+          f"or in config.json to change the default.", file=sys.stderr)
     return 0
 
 

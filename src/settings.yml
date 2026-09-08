@@ -23,8 +23,8 @@ custom_fields:
     field_type: select
     description: Muestra el gráfico del año de embalses.net cuando hay un solo embalse seleccionado. Gráfico de Embalses.net, CC BY 4.0.
     options:
-      - No
-      - Sí
+      - "No"
+      - "Sí"
     default: "no"
   - keyname: heading
     name: Título

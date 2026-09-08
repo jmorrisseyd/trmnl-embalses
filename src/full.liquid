@@ -134,8 +134,13 @@
   {% elsif shown <= 5 %}{% assign bar_size = "progress-bar--base" %}{% assign name_size = "title title--small" %}{% assign pct_size = "value value--xsmall" %}
   {% else %}{% assign bar_size = "progress-bar--small" %}{% assign name_size = "title title--small" %}{% assign pct_size = "value value--xxsmall" %}{% endif %}
 
+  {% comment %} Cap the list once, so what is totalled and counted below is
+     exactly what gets drawn. {% endcomment %}
+  {% assign visible = list | slice: 0, 7 %}
+  {% assign hidden = shown | minus: visible.size %}
+
   <div class="layout layout--col gap--distribute">
-    {% for r in list limit: 7 %}
+    {% for r in visible %}
       <div class="progress-bar {{ bar_size }}">
         <div class="content">
           <span class="{{ name_size }}">{{ r.n }}</span>
@@ -155,12 +160,12 @@
         {% comment %} What "the total" covers depends on which ids were chosen, so
            it is added up here rather than in the payload. {% endcomment %}
         {% assign sum_volume = 0 %}{% assign sum_capacity = 0 %}{% assign sum_change = 0 %}
-        {% for r in list %}{% assign sum_volume = sum_volume | plus: r.v %}{% assign sum_capacity = sum_capacity | plus: r.c %}{% assign sum_change = sum_change | plus: r.d %}{% endfor %}
+        {% for r in visible %}{% assign sum_volume = sum_volume | plus: r.v %}{% assign sum_capacity = sum_capacity | plus: r.c %}{% assign sum_change = sum_change | plus: r.d %}{% endfor %}
         <span class="label label--small">Conjunto{% if sum_capacity > 0 %} {{ sum_volume | times: 100.0 | divided_by: sum_capacity | round: 1 | replace: ".", "," }}%{% endif %} &middot; {{ sum_volume }} / {{ sum_capacity }} hm&sup3; &middot; {% if sum_change > 0 %}+{% endif %}{{ sum_change }} hm&sup3; en la semana</span>
       {% else %}
         <span class="label label--small">España {{ national.percent_text }}% &middot; {{ national.volume_text }} / {{ national.capacity_text }} hm&sup3; &middot; {{ national.trend_glyph }} {{ national.change_text }} hm&sup3; en la semana</span>
       {% endif %}
-        <span class="label label--small">línea = media 10 años</span>
+        <span class="label label--small">{% if hidden > 0 %}y {{ hidden }} más &middot; {% endif %}línea = media 10 años</span>
     </div>
     {% endunless %}
   </div>

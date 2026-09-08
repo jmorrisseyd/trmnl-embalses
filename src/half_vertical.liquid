@@ -67,8 +67,13 @@
 
 {% else %}
   {% if shown <= 4 %}{% assign bar_size = "progress-bar--base" %}{% else %}{% assign bar_size = "progress-bar--small" %}{% endif %}
+  {% comment %} Cap the list once, so what is totalled and counted below is
+     exactly what gets drawn. {% endcomment %}
+  {% assign visible = list | slice: 0, 6 %}
+  {% assign hidden = shown | minus: visible.size %}
+
   <div class="layout layout--col gap--distribute">
-    {% for r in list limit: 6 %}
+    {% for r in visible %}
       <div class="progress-bar {{ bar_size }}">
         <div class="content">
           <span class="title title--small">{{ r.n }}</span>
@@ -80,7 +85,7 @@
       </div>
     </div>
     {% endfor %}
-    <span class="label label--small">España {{ national.percent_text }}% &middot; {{ national.trend_glyph }} {{ national.change_text }} hm&sup3;</span>
+    <span class="label label--small">{% if hidden > 0 %}y {{ hidden }} más &middot; {% endif %}España {{ national.percent_text }}% &middot; {{ national.trend_glyph }} {{ national.change_text }} hm&sup3;</span>
 </div>
 {% endif %}
 
