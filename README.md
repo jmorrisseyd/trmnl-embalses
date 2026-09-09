@@ -111,6 +111,17 @@ tab of the same name: `full`, `half_horizontal`, `half_vertical`, `quadrant`.
 The templates deliberately have no `<div class="view">` wrapper — the editor
 supplies it, and TRMNL's docs say those classes are for standalone pages only.
 
+**Easier: open [`docs/paste.html`](docs/paste.html)**, which puts all six blocks
+— the polling URL, the form fields and the four templates — on one page with a
+copy button each, in this order. Open it straight off disk:
+
+```bash
+open docs/paste.html
+```
+
+The GitHub Action regenerates it whenever the templates change, so it cannot
+drift from `src/`.
+
 Back on the plugin settings page, click **Force Refresh** to pull the JSON
 straight away rather than waiting for the next poll. With a single polling URL
 TRMNL puts the response at the root, so the markup reads `{{ reservoirs }}` and

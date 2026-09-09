@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>trmnl-embalses · para pegar en TRMNL</title>
+<style>
+  :root {
+    --ink: #16130f; --dim: #6b6257; --line: #ddd5c8;
+    --bg: #faf7f2; --card: #fff; --accent: #b4472a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 32px 20px 80px; background: var(--bg); color: var(--ink);
+         font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  main { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .sub { color: var(--dim); margin: 0 0 28px; }
+  .step { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+           margin: 0 0 18px; overflow: hidden; }
+  .step__head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+                 padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  .step__n { width: 24px; height: 24px; flex: none; border-radius: 50%; background: var(--ink);
+              color: var(--card); font-size: 13px; font-weight: 600; text-align: center;
+              line-height: 24px; align-self: center; }
+  .step__where { font-weight: 600; }
+  .step__what { color: var(--dim); font-size: 14px; }
+  .step__file { margin-left: auto; color: var(--dim); font-size: 13px;
+                 font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .step__body { position: relative; }
+  pre { margin: 0; padding: 14px 16px; max-height: 260px; overflow: auto; background: #fbfaf8;
+         font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre;
+         -moz-tab-size: 2; tab-size: 2; }
+  .copy { position: absolute; top: 10px; right: 12px; padding: 7px 14px; cursor: pointer;
+           border: 1px solid var(--line); border-radius: 6px; background: var(--card);
+           color: var(--ink); font: 600 13px/1 inherit; font-family: inherit; }
+  .copy:hover { border-color: var(--ink); }
+  .copy[data-done="1"] { background: var(--ink); color: var(--card); border-color: var(--ink); }
+  .note { background: #fff8f0; border: 1px solid #f0dcc8; border-radius: 10px;
+           padding: 14px 16px; margin: 0 0 26px; font-size: 14.5px; }
+  .note b { color: var(--accent); }
+  footer { color: var(--dim); font-size: 13px; margin-top: 30px; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Para pegar en TRMNL</h1>
+  <p class="sub">Los seis bloques de la configuración del plugin, en orden. Generado
+     desde <code>src/</code> el 07/09/2026.</p>
+
+  <div class="note">
+    <b>Dos cosas que fallan si se hacen a ojo.</b> El cuadro «Form Fields» quiere
+    una lista YAML tal cual: no añadas una línea <code>custom_fields:</code> encima.
+    Y el marcado no lleva <code>&lt;div class="view"&gt;</code>: lo pone el editor.
+  </div>
+
+  <section class="step">
+    <div class="step__head">
+      <span class="step__n">1</span>
+      <span class="step__where">Polling URL</span>
+      <span class="step__what">Ajustes del plugin, con la estrategia en Polling.</span>
+      <span class="step__file">src/settings.yml</span>
+    </div>
+    <div class="step__body">
+      <button class="copy" data-for="block1">Copiar</button>
+      <pre id="block1">https://raw.githubusercontent.com/jmorrisseyd/trmnl-embalses/main/docs/trmnl.json</pre>
+    </div>
+  </section>
+  <section class="step">
+    <div class="step__head">
+      <span class="step__n">2</span>
+      <span class="step__where">Form Fields</span>
+      <span class="step__what">La lista YAML entera, sin nada encima.</span>
+      <span class="step__file">src/form_fields.yml</span>
+    </div>
+    <div class="step__body">
+      <button class="copy" data-for="block2">Copiar</button>
+      <pre id="block2">- keyname: reservoir_ids
+  name: Embalses
+  field_type: multi_string
+  description: Ids de embalses.net separados por comas, en el orden que quieras verlos. El id es el número de la URL, así que embalses.net/pantano-871-rules.html es 871.
+  help_text: Ejemplo:&amp;nbsp; 871,795,830
+  default: &quot;795,830,816,799&quot;
+- keyname: chart
+  name: Gráfico
+  field_type: select
+  description: Qué gráfico de embalses.net mostrar cuando hay un solo embalse seleccionado. Anual compara con los dos años anteriores y la media de 10 años; Histórico son medias mensuales desde 1960; Entradas son los caudales de entrada por mes. Gráficos de Embalses.net, CC BY 4.0.
+  help_text: Entradas no existe para todos los embalses.
+  options:
+    - Ninguno
+    - Anual
+    - &quot;Histórico&quot;
+    - Entradas
+  default: ninguno
+- keyname: heading
+  name: Título
+  field_type: string
+  description: Texto de la barra inferior.
+  default: Embalses
+- keyname: footer
+  name: Pie (con varios embalses)
+  field_type: select
+  description: Qué resumen mostrar bajo la lista.
+  options:
+    - España
+    - Conjunto
+    - Ninguno
+  default: espana</pre>
+    </div>
+  </section>
+  <section class="step">
+    <div class="step__head">
+      <span class="step__n">3</span>
+      <span class="step__where">Edit Markup → Full</span>
+      <span class="step__what">Pestaña del mismo nombre.</span>
+      <span class="step__file">src/full.liquid</span>
+    </div>
+    <div class="step__body">
+      <button class="copy" data-for="block3">Copiar</button>
+      <pre id="block3">{% assign heading = trmnl.plugin_settings.custom_fields_values.heading | default: title | default: &quot;Embalses&quot; %}
+{% comment %} TRMNL stores a select&#x27;s value parameterised (&quot;España&quot; -&gt; &quot;espana&quot;),
+   so match loosely on a downcased value rather than on the exact label. {% endcomment %}
+{% assign footer_mode = trmnl.plugin_settings.custom_fields_values.footer | default: &quot;espana&quot; | downcase %}
+{% comment %} The payload carries every reservoir embalses.net reports weekly, as
+   short keys holding plain numbers, because TRMNL caps a polling payload at
+   100 kB: n name, b basin, pv province, r river, v hm3 stored, c hm3 total,
+   d hm3 change this week, p % full, ly % same week last year, a % ten-year
+   average. The reservoir_ids form field picks which to show, in the order
+   given; an id is the number in the page URL, so /pantano-871-rules.html is
+   871. With the field empty we fall back to the ids in the payload. {% endcomment %}
+{% comment %} Which chart, if any. Matched on a fragment short enough to survive
+   either form TRMNL may hand over — &quot;Histórico&quot; keeps its accent, so &quot;histor&quot;
+   would not match it. &quot;si&quot; is what the earlier yes/no version of this field
+   stored, kept working so an older plugin does not go blank. {% endcomment %}
+{% assign chart_field = trmnl.plugin_settings.custom_fields_values.chart | default: &quot;ninguno&quot; | downcase %}
+{% assign chart_kind = &quot;&quot; %}
+{% if chart_field contains &quot;anual&quot; or chart_field == &quot;si&quot; or chart_field == &quot;sí&quot; %}{% assign chart_kind = &quot;anual&quot; %}
+{% elsif chart_field contains &quot;hist&quot; %}{% assign chart_kind = &quot;historico&quot; %}
+{% elsif chart_field contains &quot;entrada&quot; %}{% assign chart_kind = &quot;entradas&quot; %}{% endif %}
+{% assign selection = trmnl.plugin_settings.custom_fields_values.reservoir_ids | default: default_ids %}
+{% assign wanted = selection | split: &quot;,&quot; %}
+{% assign list = &quot;&quot; | split: &quot;,&quot; %}
+{% for token in wanted %}{% assign key = token | strip %}{% assign found = reservoirs | where: &quot;id&quot;, key %}{% assign list = list | concat: found %}{% endfor %}
+{% assign shown = list.size | default: 0 %}
+
+&lt;style&gt;
+  /* The one thing the framework has no component for: a marker on the track
+     showing where this week sits in the ten-year average. White with a black
+     outline so it stays visible over the fill and over the empty track. */
+  .emb-mark { position: absolute; top: 0; height: 100%; width: 3px; margin-left: -1px;
+              background: #fff; box-shadow: 0 0 0 1px #000; }
+  /* The framework centres what sits in a layout; these views are left aligned,
+     so every block takes the full width and lines up on the left edge. */
+  .layout &gt; *:not(img):not(.emb-crop) { width: 100%; }
+
+  /* embalses.net draws its chart in colour, and a straight greyscale leaves the
+     pale min/max band as heavy dithered hatching. Dimming before a contrast
+     boost drops that band and the gridlines to white while all four series stay
+     black — including the green 2024 line, which a brighter setting loses
+     entirely. Left at its own 560x250 so the 1px lines and small labels land on
+     whole pixels rather than being resampled. */
+  /* One or two reservoirs: a taller track, so the rows fill the screen instead
+     of floating in it. */
+  .emb-tall .track { height: 58px; }
+
+  /* The inflow chart is 1120x810: scaled to 760 wide it is 550 tall, and 407 of
+     those are the plot and its month labels — the rest is a statistics table
+     too small to read here, so the wrapper clips it. */
+  .emb-crop { flex: none; width: 760px; height: 407px; overflow: hidden; }
+  .emb-crop__img { display: block; width: 760px; height: 550px;
+                   filter: grayscale(1) brightness(0.8) contrast(4); }
+
+  .emb-chart { display: block; margin: 0 auto; flex: none; width: 560px; height: 250px;
+               filter: grayscale(1) brightness(0.8) contrast(4); }
+&lt;/style&gt;
+
+{% if shown == 0 %}
+  &lt;div class=&quot;layout layout--col layout--center&quot; style=&quot;text-align: center;&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Ningún embalse seleccionado&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;Pon los ids de embalses.net en el campo &quot;Embalses&quot; del plugin, separados por comas&lt;/div&gt;
+  &lt;/div&gt;
+
+{% elsif shown == 1 and chart_kind == &quot;entradas&quot; %}
+  {% assign r = list[0] %}
+  {% comment %} The inflow chart is 1120x810 and carries its own title and
+     credit, so it gets the whole screen: the wrapper scales it to width and
+     clips the statistics table off the bottom, keeping the month labels. {% endcomment %}
+  &lt;div class=&quot;layout layout--col layout--center&quot;&gt;
+    &lt;div class=&quot;emb-crop&quot;&gt;
+      &lt;img class=&quot;emb-crop__img&quot; src=&quot;https://www.embalses.net/graficos-entradas/embalse-{{ r.id }}-entradas.png&quot;
+           alt=&quot;Entradas mensuales del embalse {{ r.n }}&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+{% elsif shown == 1 and chart_kind != &quot;&quot; %}
+  {% assign r = list[0] %}
+  &lt;div class=&quot;layout layout--col gap--distribute&quot;&gt;
+    &lt;div class=&quot;flex flex--row flex--between flex--bottom&quot;&gt;
+      &lt;div class=&quot;flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;title title--large&quot;&gt;{{ r.n }}&lt;/span&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;{{ r.b }}{% if r.pv %} &amp;middot; {{ r.pv }}{% endif %} &amp;middot; {{ r.v }} / {{ r.c }} hm&amp;sup3;&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;span class=&quot;value value--large value--tnums&quot;&gt;{{ r.p | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%&lt;/span&gt;
+    &lt;/div&gt;
+
+    {% comment %} Annual shows this year against the last two and the ten-year
+       average — what the stat tiles say in the plain view, so those go.
+       Histórico is monthly means back to 1960. Both are 560x250.
+       Graphs by Embalses.net, CC BY 4.0. {% endcomment %}
+    {% if chart_kind == &quot;historico&quot; %}{% assign chart_file = &quot;-historico&quot; %}{% else %}{% assign chart_file = &quot;&quot; %}{% endif %}
+    &lt;img class=&quot;emb-chart&quot; src=&quot;https://www.embalses.net/cache/pantano-{{ r.id }}{{ chart_file }}.png&quot;
+         alt=&quot;Gráfico del embalse {{ r.n }}&quot; /&gt;
+
+    &lt;div class=&quot;flex flex--row flex--between flex--bottom&quot; style=&quot;border-top: 2px solid black; padding-top: 6px;&quot;&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;Semana {% if r.d &gt; 0 %}▲ +{% elsif r.d &lt; 0 %}▼ {% else %}▬ {% endif %}{{ r.d }} hm&amp;sup3; &amp;middot; España {{ national.percent_text }}%&lt;/span&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;gráfico: embalses.net CC BY 4.0&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+{% elsif shown == 1 %}
+  {% assign r = list[0] %}
+  &lt;div class=&quot;layout layout--col gap--distribute&quot;&gt;
+    &lt;div class=&quot;flex flex--col flex--left gap--none&quot;&gt;
+      &lt;span class=&quot;title title--xlarge&quot;&gt;{{ r.n }}&lt;/span&gt;
+      &lt;span class=&quot;description&quot;&gt;
+        {{ r.b }}{% if r.pv %} &amp;middot; {{ r.pv }}{% endif %}{% if r.r %} &amp;middot; Río {{ r.r }}{% endif %}
+      &lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;flex flex--row flex--left flex--bottom gap--large&quot;&gt;
+      &lt;span class=&quot;value value--xxlarge value--tnums&quot;&gt;{{ r.p | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%&lt;/span&gt;
+      &lt;div class=&quot;flex flex--col flex--left gap--none&quot; style=&quot;padding-bottom: 12px;&quot;&gt;
+        &lt;span class=&quot;value value--xsmall value--tnums&quot;&gt;{{ r.v }} hm&amp;sup3;&lt;/span&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;de {{ r.c }} hm&amp;sup3;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;progress-bar progress-bar--large&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;Llenado&lt;/span&gt;
+        {% if r.a %}&lt;span class=&quot;label label--small&quot;&gt;línea = media de 10 años ({{ r.a | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%)&lt;/span&gt;{% endif %}
+      &lt;/div&gt;
+      &lt;div class=&quot;track&quot;&gt;
+        &lt;div class=&quot;fill&quot; style=&quot;width: {{ r.p }}%&quot;&gt;&lt;/div&gt;
+        {% if r.a %}&lt;div class=&quot;emb-mark&quot; style=&quot;left: {{ r.a }}%&quot;&gt;&lt;/div&gt;{% endif %}
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;grid grid--cols-4&quot;&gt;
+      &lt;div class=&quot;col flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;Semana&lt;/span&gt;
+        &lt;span class=&quot;value value--small value--tnums&quot;&gt;{% if r.d &gt; 0 %}▲ +{% elsif r.d &lt; 0 %}▼ {% else %}▬ {% endif %}{{ r.d }}&lt;/span&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;hm&amp;sup3;&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;col flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;{{ last_year_label | default: &quot;Año pasado&quot; }}&lt;/span&gt;
+        &lt;span class=&quot;value value--small value--tnums&quot;&gt;{% if r.ly %}{{ r.ly | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%{% else %}—{% endif %}&lt;/span&gt;
+        {% if r.ly %}{% assign delta = r.p | minus: r.ly | round: 1 %}&lt;span class=&quot;label label--small&quot;&gt;{% if delta &gt; 0 %}+{% endif %}{{ delta | replace: &quot;.&quot;, &quot;,&quot; }} puntos&lt;/span&gt;{% endif %}
+      &lt;/div&gt;
+      &lt;div class=&quot;col flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;Media 10 años&lt;/span&gt;
+        &lt;span class=&quot;value value--small value--tnums&quot;&gt;{% if r.a %}{{ r.a | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%{% else %}—{% endif %}&lt;/span&gt;
+        {% if r.a %}{% assign delta = r.p | minus: r.a | round: 1 %}&lt;span class=&quot;label label--small&quot;&gt;{% if delta &gt; 0 %}+{% endif %}{{ delta | replace: &quot;.&quot;, &quot;,&quot; }} puntos&lt;/span&gt;{% endif %}
+      &lt;/div&gt;
+      &lt;div class=&quot;col flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;España&lt;/span&gt;
+        &lt;span class=&quot;value value--small value--tnums&quot;&gt;{{ national.percent_text }}%&lt;/span&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;{{ national.trend_glyph }} {{ national.change_text }} hm&amp;sup3;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+{% else %}
+  {% comment %} Free space has to go somewhere, and on a 480px screen two rows
+     leave a lot of it. Rather than distribute it as gaps, the rows themselves
+     grow: fewer reservoirs means a taller track and bigger type, which reads
+     from further away. {% endcomment %}
+  {% if shown &lt;= 2 %}{% assign bar_size = &quot;progress-bar--large emb-tall&quot; %}{% assign name_size = &quot;title title--large&quot; %}{% assign pct_size = &quot;value value--large&quot; %}
+  {% elsif shown &lt;= 3 %}{% assign bar_size = &quot;progress-bar--large&quot; %}{% assign name_size = &quot;title&quot; %}{% assign pct_size = &quot;value value--small&quot; %}
+  {% elsif shown &lt;= 5 %}{% assign bar_size = &quot;progress-bar--base&quot; %}{% assign name_size = &quot;title title--small&quot; %}{% assign pct_size = &quot;value value--xsmall&quot; %}
+  {% else %}{% assign bar_size = &quot;progress-bar--small&quot; %}{% assign name_size = &quot;title title--small&quot; %}{% assign pct_size = &quot;value value--xxsmall&quot; %}{% endif %}
+
+  {% comment %} Cap the list once, so what is totalled and counted below is
+     exactly what gets drawn. {% endcomment %}
+  {% assign visible = list | slice: 0, 7 %}
+  {% assign hidden = shown | minus: visible.size %}
+
+  &lt;div class=&quot;layout layout--col gap--distribute&quot;&gt;
+    {% for r in visible %}
+      &lt;div class=&quot;progress-bar {{ bar_size }}&quot;&gt;
+        &lt;div class=&quot;content&quot;&gt;
+          &lt;span class=&quot;{{ name_size }}&quot;&gt;{{ r.n }}&lt;/span&gt;
+          &lt;span class=&quot;label label--small&quot;&gt;{{ r.v }} / {{ r.c }} hm&amp;sup3; &amp;middot; {% if r.d &gt; 0 %}▲ +{% elsif r.d &lt; 0 %}▼ {% else %}▬ {% endif %}{{ r.d }} sem.&lt;/span&gt;
+          &lt;span class=&quot;{{ pct_size }} value--tnums&quot;&gt;{{ r.p | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;track&quot;&gt;
+          &lt;div class=&quot;fill&quot; style=&quot;width: {{ r.p }}%&quot;&gt;&lt;/div&gt;
+          {% if r.a %}&lt;div class=&quot;emb-mark&quot; style=&quot;left: {{ r.a }}%&quot;&gt;&lt;/div&gt;{% endif %}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    {% endfor %}
+
+    {% unless footer_mode contains &quot;ningun&quot; %}
+      &lt;div class=&quot;flex flex--row flex--between flex--bottom&quot; style=&quot;border-top: 2px solid black; padding-top: 6px;&quot;&gt;
+      {% if footer_mode contains &quot;conjunto&quot; %}
+        {% comment %} What &quot;the total&quot; covers depends on which ids were chosen, so
+           it is added up here rather than in the payload. {% endcomment %}
+        {% assign sum_volume = 0 %}{% assign sum_capacity = 0 %}{% assign sum_change = 0 %}
+        {% for r in visible %}{% assign sum_volume = sum_volume | plus: r.v %}{% assign sum_capacity = sum_capacity | plus: r.c %}{% assign sum_change = sum_change | plus: r.d %}{% endfor %}
+        &lt;span class=&quot;label label--small&quot;&gt;Conjunto{% if sum_capacity &gt; 0 %} {{ sum_volume | times: 100.0 | divided_by: sum_capacity | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%{% endif %} &amp;middot; {{ sum_volume }} / {{ sum_capacity }} hm&amp;sup3; &amp;middot; {% if sum_change &gt; 0 %}+{% endif %}{{ sum_change }} hm&amp;sup3; en la semana&lt;/span&gt;
+      {% else %}
+        &lt;span class=&quot;label label--small&quot;&gt;España {{ national.percent_text }}% &amp;middot; {{ national.volume_text }} / {{ national.capacity_text }} hm&amp;sup3; &amp;middot; {{ national.trend_glyph }} {{ national.change_text }} hm&amp;sup3; en la semana&lt;/span&gt;
+      {% endif %}
+        &lt;span class=&quot;label label--small&quot;&gt;{% if hidden &gt; 0 %}y {{ hidden }} más &amp;middot; {% endif %}línea = media 10 años&lt;/span&gt;
+    &lt;/div&gt;
+    {% endunless %}
+  &lt;/div&gt;
+{% endif %}
+
+&lt;div class=&quot;title_bar&quot;&gt;
+  &lt;span class=&quot;title&quot;&gt;{{ heading }}&lt;/span&gt;
+  &lt;span class=&quot;instance&quot;&gt;{{ as_of_label }}&lt;/span&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </section>
+  <section class="step">
+    <div class="step__head">
+      <span class="step__n">4</span>
+      <span class="step__where">Edit Markup → Half Horizontal</span>
+      <span class="step__what">Pestaña del mismo nombre.</span>
+      <span class="step__file">src/half_horizontal.liquid</span>
+    </div>
+    <div class="step__body">
+      <button class="copy" data-for="block4">Copiar</button>
+      <pre id="block4">{% assign heading = trmnl.plugin_settings.custom_fields_values.heading | default: title | default: &quot;Embalses&quot; %}
+{% comment %} The payload carries every reservoir embalses.net reports weekly, as
+   short keys holding plain numbers, because TRMNL caps a polling payload at
+   100 kB: n name, b basin, pv province, r river, v hm3 stored, c hm3 total,
+   d hm3 change this week, p % full, ly % same week last year, a % ten-year
+   average. The reservoir_ids form field picks which to show, in the order
+   given; an id is the number in the page URL, so /pantano-871-rules.html is
+   871. With the field empty we fall back to the ids in the payload. {% endcomment %}
+{% assign selection = trmnl.plugin_settings.custom_fields_values.reservoir_ids | default: default_ids %}
+{% assign wanted = selection | split: &quot;,&quot; %}
+{% assign list = &quot;&quot; | split: &quot;,&quot; %}
+{% for token in wanted %}{% assign key = token | strip %}{% assign found = reservoirs | where: &quot;id&quot;, key %}{% assign list = list | concat: found %}{% endfor %}
+{% assign shown = list.size | default: 0 %}
+
+&lt;style&gt;
+  .emb-mark { position: absolute; top: 0; height: 100%; width: 3px; margin-left: -1px;
+              background: #fff; box-shadow: 0 0 0 1px #000; }
+  /* The framework centres what sits in a layout; these views are left aligned,
+     so every block takes the full width and lines up on the left edge. */
+  .layout &gt; * { width: 100%; }
+&lt;/style&gt;
+
+{% if shown == 0 %}
+  &lt;div class=&quot;layout layout--col layout--center&quot; style=&quot;text-align: center;&quot;&gt;
+    &lt;span class=&quot;title title--small&quot;&gt;Revisa los ids del plugin&lt;/span&gt;
+&lt;/div&gt;
+
+{% elsif shown == 1 %}
+  {% assign r = list[0] %}
+  &lt;div class=&quot;layout layout--col gap--distribute&quot;&gt;
+    &lt;div class=&quot;flex flex--row flex--between flex--bottom&quot;&gt;
+      &lt;div class=&quot;flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;title&quot;&gt;{{ r.n }}&lt;/span&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;{{ r.v }} / {{ r.c }} hm&amp;sup3; &amp;middot; {{ r.b }}&lt;/span&gt;
+    &lt;/div&gt;
+      &lt;span class=&quot;value value--large value--tnums&quot;&gt;{{ r.p | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%&lt;/span&gt;
+  &lt;/div&gt;
+
+    &lt;div class=&quot;progress-bar progress-bar--base&quot;&gt;
+      &lt;div class=&quot;track&quot;&gt;
+        &lt;div class=&quot;fill&quot; style=&quot;width: {{ r.p }}%&quot;&gt;&lt;/div&gt;
+        {% if r.a %}&lt;div class=&quot;emb-mark&quot; style=&quot;left: {{ r.a }}%&quot;&gt;&lt;/div&gt;{% endif %}
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+    &lt;div class=&quot;flex flex--row flex--between&quot;&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;Semana {% if r.d &gt; 0 %}▲ +{% elsif r.d &lt; 0 %}▼ {% else %}▬ {% endif %}{{ r.d }} hm&amp;sup3;&lt;/span&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;{{ last_year_label | default: &quot;Año pasado&quot; }} {% if r.ly %}{{ r.ly | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%{% else %}—{% endif %}&lt;/span&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;Media 10 años {% if r.a %}{{ r.a | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%{% else %}—{% endif %}&lt;/span&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;España {{ national.percent_text }}%&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+{% else %}
+  {% comment %} Cap the list once, so what is totalled and counted below is
+     exactly what gets drawn. {% endcomment %}
+  {% assign visible = list | slice: 0, 3 %}
+  {% assign hidden = shown | minus: visible.size %}
+
+  &lt;div class=&quot;layout layout--col gap--distribute&quot;&gt;
+    {% for r in visible %}
+      &lt;div class=&quot;progress-bar progress-bar--small&quot;&gt;
+        &lt;div class=&quot;content&quot;&gt;
+          &lt;span class=&quot;title title--small&quot;&gt;{{ r.n }}&lt;/span&gt;
+          &lt;span class=&quot;label label--small&quot;&gt;{{ r.v }} / {{ r.c }} hm&amp;sup3;&lt;/span&gt;
+          &lt;span class=&quot;value value--xxsmall value--tnums&quot;&gt;{{ r.p | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%&lt;/span&gt;
+      &lt;/div&gt;
+        &lt;div class=&quot;track&quot;&gt;
+          &lt;div class=&quot;fill&quot; style=&quot;width: {{ r.p }}%&quot;&gt;&lt;/div&gt;
+          {% if r.a %}&lt;div class=&quot;emb-mark&quot; style=&quot;left: {{ r.a }}%&quot;&gt;&lt;/div&gt;{% endif %}
+      &lt;/div&gt;
+    &lt;/div&gt;
+    {% endfor %}
+    {% if hidden &gt; 0 %}
+      &lt;span class=&quot;label label--small&quot;&gt;y {{ hidden }} embalse(s) más&lt;/span&gt;
+    {% endif %}
+&lt;/div&gt;
+{% endif %}
+
+&lt;div class=&quot;title_bar title_bar--small&quot;&gt;
+  &lt;span class=&quot;title&quot;&gt;{{ heading }}&lt;/span&gt;
+  &lt;span class=&quot;instance&quot;&gt;{{ as_of_label }}&lt;/span&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </section>
+  <section class="step">
+    <div class="step__head">
+      <span class="step__n">5</span>
+      <span class="step__where">Edit Markup → Half Vertical</span>
+      <span class="step__what">Pestaña del mismo nombre.</span>
+      <span class="step__file">src/half_vertical.liquid</span>
+    </div>
+    <div class="step__body">
+      <button class="copy" data-for="block5">Copiar</button>
+      <pre id="block5">{% assign heading = trmnl.plugin_settings.custom_fields_values.heading | default: title | default: &quot;Embalses&quot; %}
+{% comment %} The payload carries every reservoir embalses.net reports weekly, as
+   short keys holding plain numbers, because TRMNL caps a polling payload at
+   100 kB: n name, b basin, pv province, r river, v hm3 stored, c hm3 total,
+   d hm3 change this week, p % full, ly % same week last year, a % ten-year
+   average. The reservoir_ids form field picks which to show, in the order
+   given; an id is the number in the page URL, so /pantano-871-rules.html is
+   871. With the field empty we fall back to the ids in the payload. {% endcomment %}
+{% assign selection = trmnl.plugin_settings.custom_fields_values.reservoir_ids | default: default_ids %}
+{% assign wanted = selection | split: &quot;,&quot; %}
+{% assign list = &quot;&quot; | split: &quot;,&quot; %}
+{% for token in wanted %}{% assign key = token | strip %}{% assign found = reservoirs | where: &quot;id&quot;, key %}{% assign list = list | concat: found %}{% endfor %}
+{% assign shown = list.size | default: 0 %}
+
+&lt;style&gt;
+  .emb-mark { position: absolute; top: 0; height: 100%; width: 3px; margin-left: -1px;
+              background: #fff; box-shadow: 0 0 0 1px #000; }
+  /* The framework centres what sits in a layout; these views are left aligned,
+     so every block takes the full width and lines up on the left edge. */
+  .layout &gt; * { width: 100%; }
+&lt;/style&gt;
+
+{% if shown == 0 %}
+  &lt;div class=&quot;layout layout--col layout--center&quot; style=&quot;text-align: center;&quot;&gt;
+    &lt;span class=&quot;title title--small&quot;&gt;Revisa los ids del plugin&lt;/span&gt;
+&lt;/div&gt;
+
+{% elsif shown == 1 %}
+  {% assign r = list[0] %}
+  &lt;div class=&quot;layout layout--col gap--distribute&quot;&gt;
+    &lt;div class=&quot;flex flex--col flex--left gap--none&quot;&gt;
+      &lt;span class=&quot;title title--large&quot;&gt;{{ r.n }}&lt;/span&gt;
+      &lt;span class=&quot;description&quot;&gt;{{ r.b }}{% if r.pv %} &amp;middot; {{ r.pv }}{% endif %}&lt;/span&gt;
+  &lt;/div&gt;
+
+    &lt;div class=&quot;flex flex--col flex--left gap--none&quot;&gt;
+      &lt;span class=&quot;value value--xlarge value--tnums&quot;&gt;{{ r.p | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%&lt;/span&gt;
+      &lt;span class=&quot;label label--small&quot;&gt;{{ r.v }} de {{ r.c }} hm&amp;sup3;&lt;/span&gt;
+  &lt;/div&gt;
+
+    &lt;div class=&quot;progress-bar progress-bar--large&quot;&gt;
+      &lt;div class=&quot;track&quot;&gt;
+        &lt;div class=&quot;fill&quot; style=&quot;width: {{ r.p }}%&quot;&gt;&lt;/div&gt;
+        {% if r.a %}&lt;div class=&quot;emb-mark&quot; style=&quot;left: {{ r.a }}%&quot;&gt;&lt;/div&gt;{% endif %}
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+    &lt;div class=&quot;grid grid--cols-2&quot;&gt;
+      &lt;div class=&quot;col flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;Semana&lt;/span&gt;
+        &lt;span class=&quot;value value--xsmall value--tnums&quot;&gt;{% if r.d &gt; 0 %}▲ +{% elsif r.d &lt; 0 %}▼ {% else %}▬ {% endif %}{{ r.d }} hm&amp;sup3;&lt;/span&gt;
+    &lt;/div&gt;
+      &lt;div class=&quot;col flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;{{ last_year_label | default: &quot;Año pasado&quot; }}&lt;/span&gt;
+        &lt;span class=&quot;value value--xsmall value--tnums&quot;&gt;{% if r.ly %}{{ r.ly | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%{% else %}—{% endif %}&lt;/span&gt;
+    &lt;/div&gt;
+      &lt;div class=&quot;col flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;Media 10 años&lt;/span&gt;
+        &lt;span class=&quot;value value--xsmall value--tnums&quot;&gt;{% if r.a %}{{ r.a | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%{% else %}—{% endif %}&lt;/span&gt;
+    &lt;/div&gt;
+      &lt;div class=&quot;col flex flex--col flex--left gap--none&quot;&gt;
+        &lt;span class=&quot;label label--small&quot;&gt;España&lt;/span&gt;
+        &lt;span class=&quot;value value--xsmall value--tnums&quot;&gt;{{ national.percent_text }}%&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+{% else %}
+  {% if shown &lt;= 4 %}{% assign bar_size = &quot;progress-bar--base&quot; %}{% else %}{% assign bar_size = &quot;progress-bar--small&quot; %}{% endif %}
+  {% comment %} Cap the list once, so what is totalled and counted below is
+     exactly what gets drawn. {% endcomment %}
+  {% assign visible = list | slice: 0, 6 %}
+  {% assign hidden = shown | minus: visible.size %}
+
+  &lt;div class=&quot;layout layout--col gap--distribute&quot;&gt;
+    {% for r in visible %}
+      &lt;div class=&quot;progress-bar {{ bar_size }}&quot;&gt;
+        &lt;div class=&quot;content&quot;&gt;
+          &lt;span class=&quot;title title--small&quot;&gt;{{ r.n }}&lt;/span&gt;
+          &lt;span class=&quot;value value--xxsmall value--tnums&quot;&gt;{{ r.p | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%&lt;/span&gt;
+      &lt;/div&gt;
+        &lt;div class=&quot;track&quot;&gt;
+          &lt;div class=&quot;fill&quot; style=&quot;width: {{ r.p }}%&quot;&gt;&lt;/div&gt;
+          {% if r.a %}&lt;div class=&quot;emb-mark&quot; style=&quot;left: {{ r.a }}%&quot;&gt;&lt;/div&gt;{% endif %}
+      &lt;/div&gt;
+    &lt;/div&gt;
+    {% endfor %}
+    &lt;span class=&quot;label label--small&quot;&gt;{% if hidden &gt; 0 %}y {{ hidden }} más &amp;middot; {% endif %}España {{ national.percent_text }}% &amp;middot; {{ national.trend_glyph }} {{ national.change_text }} hm&amp;sup3;&lt;/span&gt;
+&lt;/div&gt;
+{% endif %}
+
+&lt;div class=&quot;title_bar&quot;&gt;
+  &lt;span class=&quot;title&quot;&gt;{{ heading }}&lt;/span&gt;
+  &lt;span class=&quot;instance&quot;&gt;{{ as_of_label }}&lt;/span&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </section>
+  <section class="step">
+    <div class="step__head">
+      <span class="step__n">6</span>
+      <span class="step__where">Edit Markup → Quadrant</span>
+      <span class="step__what">Pestaña del mismo nombre.</span>
+      <span class="step__file">src/quadrant.liquid</span>
+    </div>
+    <div class="step__body">
+      <button class="copy" data-for="block6">Copiar</button>
+      <pre id="block6">{% assign heading = trmnl.plugin_settings.custom_fields_values.heading | default: title | default: &quot;Embalses&quot; %}
+{% comment %} The payload carries every reservoir embalses.net reports weekly, as
+   short keys holding plain numbers, because TRMNL caps a polling payload at
+   100 kB: n name, b basin, pv province, r river, v hm3 stored, c hm3 total,
+   d hm3 change this week, p % full, ly % same week last year, a % ten-year
+   average. The reservoir_ids form field picks which to show, in the order
+   given; an id is the number in the page URL, so /pantano-871-rules.html is
+   871. With the field empty we fall back to the ids in the payload. {% endcomment %}
+{% assign selection = trmnl.plugin_settings.custom_fields_values.reservoir_ids | default: default_ids %}
+{% assign wanted = selection | split: &quot;,&quot; %}
+{% assign list = &quot;&quot; | split: &quot;,&quot; %}
+{% for token in wanted %}{% assign key = token | strip %}{% assign found = reservoirs | where: &quot;id&quot;, key %}{% assign list = list | concat: found %}{% endfor %}
+{% assign shown = list.size | default: 0 %}
+
+&lt;style&gt;
+  .emb-mark { position: absolute; top: 0; height: 100%; width: 3px; margin-left: -1px;
+              background: #fff; box-shadow: 0 0 0 1px #000; }
+  /* The framework centres what sits in a layout; these views are left aligned,
+     so every block takes the full width and lines up on the left edge. */
+  .layout &gt; * { width: 100%; }
+&lt;/style&gt;
+
+{% if shown == 0 %}
+  &lt;div class=&quot;layout layout--col layout--center&quot; style=&quot;text-align: center;&quot;&gt;
+    &lt;span class=&quot;title title--small&quot;&gt;Sin ids&lt;/span&gt;
+&lt;/div&gt;
+
+{% elsif shown == 1 %}
+  {% assign r = list[0] %}
+  &lt;div class=&quot;layout layout--col gap--distribute&quot;&gt;
+    &lt;span class=&quot;title title--small&quot;&gt;{{ r.n }}&lt;/span&gt;
+    &lt;div class=&quot;flex flex--row flex--left flex--bottom gap--small&quot;&gt;
+      &lt;span class=&quot;value value--large value--tnums&quot;&gt;{{ r.p | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%&lt;/span&gt;
+      &lt;span class=&quot;label label--small&quot; style=&quot;padding-bottom: 8px;&quot;&gt;{% if r.d &gt; 0 %}▲ +{% elsif r.d &lt; 0 %}▼ {% else %}▬ {% endif %}{{ r.d }} hm&amp;sup3;&lt;/span&gt;
+  &lt;/div&gt;
+    &lt;div class=&quot;progress-bar progress-bar--small&quot;&gt;
+      &lt;div class=&quot;track&quot;&gt;
+        &lt;div class=&quot;fill&quot; style=&quot;width: {{ r.p }}%&quot;&gt;&lt;/div&gt;
+        {% if r.a %}&lt;div class=&quot;emb-mark&quot; style=&quot;left: {{ r.a }}%&quot;&gt;&lt;/div&gt;{% endif %}
+    &lt;/div&gt;
+  &lt;/div&gt;
+    &lt;span class=&quot;label label--small&quot;&gt;{{ r.v }} / {{ r.c }} hm&amp;sup3;&lt;/span&gt;
+&lt;/div&gt;
+
+{% else %}
+  {% comment %} Cap the list once, so what is totalled and counted below is
+     exactly what gets drawn. {% endcomment %}
+  {% assign visible = list | slice: 0, 3 %}
+  {% assign hidden = shown | minus: visible.size %}
+
+  &lt;div class=&quot;layout layout--col gap--distribute&quot;&gt;
+    {% for r in visible %}
+      &lt;div class=&quot;progress-bar progress-bar--xsmall&quot;&gt;
+        &lt;div class=&quot;content&quot;&gt;
+          &lt;span class=&quot;title title--small&quot;&gt;{{ r.n }}&lt;/span&gt;
+          &lt;span class=&quot;value value--xxsmall value--tnums&quot;&gt;{{ r.p | round: 1 | replace: &quot;.&quot;, &quot;,&quot; }}%&lt;/span&gt;
+      &lt;/div&gt;
+        &lt;div class=&quot;track&quot;&gt;
+          &lt;div class=&quot;fill&quot; style=&quot;width: {{ r.p }}%&quot;&gt;&lt;/div&gt;
+          {% if r.a %}&lt;div class=&quot;emb-mark&quot; style=&quot;left: {{ r.a }}%&quot;&gt;&lt;/div&gt;{% endif %}
+      &lt;/div&gt;
+    &lt;/div&gt;
+    {% endfor %}
+    {% if hidden &gt; 0 %}&lt;span class=&quot;label label--small&quot;&gt;y {{ hidden }} más&lt;/span&gt;{% endif %}
+&lt;/div&gt;
+{% endif %}
+
+&lt;div class=&quot;title_bar title_bar--small&quot;&gt;
+  &lt;span class=&quot;title&quot;&gt;{{ heading }}&lt;/span&gt;
+  &lt;span class=&quot;instance&quot;&gt;{{ as_of_label }}&lt;/span&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </section>
+
+
+  <footer>
+    Datos y gráficos de <a href="https://www.embalses.net">Embalses.net</a> (CC BY 4.0).
+    Repositorio: <a href="https://github.com/jmorrisseyd/trmnl-embalses">jmorrisseyd/trmnl-embalses</a>.
+  </footer>
+</main>
+
+<script>
+  // navigator.clipboard needs a secure context, which file:// is not, and it can
+  // reject even where it exists — Safari and automation both do. So try it, and
+  // fall back to a hidden textarea whether it is missing OR refuses.
+  function copyText(text) {
+    var modern = (navigator.clipboard && window.isSecureContext)
+      ? navigator.clipboard.writeText(text)
+      : Promise.reject(new Error('no clipboard api'));
+    return modern.catch(function () { return legacyCopy(text); });
+  }
+
+  function legacyCopy(text) {
+    return new Promise(function (resolve, reject) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.top = '-1000px';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      ok ? resolve() : reject(new Error('copy refused'));
+    });
+  }
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var source = document.getElementById(button.dataset.for);
+    copyText(source.textContent).then(function () {
+      button.textContent = 'Copiado';
+      button.dataset.done = '1';
+      setTimeout(function () {
+        button.textContent = 'Copiar';
+        button.dataset.done = '0';
+      }, 1600);
+    }).catch(function () {
+      button.textContent = 'Selecciona y copia';
+    });
+  });
+</script>
+</body>
+</html>

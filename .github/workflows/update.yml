@@ -27,14 +27,17 @@ jobs:
       - name: Scrape embalses.net
         run: python3 scripts/embalses.py build
 
+      - name: Rebuild the copy-and-paste page
+        run: python3 scripts/paste_page.py
+
       - name: Commit the new payload
         run: |
-          if git diff --quiet -- docs/trmnl.json data/detail.json; then
+          if git diff --quiet -- docs/trmnl.json data/detail.json docs/paste.html; then
             echo "No change since the last run."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/trmnl.json data/detail.json
+          git add docs/trmnl.json data/detail.json docs/paste.html
           git commit -m "Update reservoir data ($(date -u +%Y-%m-%d))"
           git push
