@@ -22,11 +22,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_REPO = "jmorrisseyd/trmnl-embalses"
 
 PAGE = """<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>trmnl-embalses · para pegar en TRMNL</title>
+<title>trmnl-embalses · paste into TRMNL</title>
 <style>
   :root {{
     --ink: #16130f; --dim: #6b6257; --line: #ddd5c8;
@@ -53,7 +53,9 @@ PAGE = """<!DOCTYPE html>
   pre {{ margin: 0; padding: 14px 16px; max-height: 260px; overflow: auto; background: #fbfaf8;
          font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre;
          -moz-tab-size: 2; tab-size: 2; }}
-  .copy {{ position: absolute; top: 10px; right: 12px; padding: 7px 14px; cursor: pointer;
+  /* In the header, not floating over the code: a long first line would run
+     underneath it, and scrolling the block would drag more text under it. */
+  .copy {{ margin-left: 12px; padding: 7px 14px; cursor: pointer; align-self: center;
            border: 1px solid var(--line); border-radius: 6px; background: var(--card);
            color: var(--ink); font: 600 13px/1 inherit; font-family: inherit; }}
   .copy:hover {{ border-color: var(--ink); }}
@@ -62,26 +64,30 @@ PAGE = """<!DOCTYPE html>
            padding: 14px 16px; margin: 0 0 26px; font-size: 14.5px; }}
   .note b {{ color: var(--accent); }}
   footer {{ color: var(--dim); font-size: 13px; margin-top: 30px; }}
+  @media (max-width: 700px) {{
+    .step__file {{ margin-left: 0; }}
+    .copy {{ margin-left: auto; }}
+  }}
   a {{ color: var(--accent); }}
 </style>
 </head>
 <body>
 <main>
-  <h1>Para pegar en TRMNL</h1>
-  <p class="sub">Los seis bloques de la configuración del plugin, en orden. Generado
-     desde <code>src/</code> el {generated}.</p>
+  <h1>Paste into TRMNL</h1>
+  <p class="sub">The six blocks the plugin settings ask for, in order. Built from
+     <code>src/</code>; figures as of {generated}.</p>
 
   <div class="note">
-    <b>Dos cosas que fallan si se hacen a ojo.</b> El cuadro «Form Fields» quiere
-    una lista YAML tal cual: no añadas una línea <code>custom_fields:</code> encima.
-    Y el marcado no lleva <code>&lt;div class="view"&gt;</code>: lo pone el editor.
+    <b>Two things that go wrong when done by eye.</b> The Form Fields box wants a
+    bare YAML list: do not add a <code>custom_fields:</code> line above it. And the
+    markup carries no <code>&lt;div class="view"&gt;</code> — the editor adds that.
   </div>
 
 {steps}
 
   <footer>
-    Datos y gráficos de <a href="https://www.embalses.net">Embalses.net</a> (CC BY 4.0).
-    Repositorio: <a href="https://github.com/{repo}">{repo}</a>.
+    Data and graphs from <a href="https://www.embalses.net">Embalses.net</a> (CC BY 4.0).
+    Repository: <a href="https://github.com/{repo}">{repo}</a>.
   </footer>
 </main>
 
@@ -117,14 +123,14 @@ PAGE = """<!DOCTYPE html>
     if (!button) return;
     var source = document.getElementById(button.dataset.for);
     copyText(source.textContent).then(function () {{
-      button.textContent = 'Copiado';
+      button.textContent = 'Copied';
       button.dataset.done = '1';
       setTimeout(function () {{
-        button.textContent = 'Copiar';
+        button.textContent = 'Copy';
         button.dataset.done = '0';
       }}, 1600);
     }}).catch(function () {{
-      button.textContent = 'Selecciona y copia';
+      button.textContent = 'Select and copy';
     }});
   }});
 </script>
@@ -138,9 +144,9 @@ STEP = """  <section class="step">
       <span class="step__where">{where}</span>
       <span class="step__what">{what}</span>
       <span class="step__file">{source}</span>
+      <button class="copy" data-for="{key}">Copy</button>
     </div>
     <div class="step__body">
-      <button class="copy" data-for="{key}">Copiar</button>
       <pre id="{key}">{body}</pre>
     </div>
   </section>
@@ -170,14 +176,14 @@ def main():
         pass
 
     blocks = [
-        ("Polling URL", "Ajustes del plugin, con la estrategia en Polling.",
+        ("Polling URL", "Plugin settings, with the strategy set to Polling.",
          "src/settings.yml", polling_url(repo)),
-        ("Form Fields", "La lista YAML entera, sin nada encima.",
+        ("Form Fields", "The whole YAML list, with nothing above it.",
          "src/form_fields.yml", read("src/form_fields.yml")),
     ]
     for view, label in (("full", "Full"), ("half_horizontal", "Half Horizontal"),
                         ("half_vertical", "Half Vertical"), ("quadrant", "Quadrant")):
-        blocks.append((f"Edit Markup → {label}", "Pestaña del mismo nombre.",
+        blocks.append((f"Edit Markup → {label}", "The tab of the same name.",
                        f"src/{view}.liquid", read(f"src/{view}.liquid")))
 
     steps = "".join(
