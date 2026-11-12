@@ -416,13 +416,21 @@ def refresh_detail(cache, index, as_of, path, cache_seconds=0, force=False):
     refetched when the site's date changes, and otherwise only the reservoirs
     missing from the cache (new ones, or a run that was cut short).
     """
-    stale = force or cache.get("as_of") != as_of
-    wanted = [e for e in index if stale or str(e["id"]) not in cache["reservoirs"]]
+    # Each entry remembers the date it was fetched for. Selecting on that rather
+    # than on one flag for the whole cache means a page that failed — or was
+    # never fetched — is picked up again next run, instead of keeping last
+    # week's figures behind a cache that has already declared itself current.
+    def outdated(entry):
+        stored = cache["reservoirs"].get(str(entry["id"]), {})
+        return force or stored.get("fetched_for") != as_of
+
+    wanted = [e for e in index if outdated(e)]
     if not wanted:
         return 0
 
+    fresh = len(wanted) == len(index)
     print(f"Refreshing detail for {len(wanted)} reservoir(s)"
-          f"{' (new week)' if stale else ''}...", file=sys.stderr)
+          f"{' (new week)' if fresh else ''}...", file=sys.stderr)
     done = 0
     for entry in wanted:
         url = reservoir_url(entry["id"], entry["slug"])
@@ -432,9 +440,9 @@ def refresh_detail(cache, index, as_of, path, cache_seconds=0, force=False):
             # One unreadable page should not cost us the other 400.
             print(f"  skipped {entry['name']} ({entry['id']}): {error}", file=sys.stderr)
             continue
-        cache["reservoirs"][str(entry["id"])] = {
-            key: record[key] for key in DETAIL_FIELDS if record.get(key) is not None
-        }
+        stored = {key: record[key] for key in DETAIL_FIELDS if record.get(key) is not None}
+        stored["fetched_for"] = as_of
+        cache["reservoirs"][str(entry["id"])] = stored
         done += 1
         # Save as we go: a run that is cut short keeps its work, and the next one
         # picks up only what is still missing.
@@ -455,6 +463,15 @@ def command_build(args):
     home = fetch(BASE + "/", cache_seconds=cache_seconds)
     national = decorate(parse_national(home), locale)
     as_of = national.get("as_of")
+    if not as_of:
+        # Everything downstream keys off this date. Without it the detail cache
+        # can never match, so every run would read all ~375 reservoir pages
+        # instead of 16 — against someone else's site, and quietly, because the
+        # run would still succeed. Stop instead.
+        print("Could not read the data date from the home page; stopping rather "
+              "than refetching every reservoir. The page layout has probably "
+              "changed — check parse_stats.", file=sys.stderr)
+        return 1
 
     # The basin tables report weekly figures for about 374 of the ~990 reservoirs
     # on the site; the rest are small enough that only their own page carries a

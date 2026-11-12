@@ -159,12 +159,6 @@
      so every block takes the full width and lines up on the left edge. */
   .layout &gt; *:not(img):not(.emb-crop) { width: 100%; }
 
-  /* embalses.net draws its chart in colour, and a straight greyscale leaves the
-     pale min/max band as heavy dithered hatching. Dimming before a contrast
-     boost drops that band and the gridlines to white while all four series stay
-     black — including the green 2024 line, which a brighter setting loses
-     entirely. Left at its own 560x250 so the 1px lines and small labels land on
-     whole pixels rather than being resampled. */
   /* One or two reservoirs: a taller track, so the rows fill the screen instead
      of floating in it. */
   .emb-tall .track { height: 58px; }
@@ -176,6 +170,12 @@
   .emb-crop__img { display: block; width: 760px; height: 550px;
                    filter: grayscale(1) brightness(0.8) contrast(4); }
 
+  /* embalses.net draws its chart in colour, and a straight greyscale leaves the
+     pale min/max band as heavy dithered hatching. Dimming before a contrast
+     boost drops that band and the gridlines to white while all four series stay
+     black — including the green 2024 line, which a brighter setting loses
+     entirely. Left at its own 560x250 so the 1px lines and small labels land on
+     whole pixels rather than being resampled. */
   .emb-chart { display: block; margin: 0 auto; flex: none; width: 560px; height: 250px;
                filter: grayscale(1) brightness(0.8) contrast(4); }
 &lt;/style&gt;
