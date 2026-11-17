@@ -111,7 +111,26 @@ tab of the same name: `full`, `half_horizontal`, `half_vertical`, `quadrant`.
 The templates deliberately have no `<div class="view">` wrapper — the editor
 supplies it, and TRMNL's docs say those classes are for standalone pages only.
 
-**Easier: open [`docs/paste.html`](docs/paste.html)**, which puts all six blocks
+### Keeping the templates in step
+
+TRMNL cannot pull markup from a repository — the plugin's only link to this one
+is the polling URL, which carries the data. The templates are a copy, so they
+drift as soon as either side changes. [`scripts/push_markup.py`](scripts/push_markup.py)
+pushes `src/` over the top of them:
+
+```bash
+export TRMNL_API_KEY=trmnl_xxxxx     # Account > API keys, needs "content"
+python3 scripts/push_markup.py --dry-run
+python3 scripts/push_markup.py
+```
+
+It reads the plugin from `plugin_setting_id` in `config.json`, compares each
+size before writing, and only pushes what differs. TRMNL's own
+[CLI](https://docs.trmnl.com/go/private-api/cli.md) does the same thing
+(`trmnl write-markup <id> markup_full < src/full.liquid`) if you would rather
+not keep a key around.
+
+**Or paste by hand: open [`docs/paste.html`](docs/paste.html)**, which puts all six blocks
 — the polling URL, the form fields and the four templates — on one page with a
 copy button each, in this order. Open it straight off disk:
 
