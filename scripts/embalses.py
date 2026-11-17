@@ -228,6 +228,15 @@ def parse_reservoir(page, reservoir_id, url):
     return record
 
 
+def describe(page):
+    """Summarise a response, for when it is not the page we expected."""
+    if page is None:
+        return "nothing"
+    title = re.search(r"<title[^>]*>(.*?)</title>", page, re.S | re.I)
+    return (f"{len(page)} bytes, title {text_of(title.group(1))!r}" if title
+            else f"{len(page)} bytes, no <title>: {text_of(page[:200])!r}")
+
+
 def parse_national(page):
     """Read the Spain-wide totals off the home page."""
     section = sections(page).get("agua embalsada en espana")
@@ -460,8 +469,24 @@ def command_build(args):
     locale = config.get("number_format", "es")
     cache_seconds = args.cache
 
-    home = fetch(BASE + "/", cache_seconds=cache_seconds)
-    national = decorate(parse_national(home), locale)
+    # The home page occasionally comes back as something other than the home
+    # page — a block or error page from in front of the site, which is short and
+    # has no summary section in it. Retry before giving up, and if it keeps
+    # happening say what actually arrived instead of just "not found".
+    home = national = None
+    for attempt in range(3):
+        home = fetch(BASE + "/", cache_seconds=cache_seconds)
+        try:
+            national = decorate(parse_national(home), locale)
+            break
+        except RuntimeError:
+            print(f"  attempt {attempt + 1}: {describe(home)}", file=sys.stderr)
+            if attempt < 2:
+                time.sleep(5)
+    if national is None:
+        print(f"The home page did not contain the national summary. Received: "
+              f"{describe(home)}", file=sys.stderr)
+        return 1
     as_of = national.get("as_of")
     if not as_of:
         # Everything downstream keys off this date. Without it the detail cache
