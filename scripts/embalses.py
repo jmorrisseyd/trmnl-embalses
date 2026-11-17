@@ -110,27 +110,41 @@ def to_number(text):
     return float(cleaned)
 
 
+# A block opens as class="SeccionCentral" possibly followed by more classes, on
+# a div or a section; its heading may be a div or an h1-h6. Matching the class
+# as a prefix — but not through the underscore of SeccionCentral_Caja — keeps
+# this working across the site's redesigns.
+SECTION_SPLIT_RE = re.compile(r'class="SeccionCentral[\s"]')
+SECTION_TITLE_RE = re.compile(
+    r'class="SeccionCentral_TituloTexto"[^>]*>(.*?)</(?:div|h[1-6])>', re.S)
+
+
 def sections(page):
-    """Split a page into its <div class="SeccionCentral"> blocks, by title."""
+    """Split a page into its SeccionCentral blocks, by title."""
     found = {}
-    for chunk in page.split('<div class="SeccionCentral">')[1:]:
-        match = re.search(r'class="SeccionCentral_TituloTexto">(.*?)</div>', chunk, re.S)
+    for chunk in SECTION_SPLIT_RE.split(page)[1:]:
+        match = SECTION_TITLE_RE.search(chunk)
         title = text_of(match.group(1)) if match else ""
         found.setdefault(fold(title), chunk)
     return found
 
 
+ROW_SPLIT_RE = re.compile(r'class="FilaSeccion[\s"]')
+ROW_LABEL_RE = re.compile(r'class="Campo(?:Inf)?(?:\s[^"]*)?">(.*?)</div>', re.S)
+ROW_VALUE_RE = re.compile(r'class="Resultado(?:Inf)?(?:\s[^"]*)?">(.*?)</div>', re.S)
+
+
 def stat_rows(section):
     """Yield (label, [values]) for each FilaSeccion row of a section."""
-    for chunk in section.split('class="FilaSeccion"')[1:]:
-        label_match = re.search(r'class="Campo(?:Inf)?">(.*?)</div>', chunk, re.S)
+    # Rows carry extra classes now (FilaSeccion dato-principal), and the value
+    # divs sit inside wrappers, which does not matter: they are still found in
+    # order within the row.
+    for chunk in ROW_SPLIT_RE.split(section)[1:]:
+        label_match = ROW_LABEL_RE.search(chunk)
         if not label_match:
             continue
         label = text_of(label_match.group(1)).rstrip(":")
-        values = [
-            text_of(value)
-            for value in re.findall(r'class="Resultado(?:Inf)?">(.*?)</div>', chunk, re.S)
-        ]
+        values = [text_of(value) for value in ROW_VALUE_RE.findall(chunk)]
         yield label, values
 
 
@@ -157,7 +171,9 @@ def parse_stats(section):
         elif key.startswith("variacion semana"):
             stats["change_hm3"] = first
             stats["change_percent"] = second
-        elif key.startswith("capacidad"):
+        elif key == "capacidad":
+            # Exact: the site also publishes "Capacidad sin ocupar", which a
+            # prefix match would let overwrite this.
             stats["capacity_hm3"] = first
         elif key.startswith("misma semana (med"):
             stats["avg10_hm3"] = first
@@ -216,7 +232,7 @@ def parse_reservoir(page, reservoir_id, url):
             break
 
     name = title.split(":", 1)[1].strip()
-    match = re.search(r'class="SeccionCentral_TituloTexto">(.*?)</div>', section, re.S)
+    match = SECTION_TITLE_RE.search(section)
     if match:
         name = text_of(match.group(1)).split(":", 1)[1].strip()
 
@@ -251,7 +267,10 @@ def parse_national(page):
 # the reservoir index (used by `search`)
 # --------------------------------------------------------------------------
 
-BASIN_LINK_RE = re.compile(r'href="(https://www\.embalses\.net/cuenca-\d+-[a-z0-9-]+\.html)"')
+# The site links its basin pages relatively now and absolutely before, so take
+# either and make it absolute.
+BASIN_LINK_RE = re.compile(
+    r'href="(?:https://www\.embalses\.net)?(/cuenca-\d+-[a-z0-9-]+\.html)"')
 RESERVOIR_LINK_RE = re.compile(
     r'<tr class="ResultadoCampo">(.*?)</tr>', re.S)
 PANTANO_RE = re.compile(r'href="[^"]*?/pantano-(\d+)-([a-z0-9-]+)\.html"[^>]*>(.*?)</a>', re.S)
@@ -260,13 +279,18 @@ PANTANO_RE = re.compile(r'href="[^"]*?/pantano-(\d+)-([a-z0-9-]+)\.html"[^>]*>(.
 def build_index(cache_seconds=21600):
     """List every reservoir by walking the 16 basin pages (not 400 detail pages)."""
     home = fetch(BASE + "/", cache_seconds=cache_seconds)
-    basins = sorted(set(BASIN_LINK_RE.findall(home)))
+    basins = sorted({BASE + path for path in BASIN_LINK_RE.findall(home)})
+    if not basins:
+        raise RuntimeError(
+            "no basin pages linked from the home page — the site's markup has "
+            "probably changed again; check BASIN_LINK_RE")
     index = []
     seen = set()
     for basin_url in basins:
         page = fetch(basin_url, cache_seconds=cache_seconds)
         basin_name = ""
-        title = re.search(r'class="SeccionCentral_TituloTexto">Cuenca (.*?)\(', page, re.S)
+        title = re.search(
+            r'class="SeccionCentral_TituloTexto"[^>]*>\s*Cuenca (.*?)\(', page, re.S)
         if title:
             basin_name = text_of(title.group(1))
         for row in RESERVOIR_LINK_RE.findall(page):
@@ -438,6 +462,7 @@ def refresh_detail(cache, index, as_of, path, cache_seconds=0, force=False):
         return 0
 
     fresh = len(wanted) == len(index)
+    skipped = 0
     print(f"Refreshing detail for {len(wanted)} reservoir(s)"
           f"{' (new week)' if fresh else ''}...", file=sys.stderr)
     done = 0
@@ -446,8 +471,14 @@ def refresh_detail(cache, index, as_of, path, cache_seconds=0, force=False):
         try:
             record = parse_reservoir(fetch(url, cache_seconds=cache_seconds), entry["id"], url)
         except RuntimeError as error:
-            # One unreadable page should not cost us the other 400.
+            # One unreadable page should not cost us the other 800. Stamp it so
+            # it waits for the next publication rather than being retried every
+            # run: several hundred of the smaller reservoirs have no weekly
+            # block at all, and retrying them daily is a few hundred needless
+            # requests a day against someone else's site.
             print(f"  skipped {entry['name']} ({entry['id']}): {error}", file=sys.stderr)
+            cache["reservoirs"].setdefault(str(entry["id"]), {})["fetched_for"] = as_of
+            skipped += 1
             continue
         stored = {key: record[key] for key in DETAIL_FIELDS if record.get(key) is not None}
         stored["fetched_for"] = as_of
@@ -460,6 +491,10 @@ def refresh_detail(cache, index, as_of, path, cache_seconds=0, force=False):
         time.sleep(DETAIL_DELAY)
     cache["as_of"] = as_of
     save_detail_cache(path, cache)
+    if skipped:
+        print(f"  {skipped} had no weekly figures on their own page; they keep "
+              f"their basin-table numbers and will be tried again next week.",
+              file=sys.stderr)
     return done
 
 
@@ -567,11 +602,32 @@ def command_build(args):
         if unchanged:
             payload["generated_at"] = previous.get("generated_at", payload["generated_at"])
 
+    # A parser that half-survives a redesign produces a short payload rather
+    # than an error, and writing it would blank or gut the screen. Refuse, and
+    # leave the last good payload in place.
+    previous_count = len(previous.get("reservoirs", [])) if previous else 0
+    if not reservoirs:
+        print("Parsed no reservoirs at all; refusing to publish an empty "
+              "payload. The site's markup has probably changed.", file=sys.stderr)
+        return 1
+    if previous_count and len(reservoirs) < previous_count * 0.6:
+        print(f"Parsed only {len(reservoirs)} reservoirs, down from "
+              f"{previous_count}; refusing to publish. Re-run with --force-write "
+              f"if the drop is real.", file=sys.stderr)
+        if not args.force_write:
+            return 1
+
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as fh:
         json.dump(payload, fh, ensure_ascii=False, separators=(",", ":"))
         fh.write("\n")
     size = os.path.getsize(args.out)
+    if size > 100 * 1024:
+        print(f"WARNING: {size} bytes is over TRMNL's 100 kB polling limit; the "
+              f"plugin will refuse this payload.", file=sys.stderr)
+    elif size > 90 * 1024:
+        print(f"Note: {size} bytes, within 10% of TRMNL's 100 kB limit.",
+              file=sys.stderr)
     print(f"Wrote {args.out} ({'unchanged' if unchanged else 'updated'}): "
           f"{len(reservoirs)} reservoirs, {size // 1024} kB, data of {national.get('as_of_label')}")
     return 0
@@ -590,6 +646,8 @@ def main(argv=None):
     build.add_argument("--out", default=os.path.join(ROOT, "docs", "trmnl.json"))
     build.add_argument("--detail", default=os.path.join(ROOT, "data", "detail.json"),
                        help="cache of the per-reservoir figures the basin pages omit")
+    build.add_argument("--force-write", action="store_true",
+                       help="publish even if the reservoir count has collapsed")
     build.add_argument("--refresh-detail", action="store_true",
                        help="refetch every reservoir page, not just the missing ones")
     build.add_argument("--skip-detail", action="store_true",
