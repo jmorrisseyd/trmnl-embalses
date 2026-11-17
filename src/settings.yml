@@ -1,45 +1,68 @@
 ---
-name: Embalses
 strategy: polling
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: ''
 polling_verb: get
-# Point this at the JSON the GitHub Action publishes for your own fork.
+framework_version: 3.3.1
+serverless_language: ''
+refresh_interval_floor:
 polling_url: https://raw.githubusercontent.com/jmorrisseyd/trmnl-embalses/main/docs/trmnl.json
-# Minutes. embalses.net publishes new figures once a week (Tuesdays), so there
-# is nothing to gain from polling often.
-refresh_interval: 720
-dark_mode: false
-no_screen_padding: false
-# The fields below are a copy of form_fields.yml, which is the file you paste
-# into the plugin's "Form Fields" box in TRMNL. trmnlp reads them from here.
+polling_headers: ''
+polling_body: ''
+id: 471852
+oauth_enabled: 'false'
+oauth_pkce_enabled: 'no'
+oauth_authorize_url: ''
+oauth_token_url: ''
+oauth_scopes: ''
+oauth_scope_separator: ''
+oauth_refresh_url: ''
+oauth_auth_params: ''
+oauth_token_headers: ''
+oauth_token_site: ''
+oauth_token_params: ''
+oauth_token_request_auth_method: ''
+oauth_body_format: ''
+oauth_token_response_metadata: ''
+oauth_authorization_method: ''
+oauth_refresh_params: ''
+oauth_token_field_name: ''
+oauth_expiry_field_name: ''
+oauth_expiry_strategy: ''
+oauth_fixed_expiry_ms: ''
 custom_fields:
-  - keyname: reservoir_ids
-    name: Embalses
-    field_type: multi_string
-    description: Ids de embalses.net separados por comas, en el orden que quieras verlos. El id es el número de la URL, así que embalses.net/pantano-871-rules.html es 871.
-    help_text: Ejemplo:&nbsp; 871,795,830
-    default: "795,830,816,799"
-  - keyname: chart
-    name: Gráfico
-    field_type: select
-    description: Qué gráfico de embalses.net mostrar cuando hay un solo embalse seleccionado. Anual compara con los dos años anteriores y la media de 10 años; Histórico son medias mensuales desde 1960; Entradas son los caudales de entrada por mes. Gráficos de Embalses.net, CC BY 4.0.
-    help_text: Entradas no existe para todos los embalses.
-    options:
-      - Ninguno
-      - Anual
-      - "Histórico"
-      - Entradas
-    default: ninguno
-  - keyname: heading
-    name: Título
-    field_type: string
-    description: Texto de la barra inferior.
-    default: Embalses
-  - keyname: footer
-    name: Pie (con varios embalses)
-    field_type: select
-    description: Qué resumen mostrar bajo la lista.
-    options:
-      - España
-      - Conjunto
-      - Ninguno
-    default: espana
+- keyname: reservoir_ids
+  name: Embalses
+  field_type: multi_string
+  description: Ids de embalses.net separados por comas, en el orden que quieras verlos. El id es el número de la URL, así que embalses.net/pantano-871-rules.html es 871.
+  help_text: Ejemplo:&nbsp; 871,795,830
+  default: '795,830,816,799'
+- keyname: chart
+  name: Gráfico
+  field_type: select
+  description: Qué gráfico de embalses.net mostrar cuando hay un solo embalse seleccionado. Anual compara con los dos años anteriores y la media de 10 años; Histórico son medias mensuales desde 1960; Entradas son los caudales de entrada por mes. Gráficos de Embalses.net, CC BY 4.0.
+  help_text: Entradas no existe para todos los embalses.
+  options:
+  - Ninguno
+  - Anual
+  - Histórico
+  - Entradas
+  default: ninguno
+- keyname: heading
+  name: Título
+  field_type: string
+  description: Texto de la barra inferior.
+  default: Embalses
+- keyname: footer
+  name: Pie (con varios embalses)
+  field_type: select
+  description: Qué resumen mostrar bajo la lista.
+  options:
+  - España
+  - Conjunto
+  - Ninguno
+  default: espana
+name: Embalses
+description: Estado de los embalses españoles
+refresh_interval: 1440
